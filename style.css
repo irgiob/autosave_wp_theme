@@ -10,12 +10,17 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-.offcanvas {
-    background-color: #8A73F9;
+@import url("assets/css/fonts.css");
+
+:root {
+    --primary: #8A73F9;
+    --primaryBlack: #262626;
+    --secondaryYellow: #E8D892;
+    --secondaryBlue: #86D0E2;
 }
 
-.offcanvas.top {
-    height: 60vh;
+body {
+    font-family: PlusJakartaSans;
 }
 
 .link-container {
@@ -27,33 +32,71 @@ Use it to make something cool, have fun, and share what you've learned with othe
     color: #262626;
 }
 
-.w-100 {
-    width: 100%;
+.navbar {
+    background: linear-gradient(to bottom, var(--primary) 50%, white 50%);
+    background-size: 100% 200%;
+    background-position: bottom;
+    transition: .1s linear;
+    transition-delay: 0.2s;
+}
+
+.navbar * {
+    color:  var(--primary);
+    transition-delay: 0.2s;
+    transition: 0.5s;
+}
+
+.navbar[aria-expanded="true"] {
+    background-position: top;
+    transition-delay: 0s;
+}
+
+.navbar[aria-expanded="true"] * {
+    color: var(--primaryBlack);
+    transition-delay: 0.1s;
+    transition: 0.1s;
+}
+
+.navbar p > i {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.navbar[aria-expanded="true"] p > i {
+    transform: rotate(90deg);
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+#navbar-expanded {
+    position: absolute; 
+    z-index: 1000; 
+    background-color: var(--primary);
+    transition: 0.1s linear;
+    transition-delay: 0.1s;
+}
+
+#navbar-expanded.show {
+    transition-delay: 0s;
 }
 
 .btn {
-    background-color: white;
+    background-color: var(--primary);
     border: none;
-    color: #8A73F9;
+    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 
-.btn:hover {
-    background-color: #8A73F9;
-    color: white;
-}
-
 .hover-underline-animation {
     display: inline-block;
     position: relative;
-    color: 
-  #262626;
+    color: #262626;
   }
   
-  .hover-underline-animation:after {
+.hover-underline-animation:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -62,12 +105,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
     bottom: 0;
     left: 0;
     background-color: 
-  #262626;
+    #262626;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
-  }
-  
-  .hover-underline-animation:hover:after {
+}
+
+.hover-underline-animation:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
+}
