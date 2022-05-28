@@ -9,3 +9,35 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+.offcanvas {
+    background-color: #8A73F9;
+}
+
+.offcanvas-top {
+    height: 100%;
+}
+
+.link-container {
+    color: #262626;
+    text-decoration: none;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.btn {
+    background-color: white;
+    border: none;
+    color: #8A73F9;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #8A73F9;
+    color: white;
+}
