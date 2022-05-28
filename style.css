@@ -14,13 +14,17 @@ Use it to make something cool, have fun, and share what you've learned with othe
     background-color: #8A73F9;
 }
 
-.offcanvas-top {
-    height: 100%;
+.offcanvas.top {
+    height: 60vh;
 }
 
 .link-container {
     color: #262626;
     text-decoration: none;
+}
+
+.link-container:hover {
+    color: #262626;
 }
 
 .w-100 {
@@ -41,3 +45,29 @@ Use it to make something cool, have fun, and share what you've learned with othe
     background-color: #8A73F9;
     color: white;
 }
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: 
+  #262626;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: 
+  #262626;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
