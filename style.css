@@ -41,7 +41,7 @@ body {
 }
 
 .navbar * {
-    color:  var(--primary);
+    color: var(--primary);
     fill: var(--primary);
     transition-delay: 0.2s;
     transition: 0.2s;
@@ -71,8 +71,8 @@ body {
 }
 
 #navbar-expanded {
-    position: absolute; 
-    z-index: 1000; 
+    position: absolute;
+    z-index: 1000;
     background-color: var(--primary);
     transition: 0.1s linear;
     transition-delay: 0.1s;
@@ -82,11 +82,17 @@ body {
     transition-delay: 0s;
 }
 
-#logo {
-    transform: scale(0.6);
+.navbar div.container-fluid > div {
+    min-width: 100px;
 }
 
-#logo:hover {
+#logo {
+    width: 20%;
+    min-width: 120px;
+    max-width: 240px;
+}
+
+#logo>svg:hover {
     filter: drop-shadow(16px 0px 2px var(--secondaryYellow));
     transition: filter 0.2s;
 }
@@ -105,8 +111,8 @@ body {
     display: inline-block;
     position: relative;
     color: #262626;
-  }
-  
+}
+
 .hover-underline-animation:after {
     content: '';
     position: absolute;
@@ -115,8 +121,8 @@ body {
     height: 4px;
     bottom: 0;
     left: 0;
-    background-color: 
-    #262626;
+    background-color:
+        #262626;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -132,12 +138,60 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
-    z-index: 2;
+    z-index: -1;
     transition: background-color 0.25s ease-in-out;
     transition-duration: 0.2s;
 }
 
 #overlay.open {
+    z-index: 2;
     background-color: rgba(0, 0, 0, 0.5);
     transition-delay: 0.05s;
+}
+
+.search-container {
+    width: 0;
+    overflow: visible;
+}
+
+.search-container > div {
+    float: right;
+}
+
+.search-container input#search {
+    width: 0;
+    border: none;
+    border-bottom: 2px rgba(0, 0, 0, 0) solid;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--primary);
+    padding-left: 30px;
+}
+
+.search-container input#search::placeholder {
+    color: var(--primary);
+}
+
+.navbar[aria-expanded="true"] .search-container input#search::placeholder{
+    color: var(--primaryBlack);
+}
+
+.navbar[aria-expanded="true"] .search-container input#search {
+    caret-color: var(--primaryBlack);
+    color: var(--primaryBlack);
+}
+
+.search-container:hover input#search, .search-container input#search:focus, .search-container input#search:hover {
+    width: 200px;
+    border-bottom: 2px var(--primary) solid;
+}
+
+.navbar[aria-expanded="true"] .search-container:hover input#search, 
+.navbar[aria-expanded="true"] .search-container input#search:focus, 
+.navbar[aria-expanded="true"] .search-container input#search:hover {
+    border-bottom: 2px var(--primaryBlack) solid;
+}
+
+input::-webkit-search-cancel-button {
+    display: none;
 }

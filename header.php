@@ -24,13 +24,15 @@
     <div id="overlay"onclick="if(overlay.classList.contains('open')) {expandNavbar();}" ></div>
     <nav id="nav" class="navbar sticky-top" aria-expanded="false">
         <div class="container-fluid mx-3">
-            <p class="fw-bold pe-auto mb-0" role="button" onclick="expandNavbar();">
-                <i class="bi-chevron-right"></i> Menu
-            </p>
+            <div>
+                <p class="fw-bold pe-auto mb-0" role="button" onclick="expandNavbar();">
+                    <i class="bi-chevron-right"></i><span class="mx-1 d-none d-md-inline">Menu</span>
+                </p>
+            </div>
 
             <!-- navbar logo -->
-            <a href="<?php home_url(); ?>">
-                <svg id="logo" width="430" height="90" xmlns="http://www.w3.org/2000/svg" xmlns:undefined="http://www.inkscape.org/namespaces/inkscape" xml:space="preserve" version="1.1">
+            <a id="logo" class="my-2" href="<?php echo get_home_url(); ?>">
+                <svg viewBox="0 0 430 90" xmlns="http://www.w3.org/2000/svg" xmlns:undefined="http://www.inkscape.org/namespaces/inkscape" xml:space="preserve" version="1.1">
                     <g transform="matrix(1 0 0 -1 -20 120)">
                         <g id="logo_short_out">
                             <path d="m79.7117,41.2061l7.57,0l-21.216,65.89l-15.702,0l-21.307,-65.89l7.665,0l5.72,17.944l0.007,0.022l2.496,7.829l0.026,0l3.405,10.572l8.718,27.372l2.151,0l10.093,-31.4l-0.007,0l4.594,-14.395l5.787,-17.944z" />
@@ -62,7 +64,7 @@
                     </g>
                 </svg>
             </a>
-            <i class="bi-search" style="margin-left: 30px; margin-right: 10px"></i>
+            <?php get_search_form(); ?>
         </div>
 
         <!-- navbar expansion -->
