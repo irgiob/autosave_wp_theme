@@ -10,7 +10,7 @@
         </g>
     </svg>
         
-    <div class="w-100"></div>
+    <div class="w-100 m-0"></div>
     <div>
         <p>Terms of use<p>
         <p>About Us<p>

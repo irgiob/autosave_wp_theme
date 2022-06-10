@@ -9,220 +9,345 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraLight.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
 
-@import url("assets/css/fonts.css");
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
 
-:root {
-    --primary: #8A73F9;
-    --primaryBlack: #262626;
-    --secondaryYellow: #E8D892;
-    --secondaryBlue: #86D0E2;
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-Light.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-LightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraBold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
 }
 
 body {
-    font-family: PlusJakartaSans;
+  font-family: PlusJakartaSans;
 }
 
-.link-container {
-    color: #262626;
-    text-decoration: none;
+nav .link-container {
+  color: #262626;
+  text-decoration: none;
 }
 
-.link-container:hover {
-    color: #262626;
+nav .link-container:hover {
+  color: #262626;
 }
 
-.navbar {
-    background: linear-gradient(to bottom, var(--primary) 50%, white 50%);
-    background-size: 100% 200%;
-    background-position: bottom;
-    transition: .1s linear;
-    transition-delay: 0.2s;
+nav.navbar {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #8A73F9), color-stop(50%, white));
+  background: linear-gradient(to bottom, #8A73F9 50%, white 50%);
+  background-size: 100% 200%;
+  background-position: bottom;
+  -webkit-transition: .1s linear;
+  transition: .1s linear;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
 }
 
-.navbar * {
-    color: var(--primary);
-    fill: var(--primary);
-    transition-delay: 0.2s;
-    transition: 0.2s;
+nav.navbar * {
+  color: #8A73F9;
+  fill: #8A73F9;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
-.navbar[aria-expanded="true"] {
-    background-position: top;
-    transition-delay: 0s;
+nav.navbar p > i {
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
-.navbar[aria-expanded="true"] * {
-    color: var(--primaryBlack);
-    fill: var(--primaryBlack);
-    transition-delay: 0.1s;
-    transition: 0.1s;
+nav.navbar[aria-expanded="true"] {
+  background-position: top;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
 }
 
-.navbar p > i {
-    display: inline-block;
-    transition: transform 0.2s;
+nav.navbar[aria-expanded="true"] * {
+  color: #262626;
+  fill: #262626;
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
 }
 
-.navbar[aria-expanded="true"] p > i {
-    transform: rotate(90deg);
-    display: inline-block;
-    transition: transform 0.2s;
+nav.navbar[aria-expanded="true"] p > i {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
-#navbar-expanded {
-    position: absolute;
-    z-index: 1000;
-    background-color: var(--primary);
-    transition: 0.1s linear;
-    transition-delay: 0.1s;
+nav.navbar[aria-expanded="true"] .search-container input#search {
+  caret-color: #262626;
+  color: #262626;
 }
 
-#navbar-expanded.show {
-    transition-delay: 0s;
+nav.navbar[aria-expanded="true"] .search-container input#search::-webkit-input-placeholder {
+  color: #262626;
 }
 
-.navbar div.container-fluid > div {
-    min-width: 100px;
+nav.navbar[aria-expanded="true"] .search-container input#search:-ms-input-placeholder {
+  color: #262626;
 }
 
-#logo {
-    width: 20%;
-    min-width: 120px;
-    max-width: 240px;
+nav.navbar[aria-expanded="true"] .search-container input#search::-ms-input-placeholder {
+  color: #262626;
 }
 
-#logo>svg:hover {
-    filter: drop-shadow(16px 0px 2px var(--secondaryYellow));
-    transition: filter 0.2s;
+nav.navbar[aria-expanded="true"] .search-container input#search::placeholder {
+  color: #262626;
 }
 
-.btn {
-    background-color: var(--primary);
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+nav.navbar[aria-expanded="true"] .search-container:hover input#search, nav.navbar[aria-expanded="true"] .search-container input#search:focus, nav.navbar[aria-expanded="true"] .search-container input#search:hover {
+  border-bottom: 2px #262626 solid;
 }
 
-.hover-underline-animation {
-    display: inline-block;
-    position: relative;
-    color: #262626;
+nav.navbar div.container-fluid > div {
+  min-width: 100px;
 }
 
-.hover-underline-animation:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 4px;
-    bottom: 0;
-    left: 0;
-    background-color:
-        #262626;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+nav #navbar-expanded {
+  position: absolute;
+  z-index: 1000;
+  background-color: #8A73F9;
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
 }
 
-.hover-underline-animation:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+nav #navbar-expanded.show {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+nav #logo {
+  width: 20%;
+  min-width: 120px;
+  max-width: 240px;
+}
+
+nav #logo > svg:hover {
+  -webkit-filter: drop-shadow(16px 0px 2px #E8D892);
+          filter: drop-shadow(16px 0px 2px #E8D892);
+  -webkit-transition: -webkit-filter 0.2s;
+  transition: -webkit-filter 0.2s;
+  transition: filter 0.2s;
+  transition: filter 0.2s, -webkit-filter 0.2s;
+}
+
+nav .hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #262626;
+}
+
+nav .hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  background-color: #262626;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+}
+
+nav .hover-underline-animation:hover:after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+nav .search-container {
+  width: 0;
+  overflow: visible;
+}
+
+nav .search-container > div {
+  float: right;
+}
+
+nav .search-container input#search {
+  width: 0;
+  border: none;
+  border-bottom: 2px rgba(0, 0, 0, 0) solid;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #8A73F9;
+  padding-left: 30px;
+}
+
+nav .search-container input#search::-webkit-input-placeholder {
+  color: #8A73F9;
+}
+
+nav .search-container input#search:-ms-input-placeholder {
+  color: #8A73F9;
+}
+
+nav .search-container input#search::-ms-input-placeholder {
+  color: #8A73F9;
+}
+
+nav .search-container input#search::placeholder {
+  color: #8A73F9;
+}
+
+nav .search-container:hover input#search, nav .search-container input#search:focus input#search:hover {
+  width: 200px;
+  border-bottom: 2px #8A73F9 solid;
+}
+
+nav input::-webkit-search-cancel-button {
+  display: none;
 }
 
 #overlay {
-    position: fixed;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    z-index: -1;
-    transition: background-color 0.25s ease-in-out;
-    transition-duration: 0.2s;
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: -1;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 #overlay.open {
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition-delay: 0.05s;
-}
-
-.search-container {
-    width: 0;
-    overflow: visible;
-}
-
-.search-container > div {
-    float: right;
-}
-
-.search-container input#search {
-    width: 0;
-    border: none;
-    border-bottom: 2px rgba(0, 0, 0, 0) solid;
-    outline: none;
-    background-color: rgba(0, 0, 0, 0);
-    color: var(--primary);
-    padding-left: 30px;
-}
-
-.search-container input#search::placeholder {
-    color: var(--primary);
-}
-
-.navbar[aria-expanded="true"] .search-container input#search::placeholder{
-    color: var(--primaryBlack);
-}
-
-.navbar[aria-expanded="true"] .search-container input#search {
-    caret-color: var(--primaryBlack);
-    color: var(--primaryBlack);
-}
-
-.search-container:hover input#search, .search-container input#search:focus, .search-container input#search:hover {
-    width: 200px;
-    border-bottom: 2px var(--primary) solid;
-}
-
-.navbar[aria-expanded="true"] .search-container:hover input#search, 
-.navbar[aria-expanded="true"] .search-container input#search:focus, 
-.navbar[aria-expanded="true"] .search-container input#search:hover {
-    border-bottom: 2px var(--primaryBlack) solid;
-}
-
-input::-webkit-search-cancel-button {
-    display: none;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
 }
 
 footer {
-    background: var(--primaryBlack);
-    align-items: center;
-
-}
-
-svg.footerlogo path {
-    fill: white;
-}
-
-svg.footerlogo {
-    width: 350px;
-    margin: 10px;
+  background: #262626;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 footer p {
-    color: white;
+  color: white;
+  font-weight: 500;
 }
 
-footer >div {
-    min-width: 200px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    margin-left: 100px;
+footer > div {
+  min-width: 200px;
+  min-height: 80px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 100px;
 }
 
 footer a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #8A73F9;
+}
+
+svg.footerlogo {
+  min-width: 90px;
+  max-width: 90px;
+  margin: 10px;
+}
+
+svg.footerlogo path {
+  fill: white;
 }

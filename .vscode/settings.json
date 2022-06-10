@@ -1,0 +1,26 @@
+{
+    "sass.andStared": [
+
+        "active",
+        "focus",
+        "hover",
+        "nth-child"
+    ],
+
+    "liveSassCompile.settings.formats":[
+        
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/"
+        }
+    ],
+
+    "liveSassCompile.settings.generateMap": false,
+
+    "intelephense.stubs": [ "wordpress" ],
+
+    "liveSassCompile.settings.includeItems": [
+        "assets/scss/style.scss",
+    ]
+}

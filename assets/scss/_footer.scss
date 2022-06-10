@@ -1,0 +1,36 @@
+footer {
+    background: $primaryBlack;
+    align-items: center;
+
+    p { 
+        color: white;
+        font-weight: 500;
+    }
+
+    & > div {
+        min-width: 200px;
+        min-height: 80px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        margin-left: 100px;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+        
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+svg.footerlogo {
+    min-width: 90px;
+    max-width: 90px;
+    margin: 10px;
+
+    path {
+        fill: white;
+    }
+}
