@@ -323,14 +323,12 @@ footer {
 footer p {
   color: white;
   font-weight: 500;
+  white-space: nowrap;
+  margin-bottom: 0;
 }
 
-footer > div {
-  min-width: 200px;
-  min-height: 80px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  margin-left: 100px;
+footer div > p:first-child {
+  margin-bottom: 1em;
 }
 
 footer a {
@@ -342,10 +340,17 @@ footer a:hover {
   color: #8A73F9;
 }
 
+footer div {
+  margin-left: auto;
+}
+
+footer div div.spacer {
+  width: calc(100vw/6);
+}
+
 svg.footerlogo {
   min-width: 90px;
   max-width: 90px;
-  margin: 10px;
 }
 
 svg.footerlogo path {
@@ -389,14 +394,11 @@ svg.footerlogo path {
           transform: translateX(0);
 }
 
-#main-banner {
-  width: 100%;
+#main-banner .carousel-item > div .card {
+  margin-left: 5px;
 }
 
-#main-banner .carousel-item > div {
-  margin-left: 10px;
-}
-
-#main-banner .carousel-item > div:first-child {
-  margin-left: 0;
+#main-banner > div {
+  width: calc(100vw + 5px) !important;
+  margin-left: -5px !important;
 }

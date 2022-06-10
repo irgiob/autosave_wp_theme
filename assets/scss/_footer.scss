@@ -5,14 +5,12 @@ footer {
     p { 
         color: white;
         font-weight: 500;
+        white-space: nowrap;
+        margin-bottom: 0;
     }
 
-    & > div {
-        min-width: 200px;
-        min-height: 80px;
-        margin-top: 20px;
-        margin-bottom: 5px;
-        margin-left: 100px;
+    & div > p:first-child {
+        margin-bottom: 1em;
     }
 
     a {
@@ -23,12 +21,19 @@ footer {
             color: $primary;
         }
     }
+
+    div {
+        margin-left: auto;
+
+        & div.spacer {
+            width: calc(100vw/6);
+        }
+    }
 }
 
 svg.footerlogo {
     min-width: 90px;
     max-width: 90px;
-    margin: 10px;
 
     path {
         fill: white;

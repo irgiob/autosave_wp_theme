@@ -1,4 +1,4 @@
-<div class="search-container">
+<div class="search-container d-none d-md-block">
     <div>
         <form role="search" method="get" class="search-form" action="<?php get_home_url(); ?>">
             <i class="bi-search mx-1 position-absolute"></i>
