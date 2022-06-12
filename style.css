@@ -97,6 +97,41 @@ body {
   font-family: PlusJakartaSans;
 }
 
+.hover-underline-animation, .hover-underline-animation-sm {
+  display: inline-block;
+  position: relative;
+  color: #262626;
+}
+
+.hover-underline-animation:after, .hover-underline-animation-sm:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  background-color: #262626;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+}
+
+.hover-underline-animation-sm:after {
+  height: 2px;
+}
+
+.hover-underline-animation:hover:after, .hover-underline-animation-sm:hover:after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
 nav .link-container {
   color: #262626;
   text-decoration: none;
@@ -218,37 +253,6 @@ nav #logo > svg:hover {
   transition: filter 0.2s, -webkit-filter 0.2s;
 }
 
-nav .hover-underline-animation {
-  display: inline-block;
-  position: relative;
-  color: #262626;
-}
-
-nav .hover-underline-animation:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  height: 4px;
-  bottom: 0;
-  left: 0;
-  background-color: #262626;
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  -webkit-transition: -webkit-transform 0.25s ease-out;
-  transition: -webkit-transform 0.25s ease-out;
-  transition: transform 0.25s ease-out;
-  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
-}
-
-nav .hover-underline-animation:hover:after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
-}
-
 nav .search-container {
   width: 0;
   overflow: visible;
@@ -366,39 +370,70 @@ svg.footerlogo path {
   }
 }
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 /* medium and up screens */
 @media (min-width: 768px) {
-  .carousel-inner .carousel-item-end.active,
-  .carousel-inner .carousel-item-next {
+  .carousel-inner .carousel-item-end.active, .carousel-inner .carousel-item-next {
     -webkit-transform: translateX(25%);
             transform: translateX(25%);
   }
-  .carousel-inner .carousel-item-start.active,
-  .carousel-inner .carousel-item-prev {
+  .carousel-inner .carousel-item-start.active, .carousel-inner .carousel-item-prev {
     -webkit-transform: translateX(-25%);
             transform: translateX(-25%);
   }
 }
 
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start {
+#main-banner {
+  width: calc(100vw + 10px) !important;
+  margin-left: -10px !important;
+  border-radius: 5em 5em 0 0;
+  overflow: hidden;
+}
+
+#main-banner .carousel-item > div .card {
+  margin-left: 10px;
+  border: 0;
+}
+
+#main-banner a[class^=carousel-control-] {
+  width: 5%;
+}
+
+.carousel-inner .carousel-item.active, .carousel-inner .carousel-item-next, .carousel-inner .carousel-item-prev {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.carousel-inner .carousel-item-end, .carousel-inner .carousel-item-start {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
-#main-banner .carousel-item > div .card {
-  margin-left: 5px;
+.card {
+  height: calc((100vw - 3*10px)/4*16/9);
 }
 
-#main-banner > div {
-  width: calc(100vw + 5px) !important;
-  margin-left: -5px !important;
+.card .card-img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card .card-img-overlay {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(#262626 15%, rgba(0, 0, 0, 0) 50%);
+}
+
+.card .card-img-overlay:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(#262626 15%, rgba(0, 0, 0, 0) 100%);
+}
+
+.card .card-img-overlay p {
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }

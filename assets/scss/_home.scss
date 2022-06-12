@@ -1,47 +1,83 @@
 @media (max-width: 767px) {
-    .carousel-inner .carousel-item > div {
+    .carousel-inner .carousel-item>div {
         display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-        display: block;
-    }
-}
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-    display: flex;
+        &:first-child {
+            display: block;
+        }
+    }
 }
 
 /* medium and up screens */
 @media (min-width: 768px) {
-    
-    .carousel-inner .carousel-item-end.active,
-    .carousel-inner .carousel-item-next {
-      transform: translateX(25%);
-    }
-    
-    .carousel-inner .carousel-item-start.active, 
-    .carousel-inner .carousel-item-prev {
-      transform: translateX(-25%);
-    }
-}
-
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-  transform: translateX(0);
-}
-
-#main-banner {
-    .carousel-item {
-        & >div {
-            margin-left: 10px;
-
-            &:first-child {
-                margin-left: 0;
-            }
+    .carousel-inner {
+        .carousel-item-end.active, .carousel-item-next {
+            transform: translateX(25%);
         }
 
+        .carousel-item-start.active, .carousel-item-prev {
+            transform: translateX(-25%);
+        }
     }
-    width: 100%;
+}
+
+$banner_gap: 10px;
+
+#main-banner {
+    width: calc(100vw + #{$banner_gap}) !important;
+    margin-left: -$banner_gap !important;
+    border-radius: 5em 5em 0 0;
+    overflow: hidden;
+
+    .carousel-item > div {
+        .card {
+            margin-left: $banner_gap;
+            border: 0;
+        }
+    }
+
+    a[class^=carousel-control-] {
+        width: 5%;
+    }
+}
+
+.carousel-inner {
+    .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+        display: flex;
+    }
+
+    .carousel-item-end, .carousel-item-start {
+        transform: translateX(0);
+    }
+}
+
+// card height 19 by 9 aspect ratio
+$card-height: calc((100vw - 3*#{$banner_gap})/4*16/9);
+
+.card {
+    height: $card-height;
+
+    & &-img {
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &-overlay {
+            background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 50%);
+
+            &:hover {
+                background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 100%);
+            }
+
+            p {
+                color: white;
+                font-weight: 500;
+                font-size: 1.2rem;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+            }
+        }
+    }
 }
