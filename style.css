@@ -302,17 +302,21 @@ nav input::-webkit-search-cancel-button {
   display: block;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  z-index: -1;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  transition: background-color 0.25s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  z-index: 2;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
 
 #overlay.open {
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
   -webkit-transition-delay: 0.05s;
           transition-delay: 0.05s;
 }
@@ -322,6 +326,11 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /*& > a::after:hover {
+        content: "Login";
+        display: inline-block;
+        transform: rotate(73deg) translate(-8px,25px);
+    }*/
 }
 
 footer p {
@@ -329,6 +338,7 @@ footer p {
   font-weight: 500;
   white-space: nowrap;
   margin-bottom: 0;
+  font-size: 0.8rem;
 }
 
 footer div > p:first-child {
@@ -352,13 +362,37 @@ footer div div.spacer {
   width: calc(100vw/6);
 }
 
+footer > a:after {
+  content: "Login";
+  display: inline-block;
+  width: 0;
+  -webkit-transform: rotate(73deg) translate(-23px, 5px);
+          transform: rotate(73deg) translate(-23px, 5px);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+  font-size: 0;
+}
+
+footer > a:hover:after {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  font-size: 1rem;
+}
+
 svg.footerlogo {
-  min-width: 90px;
-  max-width: 90px;
+  width: 70px;
 }
 
 svg.footerlogo path {
   fill: white;
+}
+
+svg.footerlogo:hover path {
+  fill: #8A73F9;
 }
 
 @media (max-width: 767px) {

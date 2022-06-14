@@ -7,6 +7,7 @@ footer {
         font-weight: 500;
         white-space: nowrap;
         margin-bottom: 0;
+        font-size: 0.8rem;
     }
 
     & div > p:first-child {
@@ -29,13 +30,39 @@ footer {
             width: calc(100vw/6);
         }
     }
+
+    /*& > a::after:hover {
+        content: "Login";
+        display: inline-block;
+        transform: rotate(73deg) translate(-8px,25px);
+    }*/
+
+    & > a:after {
+        content: "Login";
+        display: inline-block;
+        width: 0;
+        transform: rotate(73deg) translate(-23px,5px);
+        visibility: hidden;
+        opacity:0;
+        transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
+        font-size: 0;
+    }
+    & > a:hover:after {
+        visibility: visible;
+        opacity:1;
+        transition-delay:0s;
+        font-size: 1rem;
+    }
 }
 
 svg.footerlogo {
-    min-width: 90px;
-    max-width: 90px;
+    width: 70px;
 
     path {
         fill: white;
+    }
+
+    &:hover path {
+        fill: $primary;
     }
 }
