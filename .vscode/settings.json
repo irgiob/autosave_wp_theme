@@ -18,7 +18,7 @@
 
     "liveSassCompile.settings.generateMap": false,
 
-    "intelephense.stubs": [ "wordpress" ],
+    "intelephense.stubs": [ "wordpress", "Core", "standard" ],
 
     "liveSassCompile.settings.includeItems": [
         "assets/scss/style.scss",

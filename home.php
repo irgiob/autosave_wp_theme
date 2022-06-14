@@ -5,10 +5,11 @@
     <p class="hover-underline-animation-sm">Games</p>
     <p class="hover-underline-animation-sm">Zine</p>
 </div>
+
 <div id="main-banner" class="carousel slide mb-5" data-bs-interval="false">
-    <div class="carousel-inner" role="listbox">
+    <?php if (!wp_is_mobile()): ?><div class="carousel-inner" role="listbox"><?php endif; ?>
         <?php for($i=1;$i<7;$i++): ?>
-            <div class="carousel-item <?php if($i==1){ echo "active";}?>">
+            <?php if (!wp_is_mobile()): ?><div class="carousel-item <?php if($i==1){ echo "active";}?>"><?php endif; ?>
                 <div class="col-md-3">
                     <a href="">
                         <div class="card">
@@ -21,9 +22,9 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            <?php if (!wp_is_mobile()): ?></div><?php endif; ?>
         <?php endfor; ?>
-    </div>
+    <?php if (!wp_is_mobile()): ?></div><?php endif; ?>
     <a class="carousel-control-prev bg-transparent" href="#main-banner" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     </a>
