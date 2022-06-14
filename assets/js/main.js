@@ -13,3 +13,12 @@ items.forEach((el) => {
         next = next.nextElementSibling
     }
 })
+
+function expandNavbar() {
+    const overlay = document.getElementById("overlay");
+    var expanded = document.getElementById('nav');
+    [...document.querySelectorAll('.collapse')].map(collapseEl => new bootstrap.Collapse(collapseEl));
+    //expanded = !(expanded === "true");
+    expanded.setAttribute("aria-expanded", (expanded.getAttribute("aria-expanded") === "true") ?  "false" : "true");
+    (overlay.classList.contains('open')) ? overlay.classList.remove('open') : overlay.classList.add('open');
+}

@@ -4,23 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link href="<?php echo get_template_directory_uri() . "/style.css"; ?>" rel="stylesheet">
-    <script>
-        function expandNavbar() {
-            const overlay = document.getElementById("overlay");
-            var expanded = document.getElementById('nav');
-            [...document.querySelectorAll('.collapse')].map(collapseEl => new bootstrap.Collapse(collapseEl));
-            //expanded = !(expanded === "true");
-            expanded.setAttribute("aria-expanded", (expanded.getAttribute("aria-expanded") === "true") ?  "false" : "true");
-            (overlay.classList.contains('open')) ? overlay.classList.remove('open') : overlay.classList.add('open');
-        }
-    </script>
+    <?php wp_head(); ?>
 </head>
 
-<body class="body">
+<body <?php body_class(); ?>>
     <div id="overlay"onclick="if(overlay.classList.contains('open')) {expandNavbar();}" ></div>
     <nav id="nav" class="navbar sticky-top" aria-expanded="false">
         <div class="container-fluid mx-3">
@@ -93,5 +80,3 @@
             </div>
         </div>
     </nav>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

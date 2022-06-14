@@ -31,6 +31,4 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </a>
 </div>
-
-<script src="<?php echo get_template_directory_uri()."/assets/js/main.js";?>"></script>
 <?php get_footer(); ?>
