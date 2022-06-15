@@ -22,9 +22,17 @@ nav {
             transition: 0.2s;
         }
 
+        p[role=button]:hover {
+            transform: scale(1.1);
+        }
+
         p > i {
             display: inline-block;
             transition: transform 0.2s;
+        }
+
+        & + div.menu-secondary--default {
+            transition: z-index 0.5s ease-in-out 0.5s;
         }
 
         &[aria-expanded="true"] {
@@ -37,6 +45,11 @@ nav {
                 transition-delay: 0.1s;
                 transition: 0.1s;   
             }
+
+            & + div.menu-secondary--default {
+                z-index: 10;
+                transition: z-index 0s ease-in-out 0s;
+            }*
 
             p > i {
                 transform: rotate(90deg);
@@ -61,7 +74,7 @@ nav {
         }
 
         div.container-fluid > div {
-            min-width: 100px;
+            min-width: 120px;
         }
 
         @media (max-width: $sm-breakpoint) {
@@ -73,10 +86,10 @@ nav {
     
     #navbar-expanded {
         position: absolute;
-        z-index: 1000;
         background-color: $primary;
         transition: 0.1s linear;
         transition-delay: 0.1s;
+        transform: translateY(-1px);
 
         &.show {
             transition-delay: 0s;
@@ -87,6 +100,7 @@ nav {
         width: 20%;
         min-width: 120px;
         max-width: 240px;
+        transition: opacity 0s linear 0s;
 
         & > svg:hover {
             filter: drop-shadow(16px 0px 2px $secondaryYellow);
@@ -125,6 +139,40 @@ nav {
     input::-webkit-search-cancel-button {
         display: none;
     }
+
+    .logo--side:hover {
+        filter: drop-shadow(10px 0px 1px $secondaryYellow);
+        transition: filter 0.2s;
+    }
+
+    .flip-box {
+        height: 30px;
+        transition: 0.6s;
+        transform-style: preserve-3d;
+
+        &.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            transform: rotateX(0deg)
+        }
+
+        .front {
+            z-index: 2;
+            right: 0;
+            width: 0;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            left: 0;
+        }
+    }
 }
 
 #overlay {
@@ -134,12 +182,32 @@ nav {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     transform: translateY(-100%);
-    z-index: 2;
+    z-index: 1000;
     transition: transform 0.25s ease-in-out;
     transition-duration: 0.2s;
 
     &.open {
         transform: translateY(0);
         transition-delay: 0.05s;
+    }
+}
+
+.disable-scroll {
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-secondary {
+    position: sticky;
+    padding-top: 1.8em;
+    top: -1px;
+    z-index: 1030;
+    
+    &--default {
+        background-color: white;
+    }
+
+    &--pinned {
+        background-color: transparent;
     }
 }

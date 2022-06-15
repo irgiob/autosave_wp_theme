@@ -6,17 +6,6 @@ $banner_gap: 10px;
     border-radius: 5em 5em 0 0;
     overflow: hidden;
 
-    .carousel-item > div {
-        .card {
-            margin-left: $banner_gap;
-            border: 0;
-        }
-    }
-
-    a[class^=carousel-control-] {
-        width: 5%;
-    }
-
     @media (max-width: $sm-breakpoint) {
         & {
             width: 100vw !important;
@@ -26,87 +15,121 @@ $banner_gap: 10px;
             & > div {
                 margin-bottom: 0.5em;
             }
+        }
+    }
 
+    .carousel-inner {
+        .carousel-item > div {
             .card {
+                margin-left: $banner_gap;
                 border: 0;
             }
         }
-    }
-}
-
-.carousel-inner {
-    @media (max-width: $sm-breakpoint) {
-        & .carousel-item > div {
-            display: none;
     
-            &:first-child {
+        & ~ a[class^=carousel-control-] {
+            width: 5%;
+        }
+
+        @media (max-width: $sm-breakpoint) {
+            & .carousel-item {
                 display: block;
+                float: none;
+    
+                &.active {
+                    display: block !important;
+                }
+    
+                & > div {
+                    display: none;
+        
+                    &:first-child {
+                        display: block;
+                    }
+
+                    .card {
+                        margin-left: 0;
+                    }
+                } 
             }
+    
+            & ~ a[class^=carousel-control-] {
+                display: none !important;
+            }
+        }
+        
+        $x: $sm-breakpoint + 1px;
+        @media (min-width: $x) {
+            & .carousel-item-end.active, .carousel-item-next {
+                transform: translateX(25%);
+            }
+    
+            & .carousel-item-start.active, .carousel-item-prev {
+                transform: translateX(-25%);
+            }
+        }
+    
+        .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+            display: flex;
+        }
+    
+        .carousel-item-end, .carousel-item-start {
+            transform: translateX(0);
         }
     }
     
-    $x: $sm-breakpoint + 1px;
-    @media (min-width: $x) {
-        & .carousel-item-end.active, .carousel-item-next {
-            transform: translateX(25%);
-        }
-
-        & .carousel-item-start.active, .carousel-item-prev {
-            transform: translateX(-25%);
-        }
-    }
-
-    .carousel-item.active, .carousel-item-next, .carousel-item-prev {
-        display: flex;
-    }
-
-    .carousel-item-end, .carousel-item-start {
-        transform: translateX(0);
-    }
-}
-
-// card height 19 by 9 aspect ratio
-$card-height-desktop: calc((100vw - 3*#{$banner_gap})/4*16/9);
-$card-height-mobile: calc(100vw/3*4);
-
-.card {
-    height: $card-height-desktop;
-
-    & &-img {
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        &-overlay {
-            background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 30%);
-
-            &:hover {
-                background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 100%);
+    // card height 16/9 for desktop and 4/3 for mobile
+    $card-height-desktop: calc((100vw - 3*#{$banner_gap})/4*16/9);
+    $card-height-mobile: calc(100vw/3*4);
+    
+    .card {
+        height: $card-height-desktop;
+    
+        .card-img {
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
             }
-
-            p {
-                color: white;
-                font-weight: 500;
-                font-size: 1.2rem;
-                margin-left: 0.5em;
-                margin-right: 0.5em;
-            }
-        }
-    }
-
-    @media (max-width: $sm-breakpoint) {
-        & {
-            height: $card-height-mobile;
-
-            &-img {
-                border-radius: 0;
-
-                &-overlay {
-                    border-radius: 0;
+    
+            &-overlay {
+                background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 30%);
+    
+                &:hover {
+                    background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 100%);
+                }
+    
+                p {
+                    color: white;
+                    font-weight: 500;
+                    font-size: 1.2rem;
+                    margin-left: 0.5em;
+                    margin-right: 0.5em;
                 }
             }
+        }
+    
+        @media (max-width: $sm-breakpoint) {
+            & {
+                height: $card-height-mobile;
+    
+                &-img {
+                    border-radius: 0;
+    
+                    &-overlay {
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.category-block {
+    & > div:first-child {
+        &::after {
+            content: '\27F6';
+            font-size: 5rem;
+            padding-left: 0.1em;
         }
     }
 }

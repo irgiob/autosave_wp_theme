@@ -22,9 +22,11 @@ function expandNavbar() {
     const overlay = document.getElementById("overlay");
     var expanded = document.getElementById('nav');
     [...document.querySelectorAll('.collapse')].map(collapseEl => new bootstrap.Collapse(collapseEl));
-    //expanded = !(expanded === "true");
     expanded.setAttribute("aria-expanded", (expanded.getAttribute("aria-expanded") === "true") ?  "false" : "true");
     (overlay.classList.contains('open')) ? overlay.classList.remove('open') : overlay.classList.add('open');
+    (document.body.classList.contains('disable-scroll')) 
+        ? document.body.classList.remove('disable-scroll')
+        : document.body.classList.add('disable-scroll');
 }
 
 // create correct header for page
@@ -41,19 +43,23 @@ function pin_secondary_header(target) {
     target.classList.remove("menu-secondary--default");
     target.classList.add("menu-secondary--pinned")
     document.querySelector('#logo').classList.add("opacity-0")
+    document.querySelector('.flip-box').classList.add('flipped')
 }
 
 function unpin_secondary_header(target) {
     target.classList.remove("menu-secondary--pinned")
     target.classList.add("menu-secondary--default")
     document.querySelector('#logo').classList.remove("opacity-0")
+    document.querySelector('.flip-box').classList.remove('flipped')
 }
 
-function check_logo_visibility() {
+function handleSizeChange() {
     if (window.getComputedStyle(menu_secondary, null).display == "none") {
         document.querySelector('#logo').classList.remove("opacity-0")
+        document.querySelector('.flip-box').classList.remove('flipped')
     } else {
         document.querySelector('#logo').classList.add("opacity-0")
+        document.querySelector('.flip-box').classList.add('flipped')
     }
 }
 
@@ -63,6 +69,7 @@ if (document.body.classList.contains('home')) {
     pin_secondary_header(menu_secondary)
     menu_secondary.classList.add('position-absolute')
     menu_secondary.style.left = "25%"
-    check_logo_visibility()
-    window.addEventListener('resize', check_logo_visibility)
 }
+
+handleSizeChange()
+window.addEventListener('resize', handleSizeChange)

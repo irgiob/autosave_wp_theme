@@ -1,15 +1,8 @@
 <?php get_header(); ?>
-<div class="justify-content-between w-50 mx-auto py-3 fw-bold d-none d-md-flex">
-    <p class="hover-underline-animation-sm mb-0">Anime</p>
-    <p class="hover-underline-animation-sm mb-0">Tech</p>
-    <p class="hover-underline-animation-sm mb-0">Games</p>
-    <p class="hover-underline-animation-sm mb0">Zine</p>
-</div>
-
-<div id="main-banner" class="carousel slide mb-5" data-bs-interval="false">
-    <?php if (!wp_is_mobile()): ?><div class="carousel-inner" role="listbox"><?php endif; ?>
+<div id="main-banner" class="carousel slide my-0 my-md-4" data-bs-interval="false">
+    <div class="carousel-inner" role="listbox">
         <?php for($i=1;$i<7;$i++): ?>
-            <?php if (!wp_is_mobile()): ?><div class="carousel-item <?php if($i==1){ echo "active";}?>"><?php endif; ?>
+            <div class="carousel-item <?php if($i==1){ echo "active";}?>">
                 <div class="col-md-3">
                     <a href="">
                         <div class="card">
@@ -22,14 +15,24 @@
                         </div>
                     </a>
                 </div>
-            <?php if (!wp_is_mobile()): ?></div><?php endif; ?>
+            </div>
         <?php endfor; ?>
-    <?php if (!wp_is_mobile()): ?></div><?php endif; ?>
-    <a class="carousel-control-prev bg-transparent d-none d-md-flex" href="#main-banner" role="button" data-bs-slide="prev">
+    </div>
+    <a class="carousel-control-prev bg-transparent" href="#main-banner" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     </a>
-    <a class="carousel-control-next bg-transparent d-none d-md-flex" href="#main-banner" role="button" data-bs-slide="next">
+    <a class="carousel-control-next bg-transparent" href="#main-banner" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </a>
+</div>
+
+<div class="category-block mx-1 mx-md-5">
+    <div><a href=""><h1 class="hover-underline-animation">Game Review</h1></a></div>
+    <div class="category-block--articles d-flex">
+        <div class="card">Hello</div>
+        <div class="card">Hello</div>
+        <div class="card">Hello</div>
+        <div class="card">Hello</div>
+    </div>
 </div>
 <?php get_footer(); ?>
