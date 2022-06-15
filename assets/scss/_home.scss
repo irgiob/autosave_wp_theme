@@ -99,7 +99,7 @@ $banner_gap: 10px;
                 }
     
                 p {
-                    color: white;
+                    color: var(--text-color-card);
                     font-weight: 500;
                     font-size: 1.2rem;
                     margin-left: 0.5em;
@@ -110,7 +110,7 @@ $banner_gap: 10px;
     
         @media (max-width: $sm-breakpoint) {
             & {
-                height: $card-height-mobile;
+                height: var(--card-height-mobile);
     
                 &-img {
                     border-radius: 0;

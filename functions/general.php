@@ -9,3 +9,9 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('bootstrap', get_template_directory_uri() . "/assets/js/bootstrap.bundle.min.js", NULL, '1.0', true);
     wp_enqueue_script('main', get_template_directory_uri() . "/assets/js/main.js", NULL, '1.0', true);
 });
+
+// add theme as body class
+add_filter('body_class', function($classes) {
+    $classes[] = (isset($_COOKIE['site-theme'])) ? $_COOKIE['site-theme'] : 'light';
+    return $classes;
+});

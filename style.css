@@ -93,14 +93,37 @@ Use it to make something cool, have fun, and share what you've learned with othe
   font-style: italic;
 }
 
+body.light {
+  --text-color-header: #8A73F9;
+  --text-color-main: #262626;
+  --text-color-card: #FFFFFF;
+  --text-color-footer: #FFFFFF;
+  --text-highlight-footer: #8A73F9;
+  --background-color-header: #8A73F9;
+  --background-color-main: #FFFFFF;
+  --background-color-footer: #262626;
+}
+
+body.dark {
+  --text-color-header: #8A73F9;
+  --text-color-main: #FFFFFF;
+  --text-color-card: #FFFFFF;
+  --text-color-footer: #262626;
+  --text-highlight-footer: #FFFFFF;
+  --background-color-header: #8A73F9;
+  --background-color-main: #262626;
+  --background-color-footer: #8A73F9;
+}
+
 body {
   font-family: PlusJakartaSans;
+  background-color: var(--background-color-main);
 }
 
 .hover-underline-animation, .hover-underline-animation-sm {
   display: inline-block;
   position: relative;
-  color: #262626;
+  color: var(--text-color-main);
 }
 
 .hover-underline-animation:after, .hover-underline-animation-sm:after {
@@ -112,7 +135,7 @@ body {
   height: 4px;
   bottom: 0;
   left: 0;
-  background-color: #262626;
+  background-color: var(--text-color-main);
   -webkit-transform-origin: bottom right;
           transform-origin: bottom right;
   -webkit-transition: -webkit-transform 0.25s ease-out;
@@ -133,17 +156,17 @@ body {
 }
 
 nav .link-container {
-  color: #262626;
+  color: var(--text-color-main);
   text-decoration: none;
 }
 
 nav .link-container:hover {
-  color: #262626;
+  color: var(--text-color-main);
 }
 
 nav.navbar {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #8A73F9), color-stop(50%, white));
-  background: linear-gradient(to bottom, #8A73F9 50%, white 50%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, var(--background-color-header)), color-stop(50%, var(--background-color-main)));
+  background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
   background-size: 100% 200%;
   background-position: bottom;
   -webkit-transition: .1s linear;
@@ -153,8 +176,8 @@ nav.navbar {
 }
 
 nav.navbar * {
-  color: #8A73F9;
-  fill: #8A73F9;
+  color: var(--text-color-header);
+  fill: var(--text-color-header);
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
   -webkit-transition: 0.2s;
@@ -186,8 +209,8 @@ nav.navbar[aria-expanded="true"] {
 }
 
 nav.navbar[aria-expanded="true"] * {
-  color: #262626;
-  fill: #262626;
+  color: var(--text-color-main);
+  fill: var(--text-color-main);
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
   -webkit-transition: 0.1s;
@@ -211,28 +234,28 @@ nav.navbar[aria-expanded="true"] * p > i {
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search {
-  caret-color: #262626;
-  color: #262626;
+  caret-color: var(--text-color-main);
+  color: var(--text-color-main);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search::-webkit-input-placeholder {
-  color: #262626;
+  color: var(--text-color-main);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search:-ms-input-placeholder {
-  color: #262626;
+  color: var(--text-color-main);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search::-ms-input-placeholder {
-  color: #262626;
+  color: var(--text-color-main);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search::placeholder {
-  color: #262626;
+  color: var(--text-color-main);
 }
 
 nav.navbar[aria-expanded="true"] .search-container:hover input#search, nav.navbar[aria-expanded="true"] .search-container input#search:focus, nav.navbar[aria-expanded="true"] .search-container input#search:hover {
-  border-bottom: 2px #262626 solid;
+  border-bottom: 2px var(--text-color-main) solid;
 }
 
 nav.navbar div.container-fluid > div {
@@ -247,7 +270,7 @@ nav.navbar div.container-fluid > div {
 
 nav #navbar-expanded {
   position: absolute;
-  background-color: #8A73F9;
+  background-color: var(--background-color-header);
   -webkit-transition: 0.1s linear;
   transition: 0.1s linear;
   -webkit-transition-delay: 0.1s;
@@ -293,29 +316,29 @@ nav .search-container input#search {
   border-bottom: 2px rgba(0, 0, 0, 0) solid;
   outline: none;
   background-color: rgba(0, 0, 0, 0);
-  color: #8A73F9;
+  color: var(--text-color-header);
   padding-left: 30px;
 }
 
 nav .search-container input#search::-webkit-input-placeholder {
-  color: #8A73F9;
+  color: var(--text-color-header);
 }
 
 nav .search-container input#search:-ms-input-placeholder {
-  color: #8A73F9;
+  color: var(--text-color-header);
 }
 
 nav .search-container input#search::-ms-input-placeholder {
-  color: #8A73F9;
+  color: var(--text-color-header);
 }
 
 nav .search-container input#search::placeholder {
-  color: #8A73F9;
+  color: var(--text-color-header);
 }
 
 nav .search-container:hover input#search, nav .search-container input#search:focus input#search:hover {
   width: 200px;
-  border-bottom: 2px #8A73F9 solid;
+  border-bottom: 2px var(--text-color-header) solid;
 }
 
 nav input::-webkit-search-cancel-button {
@@ -404,7 +427,7 @@ nav .flip-box .back {
 }
 
 .menu-secondary--default {
-  background-color: white;
+  background-color: var(--background-color-main);
 }
 
 .menu-secondary--pinned {
@@ -412,14 +435,14 @@ nav .flip-box .back {
 }
 
 footer {
-  background: #262626;
+  background: var(--background-color-footer);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 footer p {
-  color: white;
+  color: var(--text-color-footer);
   font-weight: 500;
   white-space: nowrap;
   margin-bottom: 0;
@@ -431,12 +454,12 @@ footer div > p:first-child {
 }
 
 footer a {
-  color: white;
+  color: var(--text-color-footer);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #8A73F9;
+  color: var(--text-highlight-footer);
 }
 
 footer div {
@@ -472,11 +495,11 @@ a.footerlogo > svg {
 }
 
 a.footerlogo > svg path {
-  fill: white;
+  fill: var(--text-color-footer);
 }
 
 a.footerlogo > svg:hover path {
-  fill: #8A73F9;
+  fill: var(--text-highlight-footer);
 }
 
 #main-banner {
@@ -572,7 +595,7 @@ a.footerlogo > svg:hover path {
 }
 
 #main-banner .card .card-img-overlay p {
-  color: white;
+  color: var(--text-color-card);
   font-weight: 500;
   font-size: 1.2rem;
   margin-left: 0.5em;
@@ -581,7 +604,7 @@ a.footerlogo > svg:hover path {
 
 @media (max-width: 767px) {
   #main-banner .card {
-    height: calc(100vw/3*4);
+    height: var(--card-height-mobile);
   }
   #main-banner .card-img {
     border-radius: 0;

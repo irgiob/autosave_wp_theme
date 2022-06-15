@@ -1,23 +1,23 @@
 nav {
     .link-container {
-        color: #262626;
+        color: var(--text-color-main);
         text-decoration: none;
 
         &:hover {
-            color: #262626;
+            color: var(--text-color-main);
         }
     }
     
     &.navbar {
-        background: linear-gradient(to bottom, $primary 50%, white 50%);
+        background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
         background-size: 100% 200%;
         background-position: bottom;
         transition: .1s linear;
         transition-delay: 0.2s;
 
         * {
-            color: $primary;
-            fill: $primary;
+            color: var(--text-color-header);
+            fill: var(--text-color-header);
             transition-delay: 0.2s;
             transition: 0.2s;
         }
@@ -40,8 +40,8 @@ nav {
             transition-delay: 0s;
 
             * {
-                color: $primaryBlack;
-                fill: $primaryBlack;
+                color: var(--text-color-main);
+                fill: var(--text-color-main);
                 transition-delay: 0.1s;
                 transition: 0.1s;   
             }
@@ -59,16 +59,16 @@ nav {
 
             .search-container {
                 input#search {
-                    caret-color: $primaryBlack;
-                    color: $primaryBlack;
+                    caret-color: var(--text-color-main);
+                    color: var(--text-color-main);
 
                     &::placeholder {
-                        color: $primaryBlack;
+                        color: var(--text-color-main);
                     }
                 }
 
                 &:hover input#search, input#search:focus, input#search:hover {
-                    border-bottom: 2px $primaryBlack solid;
+                    border-bottom: 2px var(--text-color-main) solid;
                 }        
             }
         }
@@ -86,7 +86,7 @@ nav {
     
     #navbar-expanded {
         position: absolute;
-        background-color: $primary;
+        background-color: var(--background-color-header);
         transition: 0.1s linear;
         transition-delay: 0.1s;
         transform: translateY(-1px);
@@ -103,7 +103,7 @@ nav {
         transition: opacity 0s linear 0s;
 
         & > svg:hover {
-            filter: drop-shadow(16px 0px 2px $secondaryYellow);
+            filter: drop-shadow(16px 0px 2px $yellow);
             transition: filter 0.2s;
         }
     }
@@ -122,17 +122,17 @@ nav {
             border-bottom: 2px rgba(0, 0, 0, 0) solid;
             outline: none;
             background-color: rgba(0, 0, 0, 0);
-            color: $primary;
+            color: var(--text-color-header);
             padding-left: 30px;
 
             &::placeholder {
-                color: $primary;
+                color: var(--text-color-header);
             }
         }
 
         &:hover input#search, input#search:focus input#search:hover {
             width: 200px;
-            border-bottom: 2px $primary solid;
+            border-bottom: 2px var(--text-color-header) solid;
         }
     }
     
@@ -141,7 +141,7 @@ nav {
     }
 
     .logo--side:hover {
-        filter: drop-shadow(10px 0px 1px $secondaryYellow);
+        filter: drop-shadow(10px 0px 1px $yellow);
         transition: filter 0.2s;
     }
 
@@ -204,7 +204,7 @@ nav {
     z-index: 1030;
     
     &--default {
-        background-color: white;
+        background-color: var(--background-color-main);
     }
 
     &--pinned {

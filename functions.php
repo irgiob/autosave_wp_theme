@@ -4,7 +4,7 @@ add_theme_support( 'title-tag' );
 $roots_includes = array(
     'logo',
     'admin',
-    'enqueue_scripts'
+    'general'
 );
   
 foreach($roots_includes as $file){

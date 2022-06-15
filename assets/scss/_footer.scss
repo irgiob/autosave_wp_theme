@@ -1,9 +1,9 @@
 footer {
-    background: $primaryBlack;
+    background: var(--background-color-footer);
     align-items: center;
 
     p { 
-        color: white;
+        color: var(--text-color-footer);
         font-weight: 500;
         white-space: nowrap;
         margin-bottom: 0;
@@ -15,11 +15,11 @@ footer {
     }
 
     a {
-        color: white;
+        color: var(--text-color-footer);
         text-decoration: none;
         
         &:hover {
-            color: $primary;
+            color: var(--text-highlight-footer);
         }
     }
 
@@ -53,10 +53,10 @@ a.footerlogo > svg {
     width: 70px;
 
     path {
-        fill: white;
+        fill: var(--text-color-footer);
     }
 
     &:hover path {
-        fill: $primary;
+        fill: var(--text-highlight-footer);
     }
 }

@@ -1,4 +1,37 @@
-$primary: #8A73F9;
-$primaryBlack: #262626;
-$secondaryYellow: #E8D892;
-$secondaryBlue: #86D0E2;
+$purple: #8A73F9;
+$black: #262626;
+$white: #FFFFFF;
+$yellow: #E8D892;
+$blue: #86D0E2;
+
+$themes: (
+    "light": (
+        "text-color-header": $purple,
+        "text-color-main": $black,
+        "text-color-card": $white,
+        "text-color-footer": $white,
+        "text-highlight-footer": $purple,
+        "background-color-header": $purple,
+        "background-color-main": $white,
+        "background-color-footer": $black,
+    ),
+    "dark": (
+        "text-color-header": $purple,
+        "text-color-main": $white,
+        "text-color-card": $white,
+        "text-color-footer": $black,
+        "text-highlight-footer": $white,
+        "background-color-header": $purple,
+        "background-color-main": $black,
+        "background-color-footer": $purple,
+    )
+);
+
+@each $theme-name, $properties in $themes {
+    body.#{$theme-name} {
+        // define a css variable for each property
+        @each $name, $property in $properties {
+        --#{$name}: #{$property};
+        }
+    }
+}

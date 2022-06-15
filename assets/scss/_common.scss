@@ -2,12 +2,13 @@ $sm-breakpoint: 767px;
 
 body {
     font-family: PlusJakartaSans;
+    background-color: var(--background-color-main);
 }
 
 .hover-underline-animation {
     display: inline-block;
     position: relative;
-    color: #262626;
+    color: var(--text-color-main);
 
     &:after {
         content: '';
@@ -17,8 +18,7 @@ body {
         height: 4px;
         bottom: 0;
         left: 0;
-        background-color:
-            #262626;
+        background-color: var(--text-color-main);
         transform-origin: bottom right;
         transition: transform 0.25s ease-out;
     }
