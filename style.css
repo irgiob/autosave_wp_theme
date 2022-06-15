@@ -223,6 +223,12 @@ nav.navbar div.container-fluid > div {
   min-width: 100px;
 }
 
+@media (max-width: 767px) {
+  nav.navbar div.container-fluid > div {
+    min-width: 0;
+  }
+}
+
 nav #navbar-expanded {
   position: absolute;
   z-index: 1000;
@@ -326,11 +332,6 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /*& > a::after:hover {
-        content: "Login";
-        display: inline-block;
-        transform: rotate(73deg) translate(-8px,25px);
-    }*/
 }
 
 footer p {
@@ -365,14 +366,14 @@ footer div div.spacer {
 footer > a:after {
   content: "Login";
   display: inline-block;
+  font-size: 1rem;
   width: 0;
   -webkit-transform: rotate(73deg) translate(-23px, 5px);
           transform: rotate(73deg) translate(-23px, 5px);
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear, font 0.05s linear;
-  font-size: 0;
+  -webkit-transition: visibility 0s linear 0.3s, opacity 0.3s linear, font 0.05s linear;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear, font 0.05s linear;
 }
 
 footer > a:hover:after {
@@ -380,7 +381,6 @@ footer > a:hover:after {
   opacity: 1;
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
-  font-size: 1rem;
 }
 
 svg.footerlogo {
@@ -393,27 +393,6 @@ svg.footerlogo path {
 
 svg.footerlogo:hover path {
   fill: #8A73F9;
-}
-
-@media (max-width: 767px) {
-  .carousel-inner .carousel-item > div {
-    display: none;
-  }
-  .carousel-inner .carousel-item > div:first-child {
-    display: block;
-  }
-}
-
-/* medium and up screens */
-@media (min-width: 768px) {
-  .carousel-inner .carousel-item-end.active, .carousel-inner .carousel-item-next {
-    -webkit-transform: translateX(25%);
-            transform: translateX(25%);
-  }
-  .carousel-inner .carousel-item-start.active, .carousel-inner .carousel-item-prev {
-    -webkit-transform: translateX(-25%);
-            transform: translateX(-25%);
-  }
 }
 
 #main-banner {
@@ -430,6 +409,40 @@ svg.footerlogo:hover path {
 
 #main-banner a[class^=carousel-control-] {
   width: 5%;
+}
+
+@media (max-width: 767px) {
+  #main-banner {
+    width: 100vw !important;
+    border-radius: 0 0 0 0;
+    margin-left: 0 !important;
+  }
+  #main-banner > div {
+    margin-bottom: 0.5em;
+  }
+  #main-banner .card {
+    border: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+    display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-inner .carousel-item-end.active, .carousel-inner .carousel-item-next {
+    -webkit-transform: translateX(25%);
+            transform: translateX(25%);
+  }
+  .carousel-inner .carousel-item-start.active, .carousel-inner .carousel-item-prev {
+    -webkit-transform: translateX(-25%);
+            transform: translateX(-25%);
+  }
 }
 
 .carousel-inner .carousel-item.active, .carousel-inner .carousel-item-next, .carousel-inner .carousel-item-prev {
@@ -455,8 +468,8 @@ svg.footerlogo:hover path {
 }
 
 .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(#262626 15%, rgba(0, 0, 0, 0) 50%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), color-stop(30%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(#262626 15%, rgba(0, 0, 0, 0) 30%);
 }
 
 .card .card-img-overlay:hover {
@@ -470,4 +483,16 @@ svg.footerlogo:hover path {
   font-size: 1.2rem;
   margin-left: 0.5em;
   margin-right: 0.5em;
+}
+
+@media (max-width: 767px) {
+  .card {
+    height: calc(100vw/3*4);
+  }
+  .card-img {
+    border-radius: 0;
+  }
+  .card-img-overlay {
+    border-radius: 0;
+  }
 }

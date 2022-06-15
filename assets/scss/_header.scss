@@ -63,6 +63,12 @@ nav {
         div.container-fluid > div {
             min-width: 100px;
         }
+
+        @media (max-width: $sm-breakpoint) {
+            div.container-fluid > div {
+              min-width: 0;
+            }
+        }
     }
     
     #navbar-expanded {

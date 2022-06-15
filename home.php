@@ -1,9 +1,9 @@
 <?php get_header(); ?>
-<div class="d-flex justify-content-evenly w-75 mx-auto my-3 fw-bold">
-    <p class="hover-underline-animation-sm">Anime</p>
-    <p class="hover-underline-animation-sm">Tech</p>
-    <p class="hover-underline-animation-sm">Games</p>
-    <p class="hover-underline-animation-sm">Zine</p>
+<div class="justify-content-between w-50 mx-auto py-3 fw-bold d-none d-md-flex">
+    <p class="hover-underline-animation-sm mb-0">Anime</p>
+    <p class="hover-underline-animation-sm mb-0">Tech</p>
+    <p class="hover-underline-animation-sm mb-0">Games</p>
+    <p class="hover-underline-animation-sm mb0">Zine</p>
 </div>
 
 <div id="main-banner" class="carousel slide mb-5" data-bs-interval="false">
@@ -25,10 +25,10 @@
             <?php if (!wp_is_mobile()): ?></div><?php endif; ?>
         <?php endfor; ?>
     <?php if (!wp_is_mobile()): ?></div><?php endif; ?>
-    <a class="carousel-control-prev bg-transparent" href="#main-banner" role="button" data-bs-slide="prev">
+    <a class="carousel-control-prev bg-transparent d-none d-md-flex" href="#main-banner" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     </a>
-    <a class="carousel-control-next bg-transparent" href="#main-banner" role="button" data-bs-slide="next">
+    <a class="carousel-control-next bg-transparent d-none d-md-flex" href="#main-banner" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </a>
 </div>
