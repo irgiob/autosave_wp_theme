@@ -1,11 +1,18 @@
 $sm-breakpoint: 767px;
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     font-family: PlusJakartaSans;
     background-color: var(--background-color-main);
+    margin-bottom: 120px;
 }
 
 a {
+    color: var(--text-color-main);
     text-decoration: none;
 }
 
@@ -40,10 +47,98 @@ a {
     }
 }
 
+.hover-highlight-animation {
+    position: relative;
+
+    &::before {
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        inset: 0 0 0 0;
+        background: $yellow;
+        z-index: -1;
+        transition: transform .3s ease;
+    }
+
+    &:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
 @mixin truncate-n-lines($lines) {
     text-overflow: ellipsis;
     -webkit-line-clamp: $lines;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+body.home .card {
+    border: none;
+
+    .card-img {
+        height: 100%;
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &-overlay {
+            p {
+                color: var(--text-color-card);
+                font-weight: 500;
+                font-size: 1.2rem;
+                @include truncate-n-lines(2);
+            }
+        }
+    }
+
+    @media (max-width: $sm-breakpoint) {
+        & {
+            &-img {
+                border-radius: 0;
+
+                &-overlay {
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+    .card-score-badge {
+        position: absolute;
+        right: 10%;
+        background: $yellow;
+        padding: 1em 0.5em 0em;
+        border-radius: 0 0 1em 1em;
+        min-width: 2.7em;
+        color: $black;
+        text-align: center;
+        font-weight: bold;
+
+        & > p {
+            margin-bottom: 0.5em;
+        }
+
+        &-bottom {
+            @extend .card-score-badge;
+            bottom: 0;
+            border-radius: 1em 1em 0 0;
+        }
+    }
+}
+
+@mixin card-overlay-gradient($rotation, $start, $end) {
+    background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) $end);
+    
+    &:hover {
+        background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) 100%);
+    }
 }

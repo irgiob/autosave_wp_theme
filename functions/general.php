@@ -1,4 +1,10 @@
 <?php
+// theme supports
+add_theme_support( 'title-tag' );
+add_theme_support('post-thumbnails');
+add_image_size('thumbnail-portrait', 720, 1080, true);
+add_image_size('thumbnail-landscape', 600, 400, true);
+
 // add stylesheets and javascript files
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . "/assets/css/bootstrap.min.css" );

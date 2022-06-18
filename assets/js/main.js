@@ -72,7 +72,7 @@ if (document.body.classList.contains('home')) {
     observer.observe(menu_secondary)
 } else {
     pin_secondary_header(menu_secondary)
-    menu_secondary.classList.add('position-absolute')
+    menu_secondary.classList.add('position-fixed')
     menu_secondary.style.left = "25%"
 }
 

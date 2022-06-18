@@ -19,6 +19,7 @@
     "liveSassCompile.settings.generateMap": false,
 
     "intelephense.stubs": [ "wordpress", "Core", "standard","superglobals" ],
+    "intelephense.environment.includePaths": [".vscode/acf-pro-stubs"],
 
     "liveSassCompile.settings.includeItems": [
         "assets/scss/style.scss",

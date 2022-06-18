@@ -1,49 +1,5 @@
 $banner_gap: 10px;
 
-body.home .card {
-    border: none;
-
-    .card-img {
-        height: 100%;
-        width: 100%;
-
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        &-overlay {
-            p {
-                color: var(--text-color-card);
-                font-weight: 500;
-                font-size: 1.2rem;
-                @include truncate-n-lines(2);
-            }
-        }
-    }
-
-    @media (max-width: $sm-breakpoint) {
-        & {
-            &-img {
-                border-radius: 0;
-
-                &-overlay {
-                    border-radius: 0;
-                }
-            }
-        }
-    }
-}
-
-@mixin card-overlay-gradient($rotation, $start, $end) {
-    background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) $end);
-    
-    &:hover {
-        background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) 100%);
-    }
-}
-
 #main-banner {
     width: calc(100vw + #{$banner_gap}) !important;
     margin-left: -$banner_gap !important;
@@ -78,6 +34,7 @@ body.home .card {
             & .carousel-item {
                 display: block;
                 float: none;
+                margin-bottom: 0.5em;
     
                 &.active {
                     display: block !important;
@@ -121,11 +78,8 @@ body.home .card {
         }
     }
     
-    // card height 16/9 for desktop and 4/3 for mobile
-    $card-height-desktop: calc((100vw - 3*#{$banner_gap})/4*16/9);
-    $card-height-mobile: calc(100vw/3*4);
     .card {
-        height: $card-height-desktop;
+        aspect-ratio: 9/16;
     
         .card-img {
             &-overlay {
@@ -141,7 +95,7 @@ body.home .card {
     
         @media (max-width: $sm-breakpoint) {
             & {
-                height: $card-height-mobile;
+                aspect-ratio: 3/4;
             }
         }
     }
@@ -152,7 +106,7 @@ body.home .card {
         aspect-ratio: 4/3;
 
         @media (max-width: $sm-breakpoint) {
-            &-img, &-img-overlay {
+            &, &-img, &-img-overlay {
                 border-radius: 10px !important;
             }
         }
@@ -172,9 +126,10 @@ body.home .card {
         }
 
         & + p {
-            margin: 0 0.5em;
+            margin: 0.3em 0.5em 0;
             color: var(--text-color-main);
             font-size: 0.8rem;
+            font-weight: 500;
             @include truncate-n-lines(2);
         }
     }
@@ -194,8 +149,16 @@ body.home .card {
             --bs-gutter-y: 0.5em;
         }
 
+        & + p {
+            margin: 0.75em 1.5em -0.25em;
+            color: var(--text-color-main);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
         @media (max-width: $sm-breakpoint) {
-            & {
+            &.row {
+                --bs-gutter-x: 1em;
             }
         }
     }
@@ -216,6 +179,18 @@ body.home .card {
             font-weight: bold;
             text-align: right;
             color: var(--text-color-header);
+
+            & > p {
+                color: inherit;
+
+                &::after {
+                    background-color: var(--text-color-header);
+                }
+            }
+
+            &::after {
+                color: inherit;
+            }
         }
 
         .card {
@@ -235,6 +210,7 @@ body.home .card {
         padding-left: 0.2em;
         margin-top: -100%;
         transform: scaleX(1.3);
+        color: var(--text-color-main);
     }
 
     &--header{

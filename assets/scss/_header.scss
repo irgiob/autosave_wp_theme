@@ -101,11 +101,6 @@ nav {
         min-width: 120px;
         max-width: 240px;
         transition: opacity 0s linear 0s;
-
-        & > svg:hover {
-            filter: drop-shadow(16px 0px 2px $yellow);
-            transition: filter 0.2s;
-        }
     }
 
     .search-container {
@@ -138,11 +133,6 @@ nav {
     
     input::-webkit-search-cancel-button {
         display: none;
-    }
-
-    .logo--side:hover {
-        filter: drop-shadow(10px 0px 1px $yellow);
-        transition: filter 0.2s;
     }
 
     .flip-box {

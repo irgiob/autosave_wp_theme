@@ -1,0 +1,14 @@
+.error404 .not-found-info {
+    text-align: center;
+    margin: 3em;
+    margin-top: 15vh;
+
+    h1 {     
+        font-size: 20vw;
+        color: var(--text-color-header);
+    }
+
+    a:hover {
+        color: var(--text-color-header); 
+    }
+}
