@@ -120,6 +120,10 @@ body {
   background-color: var(--background-color-main);
 }
 
+a {
+  text-decoration: none;
+}
+
 .hover-underline-animation, .hover-underline-animation-sm {
   display: inline-block;
   position: relative;
@@ -502,6 +506,42 @@ a.footerlogo > svg:hover path {
   fill: var(--text-highlight-footer);
 }
 
+body.home .card {
+  border: none;
+}
+
+body.home .card .card-img {
+  height: 100%;
+  width: 100%;
+}
+
+body.home .card .card-img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+body.home .card .card-img-overlay p {
+  color: var(--text-color-card);
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  body.home .card-img {
+    border-radius: 0;
+  }
+  body.home .card-img-overlay {
+    border-radius: 0;
+  }
+}
+
 #main-banner {
   width: calc(100vw + 10px) !important;
   margin-left: -10px !important;
@@ -522,7 +562,7 @@ a.footerlogo > svg:hover path {
 
 #main-banner .carousel-inner .carousel-item > div .card {
   margin-left: 10px;
-  border: 0;
+  border: none;
 }
 
 #main-banner .carousel-inner ~ a[class^=carousel-control-] {
@@ -577,45 +617,126 @@ a.footerlogo > svg:hover path {
   height: calc((100vw - 3*10px)/4*16/9);
 }
 
-#main-banner .card .card-img img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 #main-banner .card .card-img-overlay {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), color-stop(30%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(#262626 15%, rgba(0, 0, 0, 0) 30%);
+  background-image: linear-gradient(180deg, #262626 15%, rgba(0, 0, 0, 0) 30%);
 }
 
 #main-banner .card .card-img-overlay:hover {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(#262626 15%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(180deg, #262626 15%, rgba(0, 0, 0, 0) 100%);
 }
 
 #main-banner .card .card-img-overlay p {
-  color: var(--text-color-card);
-  font-weight: 500;
-  font-size: 1.2rem;
   margin-left: 0.5em;
   margin-right: 0.5em;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 10;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
   #main-banner .card {
-    height: var(--card-height-mobile);
-  }
-  #main-banner .card-img {
-    border-radius: 0;
-  }
-  #main-banner .card-img-overlay {
-    border-radius: 0;
+    height: calc(100vw/3*4);
   }
 }
 
-.category-block > div:first-child::after {
+.category-block .card {
+  aspect-ratio: 4/3;
+}
+
+@media (max-width: 767px) {
+  .category-block .card-img, .category-block .card-img-overlay {
+    border-radius: 10px !important;
+  }
+}
+
+.category-block .card .card-img-overlay {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#262626), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, #262626 0%, rgba(0, 0, 0, 0) 50%);
+}
+
+.category-block .card .card-img-overlay:hover {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#262626), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, #262626 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.category-block .card .card-img-overlay p {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 1em;
+  padding-right: inherit;
+}
+
+.category-block .card + p {
+  margin: 0 0.5em;
+  color: var(--text-color-main);
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.category-block > div:first-child h1 {
+  font-weight: bold;
+  color: var(--text-color-main);
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+}
+
+.category-block .category-block--articles.row {
+  --bs-gutter-x: 0.5em;
+  --bs-gutter-y: 0.5em;
+}
+
+.category-block .category-block--spotlight {
+  color: var(--text-color-main);
+}
+
+.category-block .category-block--spotlight h1 {
+  font-weight: bold;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.category-block .category-block--spotlight p {
+  text-align: justify;
+}
+
+.category-block .category-block--spotlight .read-more-button {
+  font-weight: bold;
+  text-align: right;
+  color: var(--text-color-header);
+}
+
+.category-block .category-block--spotlight .card-img, .category-block .category-block--spotlight .card-img-overlay {
+  border-radius: 0 !important;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, #262626), color-stop(30%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, #262626 15%, rgba(0, 0, 0, 0) 30%);
+}
+
+.category-block .category-block--spotlight .card-img:hover, .category-block .category-block--spotlight .card-img-overlay:hover {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, #262626), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, #262626 15%, rgba(0, 0, 0, 0) 100%);
+}
+
+.right-arrow-extension::after, .right-arrow-extension--header::after {
+  display: inline-block;
   content: '\27F6';
+  font-size: 2rem;
+  padding-left: 0.2em;
+  margin-top: -100%;
+  -webkit-transform: scaleX(1.3);
+          transform: scaleX(1.3);
+}
+
+.right-arrow-extension--header::after {
   font-size: 5rem;
-  padding-left: 0.1em;
 }

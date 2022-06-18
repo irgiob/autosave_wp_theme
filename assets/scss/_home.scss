@@ -1,5 +1,49 @@
 $banner_gap: 10px;
 
+body.home .card {
+    border: none;
+
+    .card-img {
+        height: 100%;
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &-overlay {
+            p {
+                color: var(--text-color-card);
+                font-weight: 500;
+                font-size: 1.2rem;
+                @include truncate-n-lines(2);
+            }
+        }
+    }
+
+    @media (max-width: $sm-breakpoint) {
+        & {
+            &-img {
+                border-radius: 0;
+
+                &-overlay {
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+@mixin card-overlay-gradient($rotation, $start, $end) {
+    background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) $end);
+    
+    &:hover {
+        background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) 100%);
+    }
+}
+
 #main-banner {
     width: calc(100vw + #{$banner_gap}) !important;
     margin-left: -$banner_gap !important;
@@ -22,7 +66,7 @@ $banner_gap: 10px;
         .carousel-item > div {
             .card {
                 margin-left: $banner_gap;
-                border: 0;
+                border: none;
             }
         }
     
@@ -80,56 +124,124 @@ $banner_gap: 10px;
     // card height 16/9 for desktop and 4/3 for mobile
     $card-height-desktop: calc((100vw - 3*#{$banner_gap})/4*16/9);
     $card-height-mobile: calc(100vw/3*4);
-    
     .card {
         height: $card-height-desktop;
     
         .card-img {
-            img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-    
             &-overlay {
-                background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 30%);
-    
-                &:hover {
-                    background-image: linear-gradient(rgba(38,38,38,1) 15%, rgba(0, 0, 0, 0) 100%);
-                }
+                @include card-overlay-gradient(180deg, 15%, 30%);
     
                 p {
-                    color: var(--text-color-card);
-                    font-weight: 500;
-                    font-size: 1.2rem;
                     margin-left: 0.5em;
                     margin-right: 0.5em;
+                    @include truncate-n-lines(10);
                 }
             }
         }
     
         @media (max-width: $sm-breakpoint) {
             & {
-                height: var(--card-height-mobile);
-    
-                &-img {
-                    border-radius: 0;
-    
-                    &-overlay {
-                        border-radius: 0;
-                    }
-                }
+                height: $card-height-mobile;
             }
         }
     }
 }
 
 .category-block {
-    & > div:first-child {
-        &::after {
-            content: '\27F6';
-            font-size: 5rem;
-            padding-left: 0.1em;
+    .card {
+        aspect-ratio: 4/3;
+
+        @media (max-width: $sm-breakpoint) {
+            &-img, &-img-overlay {
+                border-radius: 10px !important;
+            }
         }
+
+        .card-img {
+
+            &-overlay {
+                @include card-overlay-gradient(0deg, 0%, 50%);
+
+                p {
+                    margin-bottom: 0;
+                    position: absolute;
+                    bottom: 1em;
+                    padding-right: inherit;
+                }
+            }
+        }
+
+        & + p {
+            margin: 0 0.5em;
+            color: var(--text-color-main);
+            font-size: 0.8rem;
+            @include truncate-n-lines(2);
+        }
+    }
+
+    & > div:first-child {
+        h1 {
+            font-weight: bold;
+            color: var(--text-color-main);
+            margin-left: 0.25em;
+            margin-right: 0.25em;
+        }
+    }
+
+    & &--articles {
+        &.row {
+            --bs-gutter-x: 0.5em;
+            --bs-gutter-y: 0.5em;
+        }
+
+        @media (max-width: $sm-breakpoint) {
+            & {
+            }
+        }
+    }
+
+    & &--spotlight {
+        color: var(--text-color-main);
+
+        h1 {
+            font-weight: bold;
+            @include truncate-n-lines(2);
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .read-more-button {
+            font-weight: bold;
+            text-align: right;
+            color: var(--text-color-header);
+        }
+
+        .card {
+            &-img, &-img-overlay {
+                border-radius: 0 !important;
+                @include card-overlay-gradient(0deg, 15%, 30%)
+            }
+        }
+    }
+}
+
+.right-arrow-extension {
+    &::after {
+        display: inline-block;
+        content: '\27F6';
+        font-size: 2rem;
+        padding-left: 0.2em;
+        margin-top: -100%;
+        transform: scaleX(1.3);
+    }
+
+    &--header{
+        @extend .right-arrow-extension;
+
+        &::after {
+            font-size: 5rem;
+        }   
     }
 }

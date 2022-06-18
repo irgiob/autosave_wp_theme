@@ -1,32 +1,37 @@
-// initialize home page carousel banner
+const smBreakpoint = 767;
 
-let items = document.querySelectorAll('.carousel .carousel-item')
+// initialize home page carousel banner (that pauses on mobile)
 
-items.forEach((el) => {
+document.querySelectorAll('.carousel .carousel-item').forEach((el) => {
     const minPerSlide = 4
     let next = el.nextElementSibling
     for (var i = 1; i < minPerSlide; i++) {
-        if (!next) {
-            // wrap carousel by using first child
-            next = items[0]
-        }
+        if (!next) next = document.querySelectorAll('.carousel .carousel-item')[0]
         let cloneChild = next.cloneNode(true)
         el.appendChild(cloneChild.children[0])
         next = next.nextElementSibling
     }
 })
 
+var carousel = new bootstrap.Carousel(document.querySelector('#main-banner'))
+function pauseCarouselOnMobile() {
+    if (window.innerWidth <= smBreakpoint) {
+        carousel.pause()
+    } else {
+        carousel.cycle()
+    }
+}
+pauseCarouselOnMobile()
+window.addEventListener('resize', pauseCarouselOnMobile)
+
 // function for handling opening and closing of navbar menu
 
 function expandNavbar() {
-    const overlay = document.getElementById("overlay");
     var expanded = document.getElementById('nav');
     [...document.querySelectorAll('.collapse')].map(collapseEl => new bootstrap.Collapse(collapseEl));
     expanded.setAttribute("aria-expanded", (expanded.getAttribute("aria-expanded") === "true") ?  "false" : "true");
-    (overlay.classList.contains('open')) ? overlay.classList.remove('open') : overlay.classList.add('open');
-    (document.body.classList.contains('disable-scroll')) 
-        ? document.body.classList.remove('disable-scroll')
-        : document.body.classList.add('disable-scroll');
+    document.getElementById("overlay").classList.toggle('open');
+    document.body.classList.toggle('disable-scroll');
 }
 
 // create correct header for page

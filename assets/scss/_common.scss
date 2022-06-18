@@ -5,6 +5,10 @@ body {
     background-color: var(--background-color-main);
 }
 
+a {
+    text-decoration: none;
+}
+
 .hover-underline-animation {
     display: inline-block;
     position: relative;
@@ -34,4 +38,12 @@ body {
         transform: scaleX(1);
         transform-origin: bottom left;
     }
+}
+
+@mixin truncate-n-lines($lines) {
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $lines;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
