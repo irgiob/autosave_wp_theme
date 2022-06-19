@@ -829,6 +829,30 @@ a.footerlogo > svg:hover path {
   background-image: linear-gradient(0deg, #262626 15%, rgba(0, 0, 0, 0) 100%);
 }
 
+.single .post.container a > p, .single .post.container a > span {
+  color: var(--text-color-header);
+  font-weight: bold;
+}
+
+.single .post.container a > p::after, .single .post.container a > span::after {
+  background-color: var(--text-color-header);
+}
+
+.single .post.container h1 {
+  font-weight: bold;
+}
+
+.single .post.container img {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .single .post.container img {
+    max-width: 100vw;
+    margin-left: -1rem;
+  }
+}
+
 .error404 .not-found-info {
   text-align: center;
   margin: 3em;
