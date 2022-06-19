@@ -101,7 +101,7 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         <p class="d-md-none"><?php the_title(); ?></p>
                     </a>
                 <?php endwhile; wp_reset_postdata(); ?>
-            </div>
+            <?php if ($show_long_post): ?></div><? endif; ?>
         </div>
         <?php if (!$args['hide-sub-title'] && $count > 2): ?>
             <p class="d-block d-md-none">Latest Posts</p>
