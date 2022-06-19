@@ -32,6 +32,27 @@ $show_long_post = $args['query']->post_count > 8; ?>
 
         <!-- Main List of Articles Section -->
         <div class="content-list--articles row my-2 mb-md-5 mx-1 mx-md-0">
+            <?php if ($show_long_post): ?>
+                <div class="col-md-3">
+                    <div class="card mt-2 mb-3 d-none d-md-block" style="aspect-ratio: unset; height: calc(100% - 0.5em);">
+                        <div class="card-img overflow-hidden">
+                            <img src="<?php 
+                                echo (get_the_post_thumbnail_url()) 
+                                    ? get_the_post_thumbnail_url('','thumbnail-landscape') 
+                                    : "//via.placeholder.com/800x600/"
+                                    .substr(constant('primary_color'),1)
+                                    ."?text='".get_the_title()."'"; 
+                            ?>">
+                        </div>
+                        <div class="card-img-overlay">
+                            <p class="text-start"><?php the_title(); ?></p>
+                        </div>
+                        <?php if (get_field('rating')): ?>
+                            <div class="card-score-badge"><p><?php the_field('rating'); ?></p></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
             
             <?php if ($show_long_post): ?><div class="col-md-9 row"><?php endif; ?>
                 <?php $count = 1; while($args['query']->have_posts()): ?>
@@ -53,8 +74,9 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         echo ($show_long_post) ? "col-md-4 " : "col-md-3 ";
                         
                         // adds special display logic for first and last cards
-                        if ($count == 1) echo "d-none d-md-block"; 
-                        else if ($count == $args['query']->post_count && ($args['hide-last-post'] || $show_long_post)) 
+                        if ($count == 1) echo "d-none"; 
+                        if (!$show_long_post) echo " d-md-block";
+                        if ($count == $args['query']->post_count && $args['hide-last-post']) 
                             echo "d-block d-md-none"; 
                         
                         $count += 1;
@@ -78,33 +100,8 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         </div>
                         <p class="d-md-none"><?php the_title(); ?></p>
                     </a>
-                <?php endwhile;?>
-
-            <?php 
-                // create long post if correct number of pages for it
-                if ($show_long_post): ?>
+                <?php endwhile; wp_reset_postdata(); ?>
             </div>
-            <div class="col-md-3">
-                <div class="card mt-2 mb-3 d-none d-md-block" style="aspect-ratio: unset; height: calc(100% - 0.5em);">
-                    <div class="card-img overflow-hidden">
-                        <img src="<?php 
-                            echo (get_the_post_thumbnail_url()) 
-                                ? get_the_post_thumbnail_url('','thumbnail-landscape') 
-                                : "//via.placeholder.com/800x600/"
-                                .substr(constant('primary_color'),1)
-                                ."?text='".get_the_title()."'"; 
-                        ?>">
-                    </div>
-                    <div class="card-img-overlay">
-                        <p class="text-start"><?php the_title(); ?></p>
-                    </div>
-                    <?php if (get_field('rating')): ?>
-                        <div class="card-score-badge"><p><?php the_field('rating'); ?></p></div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <?php endif; ?>
-            <?php wp_reset_postdata(); ?>
         </div>
         <?php if (!$args['hide-sub-title'] && $count > 2): ?>
             <p class="d-block d-md-none">Latest Posts</p>

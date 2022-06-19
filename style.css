@@ -888,10 +888,12 @@ body.search form[role=search] {
 }
 
 body.search form[role=search] input[type=search] {
+  -webkit-appearance: none;
   border: none;
   border-bottom: 2px var(--text-color-header) solid;
   color: var(--text-color-header);
   outline: none;
+  max-width: 80%;
 }
 
 body.search form[role=search] input[type=search]::-webkit-input-placeholder {
