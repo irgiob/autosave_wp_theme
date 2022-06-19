@@ -39,6 +39,7 @@ body.search {
             color: var(--text-color-header);
             outline: none;
             max-width: 80%;
+            background-color: transparent;
 
             &::placeholder {
                 color: var(--text-color-header);

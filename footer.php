@@ -15,6 +15,16 @@
                 <div class="spacer d-none d-md-inline"></div>
                 <div class="mx-3 mx-md-0">
                     <p>©2022 Autosave</p>
+                    <div class="form-check form-switch mb-0">
+                        <input 
+                            class="form-check-input" 
+                            type="checkbox" 
+                            id="dark-mode-switch"
+                            <?php if (isset($_COOKIE['site-theme']) && $_COOKIE['site-theme'] === "dark") echo "checked"; ?>
+                            onchange="toggleDarkMode();"
+                        >
+                        <label class="form-check-label" for="dark-mode-switch"><p>Dark Mode</p></label>
+                    </div>
                 </div>
             </div>
         </footer>
