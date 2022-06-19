@@ -4,17 +4,17 @@
             </a>
             <div class="d-flex ml-auto">
                 <div class="d-none d-md-inline">
-                    <p class="pop-outin">Terms of use<p>
-                    <p>About Us<p>
+                    <p class="pop-outin"><a>Terms of use</a></p>
+                    <p><a>About Us</a></p>
                 </div>
                 <div class="spacer d-none d-md-inline"></div>
                 <div>
-                    <p>Instagram<p>
-                    <a href="mailto:mail.autosave@gmail.com"><p>Contact Us<p></a>
+                    <p><a href="https://www.instagram.com/autosavemedia/" target="_blank">Instagram</a></p>
+                    <p><a href="mailto:mail.autosave@gmail.com" target="_blank">Contact Us</a></p>
                 </div>
                 <div class="spacer d-none d-md-inline"></div>
                 <div class="mx-3 mx-md-0">
-                    <p>©2022 Autosave<p>
+                    <p>©2022 Autosave</p>
                 </div>
             </div>
         </footer>

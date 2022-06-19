@@ -2,27 +2,29 @@ const smBreakpoint = 767;
 
 // initialize home page carousel banner (that pauses on mobile)
 
-document.querySelectorAll('.carousel .carousel-item').forEach((el) => {
-    const minPerSlide = 4
-    let next = el.nextElementSibling
-    for (var i = 1; i < minPerSlide; i++) {
-        if (!next) next = document.querySelectorAll('.carousel .carousel-item')[0]
-        let cloneChild = next.cloneNode(true)
-        el.appendChild(cloneChild.children[0])
-        next = next.nextElementSibling
+if (document.body.classList.contains('home')) {
+    document.querySelectorAll('.carousel .carousel-item').forEach((el) => {
+        const minPerSlide = 4
+        let next = el.nextElementSibling
+        for (var i = 1; i < minPerSlide; i++) {
+            if (!next) next = document.querySelectorAll('.carousel .carousel-item')[0]
+            let cloneChild = next.cloneNode(true)
+            el.appendChild(cloneChild.children[0])
+            next = next.nextElementSibling
+        }
+    })
+    
+    var carousel = new bootstrap.Carousel(document.querySelector('#main-banner'))
+    function pauseCarouselOnMobile() {
+        if (window.innerWidth <= smBreakpoint) {
+            carousel.pause()
+        } else {
+            carousel.cycle()
+        }
     }
-})
-
-var carousel = new bootstrap.Carousel(document.querySelector('#main-banner'))
-function pauseCarouselOnMobile() {
-    if (window.innerWidth <= smBreakpoint) {
-        carousel.pause()
-    } else {
-        carousel.cycle()
-    }
+    pauseCarouselOnMobile()
+    window.addEventListener('resize', pauseCarouselOnMobile)
 }
-pauseCarouselOnMobile()
-window.addEventListener('resize', pauseCarouselOnMobile)
 
 // function for handling opening and closing of navbar menu
 

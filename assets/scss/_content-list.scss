@@ -1,0 +1,100 @@
+.content-list {
+    .card {
+        aspect-ratio: 4/3;
+
+        @media (max-width: $sm-breakpoint) {
+            &, &-img, &-img-overlay {
+                border-radius: 10px !important;
+            }
+        }
+
+        .card-img {
+
+            &-overlay {
+                @include card-overlay-gradient(0deg, 0%, 50%);
+
+                p {
+                    margin-bottom: 0;
+                    position: absolute;
+                    bottom: 1em;
+                    padding-right: inherit;
+                }
+            }
+        }
+
+        & + p {
+            margin: 0.3em 0.5em 0;
+            color: var(--text-color-main);
+            font-size: 0.8rem;
+            font-weight: 500;
+            @include truncate-n-lines(2);
+        }
+    }
+
+    & > div:first-child {
+        h1 {
+            font-weight: bold;
+            color: var(--text-color-main);
+            margin-left: 0.25em;
+            margin-right: 0.25em;
+        }
+    }
+
+    & &--articles {
+        &.row, .row {
+            --bs-gutter-x: 0.5em;
+            --bs-gutter-y: 0.5em;
+        }
+
+        & + p {
+            margin: 0.75em 1.5em -0.25em;
+            color: var(--text-color-main);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: $sm-breakpoint) {
+            &.row {
+                --bs-gutter-x: 1em;
+            }
+        }
+    }
+
+    & &--spotlight {
+        color: var(--text-color-main);
+
+        h1 {
+            font-weight: bold;
+            @include truncate-n-lines(2);
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .read-more-button {
+            font-weight: bold;
+            text-align: right;
+            color: var(--text-color-header);
+
+            & > p {
+                color: inherit;
+
+                &::after {
+                    background-color: var(--text-color-header);
+                }
+            }
+
+            &::after {
+                color: inherit;
+            }
+        }
+
+        .card {
+            &-img, &-img-overlay {
+                border-radius: 0 !important;
+                @include card-overlay-gradient(0deg, 15%, 30%)
+            }
+        }
+    }
+}

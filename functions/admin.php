@@ -1,5 +1,5 @@
 <?php
-$primary_color = '#8A73F9';
+define("primary_color", "#8A73F9");
 
 // change admin page titles
 function my_admin_title($admin_title, $title) {
@@ -39,7 +39,7 @@ function example_admin_bar_remove_logo() {
 add_action( 'wp_before_admin_bar_render', 'example_admin_bar_remove_logo', 0 );
 
 // add autosave logo to admin bar
-add_action('wp_before_admin_bar_render', function() use ($primary_color){ ?>
+add_action('wp_before_admin_bar_render', function(){ ?>
     <style type="text/css">
         #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
             background-image: <?php echo get_encoded_logo('#FFFFFF', false); ?> !important;
@@ -52,31 +52,31 @@ add_action('wp_before_admin_bar_render', function() use ($primary_color){ ?>
 <?php });
 
 // add styling to login
-add_action( 'login_enqueue_scripts', function() use ($primary_color) { ?>
+add_action( 'login_enqueue_scripts', function() { ?>
     <style type="text/css">
         #login {
             padding: 10% 0 0 !important;
         }
         #login h1 a, .login h1 a  {
             background-repeat: no-repeat;
-            background-image: <?php echo get_encoded_logo($primary_color, false); ?>;
+            background-image: <?php echo get_encoded_logo(constant('primary_color'), false); ?>;
         }
         #login input:focus, #login .button:focus {
-            border-color: <?php echo $primary_color; ?>;
-            box-shadow: 0 0 0 1px <?php echo $primary_color; ?>;
+            border-color: <?php echo constant('primary_color'); ?>;
+            box-shadow: 0 0 0 1px <?php echo constant('primary_color'); ?>;
         }
         #login button {
-            color: <?php echo $primary_color; ?>;
+            color: <?php echo constant('primary_color'); ?>;
         }
         #login #wp-submit {
-            background-color: <?php echo $primary_color; ?>;
-            border-color: <?php echo $primary_color; ?>;
+            background-color: <?php echo constant('primary_color'); ?>;
+            border-color: <?php echo constant('primary_color'); ?>;
         }
         #login input[type=checkbox]:checked::before {
             filter: brightness(0) invert(51%) sepia(24%) saturate(6403%) hue-rotate(223deg) brightness(100%) contrast(96%);
         }
         #login .message {
-            border-left: 4px solid <?php echo $primary_color; ?>;
+            border-left: 4px solid <?php echo constant('primary_color'); ?>;
         }
     </style>
 <?php });

@@ -1,16 +1,17 @@
-<?php get_header();
+<?php get_header(); 
+get_search_form();
 
-$the_query = new WP_Query(array('s' => get_search_query()));
-
-if ($the_query->have_posts()): ?>
-    <h2>Search results for: <?php echo get_query_var('s') ?></h2>
-    <?php while($the_query->have_posts()):?>
-        <?php $the_query->the_post(); ?>
-        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-    <?php endwhile ?>
-<?php else: ?>
-    <h2 style='font-weight:bold;color:#000'>Nothing Found</h2>
+if ($wp_query->have_posts()):
+    get_template_part('template-parts/content','list',[
+        'hide-title' => true,
+        'query' => $wp_query,
+        'hide-spotlight-desktop' => true,
+    ]);
+else: ?>
+    <h1>Nothing Found</h2>
     <p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>
-<?php endif ?>
+<?php endif;
+get_template_part('template-parts/pagination');
+?>
 
 <?php get_footer(); ?>

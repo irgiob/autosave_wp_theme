@@ -1,13 +1,4 @@
 nav {
-    .link-container {
-        color: var(--text-color-main);
-        text-decoration: none;
-
-        &:hover {
-            color: var(--text-color-main);
-        }
-    }
-    
     &.navbar {
         background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
         background-size: 100% 200%;
@@ -107,7 +98,7 @@ nav {
         width: 0;
         overflow: visible;
 
-        & > div {
+        form[role=search] {
             float: right;
         }
 
@@ -129,10 +120,6 @@ nav {
             width: 200px;
             border-bottom: 2px var(--text-color-header) solid;
         }
-    }
-    
-    input::-webkit-search-cancel-button {
-        display: none;
     }
 
     .flip-box {
@@ -199,5 +186,15 @@ nav {
 
     &--pinned {
         background-color: transparent;
+    }
+}
+
+// disable links without hrefs
+a:not([href]) {
+    & p, & {
+        opacity: 0.5;
+        &::after{
+            height: 0;
+        }
     }
 }

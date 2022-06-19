@@ -1,29 +1,29 @@
-$purple: #8A73F9;
+$primary: #8A73F9;
+$secondary: #E8D892;
+$tertiary: #86D0E2;
 $black: #262626;
 $white: #FFFFFF;
-$yellow: #E8D892;
-$blue: #86D0E2;
 
 $themes: (
     "light": (
-        "text-color-header": $purple,
+        "text-color-header": $primary,
         "text-color-main": $black,
         "text-color-card": $white,
         "text-color-footer": $white,
-        "text-highlight-footer": $purple,
-        "background-color-header": $purple,
+        "text-highlight-footer": $primary,
+        "background-color-header": $primary,
         "background-color-main": $white,
         "background-color-footer": $black,
     ),
     "dark": (
-        "text-color-header": $purple,
+        "text-color-header": $primary,
         "text-color-main": $white,
         "text-color-card": $white,
         "text-color-footer": $black,
         "text-highlight-footer": $white,
-        "background-color-header": $purple,
+        "background-color-header": $primary,
         "background-color-main": $black,
-        "background-color-footer": $purple,
+        "background-color-footer": $primary,
     )
 );
 
