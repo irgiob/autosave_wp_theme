@@ -5,4 +5,5 @@ get_template_part('template-parts/content','list',[
     'query' => $wp_query,
     'hide-spotlight-desktop' => true,
 ]);
+get_template_part('template-parts/pagination');
 get_footer();
