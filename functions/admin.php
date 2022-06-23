@@ -81,3 +81,26 @@ add_action( 'login_enqueue_scripts', function() { ?>
     </style>
 <?php });
 add_filter( 'login_headerurl', function() {return home_url();} );
+
+// remove comments for non-admin users (can be disbaled if want to enable user comments in the future);
+add_action('admin_menu', function() {
+    if (!current_user_can('manage_options')) {
+        remove_menu_page('edit-comments.php');
+        remove_menu_page('tools.php');
+    }
+});
+add_action('wp_before_admin_bar_render', function() { 
+    global $wp_admin_bar; 
+    if (!current_user_can('manage_options')) $wp_admin_bar->remove_menu('comments');
+});
+
+// remove admin footer contents
+function wpse_edit_footer() {
+    add_filter( 'admin_footer_text', 'wpse_edit_text', 11 );
+}
+
+function wpse_edit_text($content) {
+    return "";
+}
+
+add_action( 'admin_init', 'wpse_edit_footer' );

@@ -48,7 +48,7 @@
                         <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>">
                             <p class="fw-bold hover-underline-animation">Games</p></br>
                         </a>
-                        <a>
+                        <a href="<?php echo get_category_link(get_cat_ID('zine')); ?>">
                             <p class="fw-bold hover-underline-animation">Zine</p></br>
                         </a>
                     </div>
@@ -79,5 +79,5 @@
         <a href="<?php echo get_category_link(get_cat_ID('anime')); ?>"><p class="hover-underline-animation-sm">Anime</p></a>
         <a href="<?php echo get_category_link(get_cat_ID('technology')); ?>"><p class="hover-underline-animation-sm">Tech</p></a>
         <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>"><p class="hover-underline-animation-sm">Games</p></a>
-        <a><p class="hover-underline-animation-sm">Zine</p></a>
+        <a href="<?php echo get_category_link(get_cat_ID('zine')); ?>"><p class="hover-underline-animation-sm">Zine</p></a>
     </div>

@@ -216,6 +216,7 @@ input::-webkit-search-cancel-button {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 0.25rem;
 }
 
 .card .card-img-overlay p {
@@ -708,13 +709,13 @@ a.footerlogo > svg:hover path {
 }
 
 #main-banner .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), color-stop(30%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, #262626 15%, rgba(0, 0, 0, 0) 30%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#262626), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, #262626 0%, rgba(0, 0, 0, 0) 50%);
 }
 
 #main-banner .card .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #262626), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, #262626 15%, rgba(0, 0, 0, 0) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#262626), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, #262626 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 #main-banner .card .card-img-overlay p {

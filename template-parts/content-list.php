@@ -74,9 +74,11 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         echo ($show_long_post) ? "col-md-4 " : "col-md-3 ";
                         
                         // adds special display logic for first and last cards
-                        if ($count == 1) echo "d-none"; 
-                        if (!$show_long_post) echo " d-md-block";
-                        if ($count == $args['query']->post_count && $args['hide-last-post']) 
+                        if ($count == 1) {
+                            echo "d-none"; 
+                            if (!$show_long_post) echo " d-md-block";
+                        }
+                        else if ($count == $args['query']->post_count && $args['hide-last-post']) 
                             echo "d-block d-md-none"; 
                         
                         $count += 1;
