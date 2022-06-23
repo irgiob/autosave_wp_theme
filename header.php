@@ -18,7 +18,7 @@
                     <i class="bi-chevron-right"></i><span class="mx-1 d-none d-md-inline">Menu</span>
                 </p>
             </div>
-            <a id="logo" class="hover-highlight-animation my-2" href="<?php echo get_home_url(); ?>">
+            <a id="logo" class="hover-popuplogo-animation my-2" href="<?php echo get_home_url(); ?>">
                 <?php echo get_logo("", true); ?>
             </a>
             <div class="flip-box d-none d-md-block">

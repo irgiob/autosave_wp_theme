@@ -7,7 +7,7 @@ footer {
         font-weight: 500;
         white-space: nowrap;
         margin-bottom: 0;
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     & div > p:first-child {
@@ -50,7 +50,7 @@ footer {
 }
 
 a.footerlogo > svg {
-    width: 70px;
+    width: 90px;
 
     path {
         fill: var(--text-color-footer);

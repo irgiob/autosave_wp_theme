@@ -102,17 +102,19 @@ body.light {
   --background-color-header: #8A73F9;
   --background-color-main: #FFFFFF;
   --background-color-footer: #262626;
+  --color-gradient: #262626;
 }
 
 body.dark {
   --text-color-header: #8A73F9;
   --text-color-main: #FFFFFF;
-  --text-color-card: #FFFFFF;
+  --text-color-card: #262626;
   --text-color-footer: #262626;
   --text-highlight-footer: #FFFFFF;
   --background-color-header: #8A73F9;
   --background-color-main: #262626;
   --background-color-footer: #8A73F9;
+  --color-gradient: #FFFFFF;
 }
 
 html {
@@ -123,7 +125,7 @@ html {
 body {
   font-family: PlusJakartaSans;
   background-color: var(--background-color-main);
-  margin-bottom: 120px;
+  margin-bottom: 150px;
 }
 
 a {
@@ -170,36 +172,9 @@ input::-webkit-search-cancel-button {
           transform-origin: bottom left;
 }
 
-.hover-highlight-animation {
-  position: relative;
-}
-
-.hover-highlight-animation::before {
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  inset: 0 0 0 0;
-  background: #E8D892;
-  z-index: -1;
-  -webkit-transition: -webkit-transform .3s ease;
-  transition: -webkit-transform .3s ease;
-  transition: transform .3s ease;
-  transition: transform .3s ease, -webkit-transform .3s ease;
-}
-
-.hover-highlight-animation:hover::before {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
+.hover-popuplogo-animation svg:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .card {
@@ -339,8 +314,8 @@ nav.navbar[aria-expanded="true"] {
 }
 
 nav.navbar[aria-expanded="true"] * {
-  color: var(--text-color-main);
-  fill: var(--text-color-main);
+  color: #262626;
+  fill: #262626;
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
   -webkit-transition: 0.1s;
@@ -361,6 +336,10 @@ nav.navbar[aria-expanded="true"] * p > i {
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+nav.navbar[aria-expanded="true"] p:after {
+  background-color: #262626;
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search {
@@ -562,7 +541,7 @@ footer p {
   font-weight: 500;
   white-space: nowrap;
   margin-bottom: 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 footer div > p:first-child {
@@ -607,7 +586,7 @@ footer > a:hover:after {
 }
 
 a.footerlogo > svg {
-  width: 70px;
+  width: 90px;
 }
 
 a.footerlogo > svg path {
@@ -709,13 +688,13 @@ a.footerlogo > svg:hover path {
 }
 
 #main-banner .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#262626), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, #262626 0%, rgba(0, 0, 0, 0) 50%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
 }
 
 #main-banner .card .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#262626), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, #262626 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 #main-banner .card .card-img-overlay p {
@@ -745,13 +724,13 @@ a.footerlogo > svg:hover path {
 }
 
 .content-list .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#262626), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, #262626 0%, rgba(0, 0, 0, 0) 50%);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
 }
 
 .content-list .card .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#262626), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, #262626 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .content-list .card .card-img-overlay p {
@@ -835,13 +814,13 @@ a.footerlogo > svg:hover path {
 
 .content-list .content-list--spotlight .card-img, .content-list .content-list--spotlight .card-img-overlay {
   border-radius: 0 !important;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, #262626), color-stop(30%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, #262626 15%, rgba(0, 0, 0, 0) 30%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, var(--color-gradient)), color-stop(30%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, var(--color-gradient) 15%, rgba(0, 0, 0, 0) 30%);
 }
 
 .content-list .content-list--spotlight .card-img:hover, .content-list .content-list--spotlight .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, #262626), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, #262626 15%, rgba(0, 0, 0, 0) 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, var(--color-gradient)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, var(--color-gradient) 15%, rgba(0, 0, 0, 0) 100%);
 }
 
 .single .post.container a > p, .single .post.container a > span {

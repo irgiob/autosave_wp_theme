@@ -83,7 +83,7 @@ $banner_gap: 10px;
     
         .card-img {
             &-overlay {
-                @include card-overlay-gradient(180deg, 0%, 50%);
+                @include card-overlay-gradient(180deg, 0%, 50%, var(--color-gradient));
     
                 p {
                     margin-left: 0.5em;

@@ -8,7 +8,7 @@ html {
 body {
     font-family: PlusJakartaSans;
     background-color: var(--background-color-main);
-    margin-bottom: 120px;
+    margin-bottom: 150px;
 }
 
 a {
@@ -51,25 +51,11 @@ input::-webkit-search-cancel-button {
     }
 }
 
-.hover-highlight-animation {
-    position: relative;
-
-    &::before {
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        inset: 0 0 0 0;
-        background: $secondary;
-        z-index: -1;
-        transition: transform .3s ease;
-    }
-
-    &:hover::before {
-        transform: scaleX(1);
-        transform-origin: bottom left;
+.hover-popuplogo-animation {
+    svg {
+        &:hover{
+            transform: scale(1.15);
+        }
     }
 }
 
@@ -142,12 +128,13 @@ input::-webkit-search-cancel-button {
     }
 }
 
-@mixin card-overlay-gradient($rotation, $start, $end) {
-    background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) $end);
+@mixin card-overlay-gradient($rotation, $start, $end, $color) {
+    background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) $end);
     
     &:hover {
-        background-image: linear-gradient($rotation, rgba(38,38,38,1) $start, rgba(0, 0, 0, 0) 100%);
+        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
     }
+
 }
 
 .right-arrow-extension {

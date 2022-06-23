@@ -14,16 +14,18 @@ $themes: (
         "background-color-header": $primary,
         "background-color-main": $white,
         "background-color-footer": $black,
+        "color-gradient": $black,
     ),
     "dark": (
         "text-color-header": $primary,
         "text-color-main": $white,
-        "text-color-card": $white,
+        "text-color-card": $black,
         "text-color-footer": $black,
         "text-highlight-footer": $white,
         "background-color-header": $primary,
         "background-color-main": $black,
         "background-color-footer": $primary,
+        "color-gradient": $white,
     )
 );
 

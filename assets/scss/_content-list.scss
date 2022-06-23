@@ -11,7 +11,7 @@
         .card-img {
 
             &-overlay {
-                @include card-overlay-gradient(0deg, 0%, 50%);
+                @include card-overlay-gradient(0deg, 0%, 50%, var(--color-gradient));
 
                 p {
                     margin-bottom: 0;
@@ -93,7 +93,7 @@
         .card {
             &-img, &-img-overlay {
                 border-radius: 0 !important;
-                @include card-overlay-gradient(0deg, 15%, 30%)
+                @include card-overlay-gradient(0deg, 15%, 30%, var(--color-gradient))
             }
         }
     }

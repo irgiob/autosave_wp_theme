@@ -31,8 +31,8 @@ nav {
             transition-delay: 0s;
 
             * {
-                color: var(--text-color-main);
-                fill: var(--text-color-main);
+                color: $black;
+                fill: $black;
                 transition-delay: 0.1s;
                 transition: 0.1s;   
             }
@@ -46,6 +46,10 @@ nav {
                 transform: rotate(90deg);
                 display: inline-block;
                 transition: transform 0.2s;
+            }
+
+            p:after {
+                background-color: $black;
             }
 
             .search-container {
