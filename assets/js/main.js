@@ -84,11 +84,11 @@ window.addEventListener('resize', handleSizeChange)
 // toggle dark mode
 function toggleDarkMode() {
     if (document.getElementById('dark-mode-switch').checked) {
-        document.cookie = 'site-theme=dark'
+        document.cookie = 'site-theme=dark;path=/'
         document.body.classList.remove('light')
         document.body.classList.add('dark')
     } else {
-        document.cookie = 'site-theme=light'
+        document.cookie = 'site-theme=light;path=/'
         document.body.classList.remove('dark')
         document.body.classList.add('light')
     }

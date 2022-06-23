@@ -95,6 +95,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 body.light {
   --text-color-header: #8A73F9;
+  --text-color-header-expanded: #262626;
   --text-color-main: #262626;
   --text-color-card: #FFFFFF;
   --text-color-footer: #FFFFFF;
@@ -107,6 +108,7 @@ body.light {
 
 body.dark {
   --text-color-header: #8A73F9;
+  --text-color-header-expanded: #262626;
   --text-color-main: #FFFFFF;
   --text-color-card: #262626;
   --text-color-footer: #262626;
@@ -125,7 +127,7 @@ html {
 body {
   font-family: PlusJakartaSans;
   background-color: var(--background-color-main);
-  margin-bottom: 150px;
+  margin-bottom: 200px;
 }
 
 a {
@@ -172,9 +174,9 @@ input::-webkit-search-cancel-button {
           transform-origin: bottom left;
 }
 
-.hover-popuplogo-animation svg:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+.hover-logo-animation svg:hover {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
 }
 
 .card {
@@ -314,8 +316,8 @@ nav.navbar[aria-expanded="true"] {
 }
 
 nav.navbar[aria-expanded="true"] * {
-  color: #262626;
-  fill: #262626;
+  color: var(--text-color-header-expanded);
+  fill: var(--text-color-header-expanded);
   -webkit-transition-delay: 0.1s;
           transition-delay: 0.1s;
   -webkit-transition: 0.1s;
@@ -339,32 +341,32 @@ nav.navbar[aria-expanded="true"] * p > i {
 }
 
 nav.navbar[aria-expanded="true"] p:after {
-  background-color: #262626;
+  background-color: var(--text-color-header-expanded);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search {
-  caret-color: var(--text-color-main);
-  color: var(--text-color-main);
+  caret-color: var(--text-color-header-expanded);
+  color: var(--text-color-header-expanded);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search::-webkit-input-placeholder {
-  color: var(--text-color-main);
+  color: var(--text-color-header-expanded);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search:-ms-input-placeholder {
-  color: var(--text-color-main);
+  color: var(--text-color-header-expanded);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search::-ms-input-placeholder {
-  color: var(--text-color-main);
+  color: var(--text-color-header-expanded);
 }
 
 nav.navbar[aria-expanded="true"] .search-container input#search::placeholder {
-  color: var(--text-color-main);
+  color: var(--text-color-header-expanded);
 }
 
 nav.navbar[aria-expanded="true"] .search-container:hover input#search, nav.navbar[aria-expanded="true"] .search-container input#search:focus, nav.navbar[aria-expanded="true"] .search-container input#search:hover {
-  border-bottom: 2px var(--text-color-main) solid;
+  border-bottom: 2px var(--text-color-header-expanded) solid;
 }
 
 nav.navbar div.container-fluid > div {
@@ -436,7 +438,7 @@ nav .search-container input#search::placeholder {
   color: var(--text-color-header);
 }
 
-nav .search-container:hover input#search, nav .search-container input#search:focus input#search:hover {
+nav .search-container:hover input#search, nav .search-container input#search:focus, nav .search-container input#search:hover {
   width: 200px;
   border-bottom: 2px var(--text-color-header) solid;
 }

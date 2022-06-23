@@ -31,8 +31,8 @@ nav {
             transition-delay: 0s;
 
             * {
-                color: $black;
-                fill: $black;
+                color: var(--text-color-header-expanded);
+                fill: var(--text-color-header-expanded);
                 transition-delay: 0.1s;
                 transition: 0.1s;   
             }
@@ -49,21 +49,21 @@ nav {
             }
 
             p:after {
-                background-color: $black;
+                background-color: var(--text-color-header-expanded);
             }
 
             .search-container {
                 input#search {
-                    caret-color: var(--text-color-main);
-                    color: var(--text-color-main);
+                    caret-color: var(--text-color-header-expanded);
+                    color: var(--text-color-header-expanded);
 
                     &::placeholder {
-                        color: var(--text-color-main);
+                        color: var(--text-color-header-expanded);
                     }
                 }
 
                 &:hover input#search, input#search:focus, input#search:hover {
-                    border-bottom: 2px var(--text-color-main) solid;
+                    border-bottom: 2px var(--text-color-header-expanded) solid;
                 }        
             }
         }
@@ -120,7 +120,7 @@ nav {
             }
         }
 
-        &:hover input#search, input#search:focus input#search:hover {
+        &:hover input#search, input#search:focus, input#search:hover {
             width: 200px;
             border-bottom: 2px var(--text-color-header) solid;
         }

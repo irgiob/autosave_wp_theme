@@ -8,7 +8,7 @@ html {
 body {
     font-family: PlusJakartaSans;
     background-color: var(--background-color-main);
-    margin-bottom: 150px;
+    margin-bottom: 200px;
 }
 
 a {
@@ -51,7 +51,7 @@ input::-webkit-search-cancel-button {
     }
 }
 
-.hover-popuplogo-animation {
+.hover-logo-animation {
     svg {
         &:hover{
             transform: scale(1.15);

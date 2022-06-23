@@ -7,6 +7,7 @@ $white: #FFFFFF;
 $themes: (
     "light": (
         "text-color-header": $primary,
+        "text-color-header-expanded": $black,
         "text-color-main": $black,
         "text-color-card": $white,
         "text-color-footer": $white,
@@ -18,6 +19,7 @@ $themes: (
     ),
     "dark": (
         "text-color-header": $primary,
+        "text-color-header-expanded": $black,
         "text-color-main": $white,
         "text-color-card": $black,
         "text-color-footer": $black,
