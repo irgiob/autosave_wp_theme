@@ -641,14 +641,6 @@ a.footerlogo > svg:hover path {
 }
 
 @media (max-width: 767px) {
-  #main-banner .carousel-inner .carousel-item {
-    display: block;
-    float: none;
-    margin-bottom: 0.5em;
-  }
-  #main-banner .carousel-inner .carousel-item.active {
-    display: block !important;
-  }
   #main-banner .carousel-inner .carousel-item > div {
     display: none;
   }
@@ -664,6 +656,11 @@ a.footerlogo > svg:hover path {
 }
 
 @media (min-width: 768px) {
+  #main-banner .carousel-inner .carousel-item.active, #main-banner .carousel-inner .carousel-item-next, #main-banner .carousel-inner .carousel-item-prev {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   #main-banner .carousel-inner .carousel-item-end.active, #main-banner .carousel-inner .carousel-item-next {
     -webkit-transform: translateX(25%);
             transform: translateX(25%);
@@ -672,17 +669,10 @@ a.footerlogo > svg:hover path {
     -webkit-transform: translateX(-25%);
             transform: translateX(-25%);
   }
-}
-
-#main-banner .carousel-inner .carousel-item.active, #main-banner .carousel-inner .carousel-item-next, #main-banner .carousel-inner .carousel-item-prev {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-#main-banner .carousel-inner .carousel-item-end, #main-banner .carousel-inner .carousel-item-start {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  #main-banner .carousel-inner .carousel-item-end, #main-banner .carousel-inner .carousel-item-start {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 #main-banner .card {
@@ -707,12 +697,6 @@ a.footerlogo > svg:hover path {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-@media (max-width: 767px) {
-  #main-banner .card {
-    aspect-ratio: 3/4;
-  }
 }
 
 .content-list .card {

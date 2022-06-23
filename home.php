@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="main-banner" class="carousel slide mb-1 mb-md-3 my-md-4">
+<div id="main-banner" class="carousel slide mb-1 mb-md-3 my-md-4" data-bs-ride="carousel">
     <div class="carousel-inner" role="listbox">
         <?php 
         $first_post = true;

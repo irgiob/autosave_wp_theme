@@ -13,17 +13,6 @@ if (document.body.classList.contains('home')) {
             next = next.nextElementSibling
         }
     })
-    
-    var carousel = new bootstrap.Carousel(document.querySelector('#main-banner'))
-    function pauseCarouselOnMobile() {
-        if (window.innerWidth <= smBreakpoint) {
-            carousel.pause()
-        } else {
-            carousel.cycle()
-        }
-    }
-    pauseCarouselOnMobile()
-    window.addEventListener('resize', pauseCarouselOnMobile)
 }
 
 // function for handling opening and closing of navbar menu

@@ -32,14 +32,6 @@ $banner_gap: 10px;
 
         @media (max-width: $sm-breakpoint) {
             & .carousel-item {
-                display: block;
-                float: none;
-                margin-bottom: 0.5em;
-    
-                &.active {
-                    display: block !important;
-                }
-    
                 & > div {
                     display: none;
         
@@ -60,6 +52,10 @@ $banner_gap: 10px;
         
         $x: $sm-breakpoint + 1px;
         @media (min-width: $x) {
+            & .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+                display: flex;
+            }
+            
             & .carousel-item-end.active, .carousel-item-next {
                 transform: translateX(25%);
             }
@@ -67,14 +63,10 @@ $banner_gap: 10px;
             & .carousel-item-start.active, .carousel-item-prev {
                 transform: translateX(-25%);
             }
-        }
-    
-        .carousel-item.active, .carousel-item-next, .carousel-item-prev {
-            display: flex;
-        }
-    
-        .carousel-item-end, .carousel-item-start {
-            transform: translateX(0);
+
+            & .carousel-item-end, .carousel-item-start {
+                transform: translateX(0);
+            }
         }
     }
     
@@ -90,12 +82,6 @@ $banner_gap: 10px;
                     margin-right: 0.5em;
                     @include truncate-n-lines(10);
                 }
-            }
-        }
-    
-        @media (max-width: $sm-breakpoint) {
-            & {
-                aspect-ratio: 3/4;
             }
         }
     }
