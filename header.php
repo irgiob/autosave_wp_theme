@@ -21,7 +21,7 @@
             <a id="logo" class="hover-logo-animation my-2" href="<?php echo get_home_url(); ?>">
                 <?php echo get_logo("", true); ?>
             </a>
-            <div class="flip-box d-none d-md-block">
+            <div class="search-flipbox d-none d-md-block">
                 <div class="front">
                     <?php get_search_form(); ?>
                 </div>
@@ -48,7 +48,7 @@
                         <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>">
                             <p class="fw-bold hover-underline-animation">Games</p></br>
                         </a>
-                        <a href="<?php echo get_category_link(get_cat_ID('zine')); ?>">
+                        <a>
                             <p class="fw-bold hover-underline-animation">Zine</p></br>
                         </a>
                     </div>
@@ -75,9 +75,16 @@
     </nav>
 
     <!-- secondary menu that collapses onto the main header menu-->
-    <div class="menu-secondary menu-secondary--default justify-content-between w-50 mx-auto fw-bold d-none d-md-flex">
-        <a href="<?php echo get_category_link(get_cat_ID('anime')); ?>"><p class="hover-underline-animation-sm">Anime</p></a>
-        <a href="<?php echo get_category_link(get_cat_ID('technology')); ?>"><p class="hover-underline-animation-sm">Tech</p></a>
-        <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>"><p class="hover-underline-animation-sm">Games</p></a>
-        <a href="<?php echo get_category_link(get_cat_ID('zine')); ?>"><p class="hover-underline-animation-sm">Zine</p></a>
+    <div class="menu-secondary menu-secondary--default w-50 mx-auto d-none d-md-block">
+        <div class="front d-flex justify-content-between fw-bold ">
+            <a href="<?php echo get_category_link(get_cat_ID('anime')); ?>"><p class="hover-underline-animation-sm">Anime</p></a>
+            <a href="<?php echo get_category_link(get_cat_ID('technology')); ?>"><p class="hover-underline-animation-sm">Tech</p></a>
+            <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>"><p class="hover-underline-animation-sm">Games</p></a>
+            <a><p class="hover-underline-animation-sm">Zine</p></a>
+        </div>
+        <div class="back mx-auto start-0 end-0">
+            <a class="hover-logo-animation" href="<?php echo get_home_url(); ?>">
+                <?php echo get_logo("", true); ?>
+            </a>
+        </div>
     </div>

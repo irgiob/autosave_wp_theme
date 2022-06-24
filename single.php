@@ -3,7 +3,7 @@ while ( have_posts() ):
 
 the_post();
 
-if (has_category()): ?>
+if (!has_category('zine')): ?>
     <div class="post container px-3 px-lg-5 pt-2 pt-md-5">
         <?php foreach($cats = get_the_category() as $cat): ?>
             <a href="<?php echo get_category_link($cat->cat_ID) ?>">

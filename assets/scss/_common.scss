@@ -9,6 +9,12 @@ body {
     font-family: PlusJakartaSans;
     background-color: var(--background-color-main);
     margin-bottom: 200px;
+
+    @media (max-width: $sm-breakpoint) {
+        & {
+           margin-bottom: 120px;
+        }
+    }
 }
 
 a {
@@ -55,6 +61,7 @@ input::-webkit-search-cancel-button {
     svg {
         &:hover{
             transform: scale(1.15);
+            transition: transform 0.1s linear;
         }
     }
 }
@@ -69,6 +76,7 @@ input::-webkit-search-cancel-button {
 
 .card {
     border: none;
+    background-color: var(--background-color-main);
 
     .card-img {
         height: 100%;
@@ -93,12 +101,8 @@ input::-webkit-search-cancel-button {
 
     @media (max-width: $sm-breakpoint) {
         & {
-            &-img {
-                border-radius: 0;
-
-                &-overlay {
-                    border-radius: 0;
-                }
+            & &-img, & &-img-overlay, & img {
+                border-radius: 0 !important;
             }
         }
     }
@@ -131,9 +135,9 @@ input::-webkit-search-cancel-button {
 @mixin card-overlay-gradient($rotation, $start, $end, $color) {
     background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) $end);
     
-    &:hover {
+    /*&:hover {
         background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
-    }
+    }*/
 
 }
 
@@ -173,6 +177,11 @@ input::-webkit-search-cancel-button {
             background-color: var(--background-color-header);
             border-color: var(--background-color-header);
             color: var(--background-color-main);
+        }
+
+        &.disabled .page-link {
+            color: $grey;
+            border-color: $grey;
         }
     }
     

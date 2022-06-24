@@ -1,3 +1,27 @@
+@mixin flipbox($rotateY) {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    &.flipped {
+        transform: if($rotateY, rotateY(180deg), rotateX(180deg));
+    }
+
+    .front, .back {
+        backface-visibility: hidden;
+        position: absolute;
+        width: 100%;
+        transform: rotateX(0deg)
+    }
+
+    .front {
+        z-index: 2;
+    }
+
+    .back {
+        transform: if($rotateY, rotateY(180deg), rotateX(180deg));
+    }
+}
+
 nav {
     &.navbar {
         background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
@@ -52,20 +76,25 @@ nav {
                 background-color: var(--text-color-header-expanded);
             }
 
-            .search-container {
-                input#search {
-                    caret-color: var(--text-color-header-expanded);
-                    color: var(--text-color-header-expanded);
+            .search-flipbox {
+                transition: 0.6s;
 
-                    &::placeholder {
+                .search-container {
+                    input#search {
+                        caret-color: var(--text-color-header-expanded);
                         color: var(--text-color-header-expanded);
-                    }
-                }
 
-                &:hover input#search, input#search:focus, input#search:hover {
-                    border-bottom: 2px var(--text-color-header-expanded) solid;
-                }        
+                        &::placeholder {
+                            color: var(--text-color-header-expanded);
+                        }
+                    }
+
+                    &:hover input#search, input#search:focus, input#search:hover {
+                        border-bottom: 2px var(--text-color-header-expanded) solid;
+                    }        
+                }
             }
+            
         }
 
         div.container-fluid > div {
@@ -96,6 +125,12 @@ nav {
         min-width: 120px;
         max-width: 240px;
         transition: opacity 0s linear 0s;
+
+        @media (max-width: $sm-breakpoint) {
+            & {
+                opacity: 1 !important;
+            }
+        }
     }
 
     .search-container {
@@ -126,31 +161,17 @@ nav {
         }
     }
 
-    .flip-box {
+    .search-flipbox {
         height: 30px;
-        transition: 0.6s;
-        transform-style: preserve-3d;
-
-        &.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .front, .back {
-            backface-visibility: hidden;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            transform: rotateX(0deg)
-        }
+        @include flipbox(true);
+        top: 0;
 
         .front {
-            z-index: 2;
             right: 0;
             width: 0;
         }
 
         .back {
-            transform: rotateY(180deg);
             left: 0;
         }
     }
@@ -190,6 +211,19 @@ nav {
 
     &--pinned {
         background-color: transparent;
+    }
+
+    @include flipbox(false);
+    height: 4.5em;
+
+    .back {
+        width: 40%;
+        max-width: 15em;
+        top: 0.5em;
+        
+        path {
+            fill: var(--text-color-header-expanded);
+        }
     }
 }
 

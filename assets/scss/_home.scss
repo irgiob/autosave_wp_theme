@@ -9,7 +9,7 @@ $banner_gap: 10px;
     @media (max-width: $sm-breakpoint) {
         & {
             width: 100vw !important;
-            border-radius: 0 0 0 0;
+            border-radius: 0;
             margin-left: 0 !important;
 
             & > div {
@@ -23,6 +23,27 @@ $banner_gap: 10px;
             .card {
                 margin-left: $banner_gap;
                 border: none;
+                aspect-ratio: 9/16;
+    
+                .card-img {
+                    &-overlay {
+                        @include card-overlay-gradient(180deg, 0%, 50%, var(--color-gradient));
+            
+                        p {
+                            margin-left: 0.5em;
+                            margin-right: 0.5em;
+                            @include truncate-n-lines(10);
+                        }
+                    }
+                }
+
+                @media (min-width: #{$sm-breakpoint + 1px}) {
+                    & {
+                        & .card-img-overlay:hover {
+                            @include card-overlay-gradient(180deg, 0%, 100%, var(--color-gradient));
+                        }
+                    }
+                }
             }
         }
     
@@ -40,7 +61,8 @@ $banner_gap: 10px;
                     }
 
                     .card {
-                        margin-left: 0;
+                        margin-left: -1px;
+                        margin-right: -1px;
                     }
                 } 
             }
@@ -50,8 +72,7 @@ $banner_gap: 10px;
             }
         }
         
-        $x: $sm-breakpoint + 1px;
-        @media (min-width: $x) {
+        @media (min-width: #{$sm-breakpoint + 1px}) {
             & .carousel-item.active, .carousel-item-next, .carousel-item-prev {
                 display: flex;
             }
@@ -66,22 +87,6 @@ $banner_gap: 10px;
 
             & .carousel-item-end, .carousel-item-start {
                 transform: translateX(0);
-            }
-        }
-    }
-    
-    .card {
-        aspect-ratio: 9/16;
-    
-        .card-img {
-            &-overlay {
-                @include card-overlay-gradient(180deg, 0%, 50%, var(--color-gradient));
-    
-                p {
-                    margin-left: 0.5em;
-                    margin-right: 0.5em;
-                    @include truncate-n-lines(10);
-                }
             }
         }
     }

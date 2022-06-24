@@ -1,4 +1,7 @@
 const smBreakpoint = 767;
+const menu_secondary = document.querySelector(".menu-secondary");
+const nav = document.getElementById('nav');
+var expanded = false;
 
 // initialize home page carousel banner (that pauses on mobile)
 
@@ -18,16 +21,29 @@ if (document.body.classList.contains('home')) {
 // function for handling opening and closing of navbar menu
 
 function expandNavbar() {
-    var expanded = document.getElementById('nav');
     [...document.querySelectorAll('.collapse')].map(collapseEl => new bootstrap.Collapse(collapseEl));
-    expanded.setAttribute("aria-expanded", (expanded.getAttribute("aria-expanded") === "true") ?  "false" : "true");
+    nav.setAttribute("aria-expanded", (nav.getAttribute("aria-expanded") === "true") ?  "false" : "true");
     document.getElementById("overlay").classList.toggle('open');
     document.body.classList.toggle('disable-scroll');
+
+    // flip header elements if in stack mode
+    var alreadyRun = false;
+    if (!expanded) expanded = alreadyRun = true;
+
+    if (menu_secondary.classList.contains("menu-secondary--pinned")) {
+        if (nav.getAttribute("aria-expanded") === "true") {
+            menu_secondary.classList.add("flipped")
+            document.querySelector('.search-flipbox').classList.remove("flipped")
+        } else {
+            menu_secondary.classList.remove("flipped")
+            document.querySelector('.search-flipbox').classList.add("flipped")
+        }
+    }
+
+    setTimeout(() => {if (expanded && !alreadyRun) expanded = false}, 500);
 }
 
 // create correct header for page
-
-const menu_secondary = document.querySelector(".menu-secondary")
 
 const observer = new IntersectionObserver( ([e]) => (e.intersectionRatio < 1 
     && window.getComputedStyle(e.target, null).display !== "none") 
@@ -36,26 +52,22 @@ const observer = new IntersectionObserver( ([e]) => (e.intersectionRatio < 1
 { threshold: [1] });
 
 function pin_secondary_header(target) {
-    target.classList.remove("menu-secondary--default");
-    target.classList.add("menu-secondary--pinned")
-    document.querySelector('#logo').classList.add("opacity-0")
-    document.querySelector('.flip-box').classList.add('flipped')
+    if (!expanded) {
+        console.log("A")
+        target.classList.remove("menu-secondary--default");
+        target.classList.add("menu-secondary--pinned")
+        document.querySelector('#logo').classList.add("opacity-0")
+        document.querySelector('.search-flipbox').classList.add('flipped')
+    }
 }
 
 function unpin_secondary_header(target) {
-    target.classList.remove("menu-secondary--pinned")
-    target.classList.add("menu-secondary--default")
-    document.querySelector('#logo').classList.remove("opacity-0")
-    document.querySelector('.flip-box').classList.remove('flipped')
-}
-
-function handleSizeChange() {
-    if (window.getComputedStyle(menu_secondary, null).display == "none") {
+    if (!expanded) {
+        console.log("B")
+        target.classList.remove("menu-secondary--pinned")
+        target.classList.add("menu-secondary--default")
         document.querySelector('#logo').classList.remove("opacity-0")
-        document.querySelector('.flip-box').classList.remove('flipped')
-    } else {
-        document.querySelector('#logo').classList.add("opacity-0")
-        document.querySelector('.flip-box').classList.add('flipped')
+        document.querySelector('.search-flipbox').classList.remove('flipped')
     }
 }
 
@@ -66,9 +78,6 @@ if (document.body.classList.contains('home')) {
     menu_secondary.classList.add('position-fixed')
     menu_secondary.style.left = "25%"
 }
-
-handleSizeChange()
-window.addEventListener('resize', handleSizeChange)
 
 // toggle dark mode
 function toggleDarkMode() {

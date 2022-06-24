@@ -130,6 +130,12 @@ body {
   margin-bottom: 200px;
 }
 
+@media (max-width: 767px) {
+  body {
+    margin-bottom: 120px;
+  }
+}
+
 a {
   color: var(--text-color-main);
   text-decoration: none;
@@ -177,10 +183,15 @@ input::-webkit-search-cancel-button {
 .hover-logo-animation svg:hover {
   -webkit-transform: scale(1.15);
           transform: scale(1.15);
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
 }
 
 .card {
   border: none;
+  background-color: var(--background-color-main);
 }
 
 .card .card-img {
@@ -208,11 +219,8 @@ input::-webkit-search-cancel-button {
 }
 
 @media (max-width: 767px) {
-  .card-img {
-    border-radius: 0;
-  }
-  .card-img-overlay {
-    border-radius: 0;
+  .card .card-img, .card .card-img-overlay, .card img {
+    border-radius: 0 !important;
   }
 }
 
@@ -269,6 +277,11 @@ input::-webkit-search-cancel-button {
   background-color: var(--background-color-header);
   border-color: var(--background-color-header);
   color: var(--background-color-main);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: grey;
+  border-color: grey;
 }
 
 nav.navbar {
@@ -344,28 +357,33 @@ nav.navbar[aria-expanded="true"] p:after {
   background-color: var(--text-color-header-expanded);
 }
 
-nav.navbar[aria-expanded="true"] .search-container input#search {
+nav.navbar[aria-expanded="true"] .search-flipbox {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search {
   caret-color: var(--text-color-header-expanded);
   color: var(--text-color-header-expanded);
 }
 
-nav.navbar[aria-expanded="true"] .search-container input#search::-webkit-input-placeholder {
+nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search::-webkit-input-placeholder {
   color: var(--text-color-header-expanded);
 }
 
-nav.navbar[aria-expanded="true"] .search-container input#search:-ms-input-placeholder {
+nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search:-ms-input-placeholder {
   color: var(--text-color-header-expanded);
 }
 
-nav.navbar[aria-expanded="true"] .search-container input#search::-ms-input-placeholder {
+nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search::-ms-input-placeholder {
   color: var(--text-color-header-expanded);
 }
 
-nav.navbar[aria-expanded="true"] .search-container input#search::placeholder {
+nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search::placeholder {
   color: var(--text-color-header-expanded);
 }
 
-nav.navbar[aria-expanded="true"] .search-container:hover input#search, nav.navbar[aria-expanded="true"] .search-container input#search:focus, nav.navbar[aria-expanded="true"] .search-container input#search:hover {
+nav.navbar[aria-expanded="true"] .search-flipbox .search-container:hover input#search, nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search:focus, nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search:hover {
   border-bottom: 2px var(--text-color-header-expanded) solid;
 }
 
@@ -401,6 +419,12 @@ nav #logo {
   max-width: 240px;
   -webkit-transition: opacity 0s linear 0s;
   transition: opacity 0s linear 0s;
+}
+
+@media (max-width: 767px) {
+  nav #logo {
+    opacity: 1 !important;
+  }
 }
 
 nav .search-container {
@@ -443,38 +467,44 @@ nav .search-container:hover input#search, nav .search-container input#search:foc
   border-bottom: 2px var(--text-color-header) solid;
 }
 
-nav .flip-box {
+nav .search-flipbox {
   height: 30px;
   -webkit-transition: 0.6s;
   transition: 0.6s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  top: 0;
 }
 
-nav .flip-box.flipped {
+nav .search-flipbox.flipped {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
-nav .flip-box .front, nav .flip-box .back {
+nav .search-flipbox .front, nav .search-flipbox .back {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   position: absolute;
-  top: 0;
   width: 100%;
   -webkit-transform: rotateX(0deg);
           transform: rotateX(0deg);
 }
 
-nav .flip-box .front {
+nav .search-flipbox .front {
   z-index: 2;
+}
+
+nav .search-flipbox .back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+nav .search-flipbox .front {
   right: 0;
   width: 0;
 }
 
-nav .flip-box .back {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+nav .search-flipbox .back {
   left: 0;
 }
 
@@ -513,6 +543,11 @@ nav .flip-box .back {
   padding-top: 1.8em;
   top: -1px;
   z-index: 1030;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  height: 4.5em;
 }
 
 .menu-secondary--default {
@@ -521,6 +556,39 @@ nav .flip-box .back {
 
 .menu-secondary--pinned {
   background-color: transparent;
+}
+
+.menu-secondary.flipped {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.menu-secondary .front, .menu-secondary .back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.menu-secondary .front {
+  z-index: 2;
+}
+
+.menu-secondary .back {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.menu-secondary .back {
+  width: 40%;
+  max-width: 15em;
+  top: 0.5em;
+}
+
+.menu-secondary .back path {
+  fill: var(--text-color-header-expanded);
 }
 
 a:not([href]) p, a:not([href]) {
@@ -591,6 +659,12 @@ a.footerlogo > svg {
   width: 90px;
 }
 
+@media (max-width: 767px) {
+  a.footerlogo > svg {
+    width: 70px;
+  }
+}
+
 a.footerlogo > svg path {
   fill: var(--text-color-footer);
 }
@@ -623,7 +697,7 @@ a.footerlogo > svg:hover path {
 @media (max-width: 767px) {
   #main-banner {
     width: 100vw !important;
-    border-radius: 0 0 0 0;
+    border-radius: 0;
     margin-left: 0 !important;
   }
   #main-banner > div {
@@ -634,6 +708,35 @@ a.footerlogo > svg:hover path {
 #main-banner .carousel-inner .carousel-item > div .card {
   margin-left: 10px;
   border: none;
+  aspect-ratio: 9/16;
+}
+
+#main-banner .carousel-inner .carousel-item > div .card .card-img-overlay {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
+  /*&:hover {
+        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
+    }*/
+}
+
+#main-banner .carousel-inner .carousel-item > div .card .card-img-overlay p {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 10;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  #main-banner .carousel-inner .carousel-item > div .card .card-img-overlay:hover {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), to(rgba(0, 0, 0, 0)));
+    background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 100%);
+    /*&:hover {
+        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
+    }*/
+  }
 }
 
 #main-banner .carousel-inner ~ a[class^=carousel-control-] {
@@ -648,7 +751,8 @@ a.footerlogo > svg:hover path {
     display: block;
   }
   #main-banner .carousel-inner .carousel-item > div .card {
-    margin-left: 0;
+    margin-left: -1px;
+    margin-right: -1px;
   }
   #main-banner .carousel-inner ~ a[class^=carousel-control-] {
     display: none !important;
@@ -675,30 +779,6 @@ a.footerlogo > svg:hover path {
   }
 }
 
-#main-banner .card {
-  aspect-ratio: 9/16;
-}
-
-#main-banner .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
-}
-
-#main-banner .card .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 100%);
-}
-
-#main-banner .card .card-img-overlay p {
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 10;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 .content-list .card {
   aspect-ratio: 4/3;
 }
@@ -709,14 +789,26 @@ a.footerlogo > svg:hover path {
   }
 }
 
+@media (min-width: 768px) {
+  .content-list .card {
+    -webkit-transition: -webkit-transform 0.1s linear 0s;
+    transition: -webkit-transform 0.1s linear 0s;
+    transition: transform 0.1s linear 0s;
+    transition: transform 0.1s linear 0s, -webkit-transform 0.1s linear 0s;
+  }
+  .content-list .card:hover {
+    z-index: 2;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
 .content-list .card .card-img-overlay {
   background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
   background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
-}
-
-.content-list .card .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 100%);
+  /*&:hover {
+        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
+    }*/
 }
 
 .content-list .card .card-img-overlay p {
@@ -798,15 +890,17 @@ a.footerlogo > svg:hover path {
   color: inherit;
 }
 
-.content-list .content-list--spotlight .card-img, .content-list .content-list--spotlight .card-img-overlay {
+.content-list .content-list--spotlight .card-img, .content-list .content-list--spotlight .card-img img {
   border-radius: 0 !important;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, var(--color-gradient)), color-stop(30%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, var(--color-gradient) 15%, rgba(0, 0, 0, 0) 30%);
 }
 
-.content-list .content-list--spotlight .card-img:hover, .content-list .content-list--spotlight .card-img-overlay:hover {
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(15%, var(--color-gradient)), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, var(--color-gradient) 15%, rgba(0, 0, 0, 0) 100%);
+.content-list .content-list--spotlight .card-img-overlay {
+  border-radius: 0 !important;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
+  /*&:hover {
+        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
+    }*/
 }
 
 .single .post.container a > p, .single .post.container a > span {

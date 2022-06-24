@@ -21,8 +21,8 @@ $show_long_post = $args['query']->post_count > 8; ?>
     <!-- Title Section -->
     <?php if (!$args['hide-title']): ?>
         <a href="<?php echo $args['list-link']; ?>">
-        <div class="right-arrow-extension--header d-inline-block">
-                <h1 class="hover-underline-animation">
+        <div class="right-arrow-extension--header d-inline-block ms-3">
+                <h1 class="hover-underline-animation fw-bold">
                     <?php echo $args['list-title']; ?>
                 </h1>
         </div>

@@ -33,7 +33,7 @@
 <?php 
 // for each category get latest posts and display them using the content list template
 $categories = get_categories(['orderby' => 'name', 'order' => 'ASC', 'parent' => 0]);
-$categories = array_filter($categories, function($i){ return $i->slug !== "uncategorized" && $i->slug !== "review"; });
+$categories = array_filter($categories, fn($i) => !in_array($i->slug, ["uncategorized", "review", "zine"]));
 $n_posts = 5;
 foreach($categories as $category) {
     $query = new WP_Query(array('cat' => $category->cat_ID, 'posts_per_page' => $n_posts));

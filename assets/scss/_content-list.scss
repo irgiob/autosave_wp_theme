@@ -8,6 +8,17 @@
             }
         }
 
+        @media (min-width: #{$sm-breakpoint + 1}) {
+            & {
+                transition: transform 0.1s linear 0s;
+
+                &:hover {
+                    z-index: 2;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
         .card-img {
 
             &-overlay {
@@ -91,9 +102,15 @@
         }
 
         .card {
-            &-img, &-img-overlay {
-                border-radius: 0 !important;
-                @include card-overlay-gradient(0deg, 15%, 30%, var(--color-gradient))
+            &-img {
+                &, img {
+                    border-radius: 0 !important;
+                }
+
+                &-overlay {
+                    border-radius: 0 !important;
+                    @include card-overlay-gradient(0deg, 0%, 50%, var(--color-gradient))
+                }
             }
         }
     }

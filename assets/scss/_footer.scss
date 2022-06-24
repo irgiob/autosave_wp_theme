@@ -52,6 +52,12 @@ footer {
 a.footerlogo > svg {
     width: 90px;
 
+    @media (max-width: $sm-breakpoint) {
+        & {
+            width: 70px;
+        }
+    }
+
     path {
         fill: var(--text-color-footer);
     }
