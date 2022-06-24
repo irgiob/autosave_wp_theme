@@ -134,11 +134,6 @@ input::-webkit-search-cancel-button {
 
 @mixin card-overlay-gradient($rotation, $start, $end, $color) {
     background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) $end);
-    
-    /*&:hover {
-        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
-    }*/
-
 }
 
 .right-arrow-extension {
@@ -185,4 +180,14 @@ input::-webkit-search-cancel-button {
         }
     }
     
+}
+
+// disable links without hrefs
+a:not([href]) {
+    & p, & {
+        opacity: 0.5;
+        &::after{
+            height: 0;
+        }
+    }
 }

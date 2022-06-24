@@ -1,4 +1,4 @@
-        <footer class="d-flex px-md-5 px-3 py-md-5 py-3 w-100 position-absolute bottom-0">
+        <footer class="d-flex px-md-5 px-3 py-md-4 py-3 w-100 position-absolute bottom-0">
             <a class="footerlogo" href="<?php echo get_home_url() . '/login' ?>">
                 <?php echo get_logo("",false)?>
             </a>
@@ -15,16 +15,6 @@
                 <div class="spacer d-none d-md-inline"></div>
                 <div class="mx-3 mx-md-0">
                     <p>©2022 Autosave</p>
-                    <div class="form-check form-switch mb-0">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
-                            id="dark-mode-switch"
-                            <?php if (isset($_COOKIE['site-theme']) && $_COOKIE['site-theme'] === "dark") echo "checked"; ?>
-                            onchange="toggleDarkMode();"
-                        >
-                        <label class="form-check-label" for="dark-mode-switch"><p>Dark Mode</p></label>
-                    </div>
                 </div>
             </div>
         </footer>

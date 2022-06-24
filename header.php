@@ -66,8 +66,18 @@
                             <p class="fw-bold hover-underline-animation">About Us</p></br>
                         </a>
                     </div>
-                    <div class="col-8 col-12 position-relative text-end">
-                        <p class="fs-6 fw-bold position-absolute bottom-0 right-0 mb-0 mb-md-3" style="right: 0"> For all things anime, tech and games </p>
+                    <div class="col-md-8 col-12 d-flex flex-column text-end justify-content-between fw-bold">
+                        <div class="form-check form-switch mb-0">
+                            <input 
+                                class="form-check-input float-none" 
+                                type="checkbox" 
+                                id="dark-mode-switch"
+                                <?php if (isset($_COOKIE['site-theme']) && $_COOKIE['site-theme'] === "dark") echo "checked"; ?>
+                                onchange="toggleDarkMode();"
+                            >
+                            <label class="form-check-label ms-1" for="dark-mode-switch"><p>Dark Mode</p></label>
+                        </div>
+                        <p class="fs-6 mb-0 mb-md-3"> For all things anime, tech and games </p>
                     </div>
                 </div>
             </div>

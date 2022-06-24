@@ -110,7 +110,7 @@ body.dark {
   --text-color-header: #8A73F9;
   --text-color-header-expanded: #262626;
   --text-color-main: #FFFFFF;
-  --text-color-card: #262626;
+  --text-color-card: #FFFFFF;
   --text-color-footer: #262626;
   --text-highlight-footer: #FFFFFF;
   --background-color-header: #8A73F9;
@@ -228,7 +228,7 @@ input::-webkit-search-cancel-button {
   position: absolute;
   top: 0;
   right: 10%;
-  background: #E8D892;
+  background: #86D0E2;
   padding: 1em 0.5em 0em;
   border-radius: 0 0 1em 1em;
   min-width: 2.7em;
@@ -284,6 +284,14 @@ input::-webkit-search-cancel-button {
   border-color: grey;
 }
 
+a:not([href]) p, a:not([href]) {
+  opacity: 0.5;
+}
+
+a:not([href]) p::after, a:not([href])::after {
+  height: 0;
+}
+
 nav.navbar {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, var(--background-color-header)), color-stop(50%, var(--background-color-main)));
   background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
@@ -320,6 +328,21 @@ nav.navbar p > i {
 nav.navbar + div.menu-secondary--default {
   -webkit-transition: z-index 0.5s ease-in-out 0.5s;
   transition: z-index 0.5s ease-in-out 0.5s;
+}
+
+nav.navbar .form-switch {
+  font-size: 1.2rem;
+}
+
+nav.navbar .form-switch .form-check-input {
+  background-color: var(--text-color-header);
+  border-color: var(--text-color-header);
+  -webkit-transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+  transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+}
+
+nav.navbar .form-switch .form-check-input, nav.navbar .form-switch .form-check-input:checked, nav.navbar .form-switch .form-check-input:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%238A73F9'/%3e%3c/svg%3e");
 }
 
 nav.navbar[aria-expanded="true"] {
@@ -385,6 +408,11 @@ nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search:
 
 nav.navbar[aria-expanded="true"] .search-flipbox .search-container:hover input#search, nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search:focus, nav.navbar[aria-expanded="true"] .search-flipbox .search-container input#search:hover {
   border-bottom: 2px var(--text-color-header-expanded) solid;
+}
+
+nav.navbar[aria-expanded="true"] .form-switch .form-check-input {
+  background-color: var(--background-color-main);
+  border-color: var(--background-color-main);
 }
 
 nav.navbar div.container-fluid > div {
@@ -591,14 +619,6 @@ nav .search-flipbox .back {
   fill: var(--text-color-header-expanded);
 }
 
-a:not([href]) p, a:not([href]) {
-  opacity: 0.5;
-}
-
-a:not([href]) p::after, a:not([href])::after {
-  height: 0;
-}
-
 footer {
   background: var(--background-color-footer);
   -webkit-box-align: center;
@@ -638,10 +658,10 @@ footer div div.spacer {
 footer > a:after {
   content: "Login";
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.5rem;
   width: 0;
-  -webkit-transform: rotate(73deg) translate(-23px, 5px);
-          transform: rotate(73deg) translate(-23px, 5px);
+  -webkit-transform: rotate(71deg) translate(-30px, 3px);
+          transform: rotate(71deg) translate(-30px, 3px);
   visibility: hidden;
   opacity: 0;
   -webkit-transition: visibility 0s linear 0.3s, opacity 0.3s linear, font 0.05s linear;
@@ -656,7 +676,7 @@ footer > a:hover:after {
 }
 
 a.footerlogo > svg {
-  width: 90px;
+  width: 100px;
 }
 
 @media (max-width: 767px) {
@@ -671,20 +691,6 @@ a.footerlogo > svg path {
 
 a.footerlogo > svg:hover path {
   fill: var(--text-highlight-footer);
-}
-
-.form-switch .form-check-input {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%238A73F9'/%3e%3c/svg%3e");
-}
-
-.form-switch .form-check-input:checked {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%238A73F9'/%3e%3c/svg%3e");
-  background-color: var(--background-color-main);
-  border-color: var(--background-color-main);
-}
-
-.form-switch .form-check-input:focus {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%238A73F9'/%3e%3c/svg%3e");
 }
 
 #main-banner {
@@ -712,11 +718,8 @@ a.footerlogo > svg:hover path {
 }
 
 #main-banner .carousel-inner .carousel-item > div .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
-  /*&:hover {
-        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
-    }*/
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0) 50%);
 }
 
 #main-banner .carousel-inner .carousel-item > div .card .card-img-overlay p {
@@ -731,11 +734,8 @@ a.footerlogo > svg:hover path {
 
 @media (min-width: 768px) {
   #main-banner .carousel-inner .carousel-item > div .card .card-img-overlay:hover {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-gradient)), to(rgba(0, 0, 0, 0)));
-    background-image: linear-gradient(180deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 100%);
-    /*&:hover {
-        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
-    }*/
+    background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0)));
+    background-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0) 100%);
   }
 }
 
@@ -804,11 +804,8 @@ a.footerlogo > svg:hover path {
 }
 
 .content-list .card .card-img-overlay {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
-  /*&:hover {
-        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
-    }*/
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 50%);
 }
 
 .content-list .card .card-img-overlay p {
@@ -896,11 +893,8 @@ a.footerlogo > svg:hover path {
 
 .content-list .content-list--spotlight .card-img-overlay {
   border-radius: 0 !important;
-  background-image: -webkit-gradient(linear, left bottom, left top, from(var(--color-gradient)), color-stop(50%, rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(0deg, var(--color-gradient) 0%, rgba(0, 0, 0, 0) 50%);
-  /*&:hover {
-        background-image: linear-gradient($rotation, $color $start, rgba(0, 0, 0, 0) 100%);
-    }*/
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(50%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 50%);
 }
 
 .single .post.container a > p, .single .post.container a > span {

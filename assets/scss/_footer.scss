@@ -35,9 +35,9 @@ footer {
     & > a:after {
         content: "Login";
         display: inline-block;
-        font-size: 1rem;
+        font-size: 1.5rem;
         width: 0;
-        transform: rotate(73deg) translate(-23px,5px);
+        transform: rotate(71deg) translate(-30px,3px);
         visibility: hidden;
         opacity:0;
         transition: visibility 0s linear 0.3s, opacity 0.3s linear, font 0.05s linear;
@@ -50,7 +50,7 @@ footer {
 }
 
 a.footerlogo > svg {
-    width: 90px;
+    width: 100px;
 
     @media (max-width: $sm-breakpoint) {
         & {
@@ -64,22 +64,5 @@ a.footerlogo > svg {
 
     &:hover path {
         fill: var(--text-highlight-footer);
-    }
-}
-
-.form-switch {
-    .form-check-input {
-        $url: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{'%23' + str_slice(inspect($primary),2)}'/%3e%3c/svg%3e");
-        background-image: $url;
-
-        &:checked {
-            background-image: $url;
-            background-color: var(--background-color-main);
-            border-color: var(--background-color-main);
-        }
-        
-        &:focus {
-            background-image: $url;
-        }
     }
 }

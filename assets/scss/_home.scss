@@ -27,7 +27,7 @@ $banner_gap: 10px;
     
                 .card-img {
                     &-overlay {
-                        @include card-overlay-gradient(180deg, 0%, 50%, var(--color-gradient));
+                        @include card-overlay-gradient(180deg, 0%, 50%, black);
             
                         p {
                             margin-left: 0.5em;
@@ -40,7 +40,7 @@ $banner_gap: 10px;
                 @media (min-width: #{$sm-breakpoint + 1px}) {
                     & {
                         & .card-img-overlay:hover {
-                            @include card-overlay-gradient(180deg, 0%, 100%, var(--color-gradient));
+                            @include card-overlay-gradient(180deg, 0%, 100%, black);
                         }
                     }
                 }

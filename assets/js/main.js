@@ -53,7 +53,6 @@ const observer = new IntersectionObserver( ([e]) => (e.intersectionRatio < 1
 
 function pin_secondary_header(target) {
     if (!expanded) {
-        console.log("A")
         target.classList.remove("menu-secondary--default");
         target.classList.add("menu-secondary--pinned")
         document.querySelector('#logo').classList.add("opacity-0")
@@ -63,7 +62,6 @@ function pin_secondary_header(target) {
 
 function unpin_secondary_header(target) {
     if (!expanded) {
-        console.log("B")
         target.classList.remove("menu-secondary--pinned")
         target.classList.add("menu-secondary--default")
         document.querySelector('#logo').classList.remove("opacity-0")
