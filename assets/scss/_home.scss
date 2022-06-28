@@ -1,92 +1,56 @@
 $banner_gap: 10px;
 
 #main-banner {
-    width: calc(100vw + #{$banner_gap}) !important;
-    margin-left: -$banner_gap !important;
-    border-radius: 5em 5em 0 0;
-    overflow: hidden;
+    @media (min-width: #{$sm-breakpoint + 1}) {
+        margin-bottom: -1em;
 
-    @media (max-width: $sm-breakpoint) {
-        & {
-            width: 100vw !important;
-            border-radius: 0;
-            margin-left: 0 !important;
-
-            & > div {
-                margin-bottom: 0.5em;
+        .slick-list {
+            margin-left: -$banner_gap;
+            padding: 2% 0;
+    
+            .slick-slide {
+                margin-left: $banner_gap;
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+                transition: transform 0.1s ease-in-out 0s, border-radius 0.2s ease-in-out 0s;
+                
+                &:not(.slick-active) + .slick-active {
+                    border-radius: 5em 0 0 0;
+                    transform-origin: left;
+                }
+        
+                & + .slick-active + * + * + .slick-active {
+                    border-radius: 0 5em 0 0;
+                    transform-origin: right;
+                }
+    
+                &:hover {
+                    z-index: 2;
+                    transform: scale(1.1);
+                    border-radius: 0 !important;
+                }
             }
         }
     }
 
-    .carousel-inner {
-        .carousel-item > div {
-            .card {
-                margin-left: $banner_gap;
-                border: none;
-                aspect-ratio: 9/16;
-    
-                .card-img {
-                    &-overlay {
-                        @include card-overlay-gradient(180deg, 0%, 50%, black);
-            
-                        p {
-                            margin-left: 0.5em;
-                            margin-right: 0.5em;
-                            @include truncate-n-lines(10);
-                        }
-                    }
-                }
+    i[class^=bi-chevron-] {
+        opacity: 0.5;
+        z-index: 1;
 
-                @media (min-width: #{$sm-breakpoint + 1px}) {
-                    & {
-                        & .card-img-overlay:hover {
-                            @include card-overlay-gradient(180deg, 0%, 100%, black);
-                        }
-                    }
-                }
-            }
+        &:hover {
+            opacity: 1;
+            cursor: pointer;
         }
-    
-        & ~ a[class^=carousel-control-] {
-            width: 5%;
-        }
+    }
 
-        @media (max-width: $sm-breakpoint) {
-            & .carousel-item {
-                & > div {
-                    display: none;
-        
-                    &:first-child {
-                        display: block;
-                    }
+    .card {
+        aspect-ratio: 9/16;
 
-                    .card {
-                        margin-left: -1px;
-                        margin-right: -1px;
-                    }
-                } 
-            }
-    
-            & ~ a[class^=carousel-control-] {
-                display: none !important;
-            }
-        }
-        
-        @media (min-width: #{$sm-breakpoint + 1px}) {
-            & .carousel-item.active, .carousel-item-next, .carousel-item-prev {
-                display: flex;
-            }
-            
-            & .carousel-item-end.active, .carousel-item-next {
-                transform: translateX(25%);
-            }
-    
-            & .carousel-item-start.active, .carousel-item-prev {
-                transform: translateX(-25%);
-            }
-
-            & .carousel-item-end, .carousel-item-start {
-                transform: translateX(0);
+        .card-img {
+            &-overlay {
+                @include card-overlay-gradient(180deg, 0%, 50%, black);
+                p { @include truncate-n-lines(10); }
             }
         }
     }

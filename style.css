@@ -326,8 +326,8 @@ nav.navbar p > i {
 }
 
 nav.navbar + div.menu-secondary--default {
-  -webkit-transition: z-index 0.5s ease-in-out 0.5s;
-  transition: z-index 0.5s ease-in-out 0.5s;
+  -webkit-transition: z-index 0.3s ease-in-out 0s;
+  transition: z-index 0.3s ease-in-out 0s;
 }
 
 nav.navbar .form-switch {
@@ -693,90 +693,67 @@ a.footerlogo > svg:hover path {
   fill: var(--text-highlight-footer);
 }
 
-#main-banner {
-  width: calc(100vw + 10px) !important;
-  margin-left: -10px !important;
-  border-radius: 5em 5em 0 0;
-  overflow: hidden;
-}
-
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   #main-banner {
-    width: 100vw !important;
-    border-radius: 0;
-    margin-left: 0 !important;
+    margin-bottom: -1em;
   }
-  #main-banner > div {
-    margin-bottom: 0.5em;
+  #main-banner .slick-list {
+    margin-left: -10px;
+    padding: 2% 0;
+  }
+  #main-banner .slick-list .slick-slide {
+    margin-left: 10px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    -webkit-transition: border-radius 0.2s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
+    transition: border-radius 0.2s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
+    transition: transform 0.1s ease-in-out 0s, border-radius 0.2s ease-in-out 0s;
+    transition: transform 0.1s ease-in-out 0s, border-radius 0.2s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
+  }
+  #main-banner .slick-list .slick-slide:not(.slick-active) + .slick-active {
+    border-radius: 5em 0 0 0;
+    -webkit-transform-origin: left;
+            transform-origin: left;
+  }
+  #main-banner .slick-list .slick-slide + .slick-active + * + * + .slick-active {
+    border-radius: 0 5em 0 0;
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  #main-banner .slick-list .slick-slide:hover {
+    z-index: 2;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    border-radius: 0 !important;
   }
 }
 
-#main-banner .carousel-inner .carousel-item > div .card {
-  margin-left: 10px;
-  border: none;
+#main-banner i[class^=bi-chevron-] {
+  opacity: 0.5;
+  z-index: 1;
+}
+
+#main-banner i[class^=bi-chevron-]:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+#main-banner .card {
   aspect-ratio: 9/16;
 }
 
-#main-banner .carousel-inner .carousel-item > div .card .card-img-overlay {
+#main-banner .card .card-img-overlay {
   background-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(0, 0, 0, 0)));
   background-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0) 50%);
 }
 
-#main-banner .carousel-inner .carousel-item > div .card .card-img-overlay p {
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+#main-banner .card .card-img-overlay p {
   text-overflow: ellipsis;
   -webkit-line-clamp: 10;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  #main-banner .carousel-inner .carousel-item > div .card .card-img-overlay:hover {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0)));
-    background-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0) 100%);
-  }
-}
-
-#main-banner .carousel-inner ~ a[class^=carousel-control-] {
-  width: 5%;
-}
-
-@media (max-width: 767px) {
-  #main-banner .carousel-inner .carousel-item > div {
-    display: none;
-  }
-  #main-banner .carousel-inner .carousel-item > div:first-child {
-    display: block;
-  }
-  #main-banner .carousel-inner .carousel-item > div .card {
-    margin-left: -1px;
-    margin-right: -1px;
-  }
-  #main-banner .carousel-inner ~ a[class^=carousel-control-] {
-    display: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  #main-banner .carousel-inner .carousel-item.active, #main-banner .carousel-inner .carousel-item-next, #main-banner .carousel-inner .carousel-item-prev {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  #main-banner .carousel-inner .carousel-item-end.active, #main-banner .carousel-inner .carousel-item-next {
-    -webkit-transform: translateX(25%);
-            transform: translateX(25%);
-  }
-  #main-banner .carousel-inner .carousel-item-start.active, #main-banner .carousel-inner .carousel-item-prev {
-    -webkit-transform: translateX(-25%);
-            transform: translateX(-25%);
-  }
-  #main-banner .carousel-inner .carousel-item-end, #main-banner .carousel-inner .carousel-item-start {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
 }
 
 .content-list .card {

@@ -5,18 +5,20 @@ var expanded = false;
 
 // initialize home page carousel banner (that pauses on mobile)
 
-if (document.body.classList.contains('home')) {
-    document.querySelectorAll('.carousel .carousel-item').forEach((el) => {
-        const minPerSlide = 4
-        let next = el.nextElementSibling
-        for (var i = 1; i < minPerSlide; i++) {
-            if (!next) next = document.querySelectorAll('.carousel .carousel-item')[0]
-            let cloneChild = next.cloneNode(true)
-            el.appendChild(cloneChild.children[0])
-            next = next.nextElementSibling
-        }
-    })
-}
+const sharedClasses = 'position-absolute top-50 translate-middle text-white display-6 d-none d-md-block';
+jQuery('#main-banner').slick({
+    slidesToShow: 4,
+    //autoplay: true,
+    autoplaySpeed: 3000,
+    prevArrow: '<i class="bi-chevron-left ' + sharedClasses + '" style="left: 0.75em;"></i>',
+    nextArrow: '<i class="bi-chevron-right end-0 ' + sharedClasses + '"></i>',
+    responsive: [{
+        breakpoint: 768,
+        settings: {
+            slidesToShow: 1,
+        }    
+    }]
+});
 
 // function for handling opening and closing of navbar menu
 
@@ -40,7 +42,7 @@ function expandNavbar() {
         }
     }
 
-    setTimeout(() => {if (expanded && !alreadyRun) expanded = false}, 500);
+    setTimeout(() => {if (expanded && !alreadyRun) expanded = false}, 300);
 }
 
 // create correct header for page

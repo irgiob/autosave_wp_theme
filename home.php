@@ -1,33 +1,21 @@
 <?php get_header(); ?>
 
-<div id="main-banner" class="carousel slide mb-1 mb-md-3 my-md-4" data-bs-ride="carousel">
-    <div class="carousel-inner" role="listbox">
-        <?php 
-        $first_post = true;
-        while (have_posts()): ?>
-            <?php the_post(); ?>
-            <div class="carousel-item <?php if($first_post){ echo "active"; $first_post = false;}?>">
-                <div class="col-md-3">
-                    <a href="<?php the_permalink(); ?>">
-                        <div class="card">
-                            <div class="card-img overflow-hidden h-100">
-                                <img src="<?php the_post_thumbnail_url('thumbnail-portrait'); ?>">
-                            </div>
-                            <div class="card-img-overlay">
-                                <p><?php the_title(); ?></p>
-                            </div>
-                        </div>
-                    </a>
+<div id="main-banner">
+    <?php
+    $first_post = true;
+    while (have_posts()):
+        the_post(); ?>
+        <a href="<?php the_permalink(); ?>">
+            <div class="card">
+                <div class="card-img overflow-hidden h-100">
+                    <img src="<?php the_post_thumbnail_url('thumbnail-portrait'); ?>">
+                </div>
+                <div class="card-img-overlay">
+                    <p class="mx-2"><?php the_title(); ?></p>
                 </div>
             </div>
-        <?php endwhile; wp_reset_postdata(); ?>
-    </div>
-    <a class="carousel-control-prev bg-transparent" href="#main-banner" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </a>
-    <a class="carousel-control-next bg-transparent" href="#main-banner" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </a>
+        </a>
+    <?php endwhile; wp_reset_postdata(); ?>
 </div>
 
 <?php 
