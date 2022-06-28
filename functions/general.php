@@ -9,11 +9,13 @@ add_image_size('thumbnail-landscape', 600, 400, true);
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . "/assets/css/bootstrap.min.css" );
     wp_enqueue_style( 'bootstrap-icons', get_template_directory_uri() . "/assets/css/bootstrap-icons/bootstrap-icons.css" );
+    wp_enqueue_style( 'slick', get_template_directory_uri() . "/assets/css/slick.css" );
     wp_enqueue_style( 'style', get_stylesheet_uri() );
 
     wp_enqueue_script('jquery', get_template_directory_uri() . "/assets/js/vendor/jquery-3.6.0.min.js", NULL, '1.0', true);
     wp_enqueue_script('bootstrap', get_template_directory_uri() . "/assets/js/bootstrap.bundle.min.js", NULL, '1.0', true);
-    wp_enqueue_script('main', get_template_directory_uri() . "/assets/js/main.js", NULL, '1.0', true);
+    wp_enqueue_script('slick', get_template_directory_uri() . "/assets/js/slick.min.js", ['jquery'], '1.0', true);
+    wp_enqueue_script('main', get_template_directory_uri() . "/assets/js/main.js", ['jquery'], '1.0', true);
 });
 
 // add theme as body class
