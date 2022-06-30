@@ -1,5 +1,11 @@
 <?php
 define("primary_color", "#8A73F9");
+define("required_plugins", [
+    ["name" => "Advanced Custom Fields", "slug" => "advanced-custom-fields", "file" => "acf"],
+    ["name" => "Crop Thumbnails", "slug" => "crop-thumbnails"],
+    ["name" => "Require Featured Image", "slug" => "require-featured-image"],
+    ["name" => "Require Post Category", "slug" => "require-post-category"]
+]); 
 
 // change admin page titles
 function my_admin_title($admin_title, $title) {
@@ -50,6 +56,23 @@ add_action('wp_before_admin_bar_render', function(){ ?>
         }
     </style>
 <?php });
+
+add_action('admin_enqueue_scripts', function(){ ?>
+    <style type="text/css">
+        :root {
+            --wp-admin-theme-color: <?php echo constant('primary_color'); ?> !important;
+        }
+        #editor .edit-post-header > div > a{
+            color: transparent ;
+            background-image: <?php echo get_encoded_logo(constant('primary_color'), false); ?> !important;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: 50%;
+        }
+    </style>
+<?php });
+
+add_action( 'admin_init', function() {add_thickbox();});
 
 // add styling to login
 add_action( 'login_enqueue_scripts', function() { ?>
@@ -104,3 +127,25 @@ function wpse_edit_text($content) {
 }
 
 add_action( 'admin_init', 'wpse_edit_footer' );
+
+// ensures required plugins are installed and active
+function wpb_admin_notice_warn() {
+    $msg = "";
+    foreach(constant('required_plugins') as $plugin) {
+        $plugin_path = $plugin['slug'] . "/" . (key_exists('file', $plugin) ? $plugin['file'] : $plugin['slug']) . '.php';
+        $plugin_url = add_query_arg(
+            ['tab' => 'plugin-information', 'plugin' => $plugin['slug'], 'TB_iframe' => "true"],
+            admin_url( 'plugin-install.php' )
+        );
+        if (!is_plugin_active($plugin_path)) 
+            $msg .= "• <a class='thickbox open-plugin-details-modal' href='$plugin_url'>$plugin[name]</a><br/>";
+    }
+    if ($msg) $msg = "WARNING: the following plugins are MANDATORY for this site and need to be installed<br/>" . $msg;
+    if ($msg)
+        echo <<<HTML
+        <div class="notice notice-error">
+            <p>$msg</p>
+        </div>
+        HTML;
+}
+add_action( 'admin_notices', 'wpb_admin_notice_warn' );

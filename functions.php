@@ -1,9 +1,10 @@
 <?php
 
 $roots_includes = array(
+    'general',
     'logo',
     'admin',
-    'general'
+    'custom_fields',
 );
   
 foreach($roots_includes as $file){
