@@ -1,12 +1,4 @@
 <?php
-define("primary_color", "#8A73F9");
-define("required_plugins", [
-    ["name" => "Advanced Custom Fields", "slug" => "advanced-custom-fields", "file" => "acf"],
-    ["name" => "Crop Thumbnails", "slug" => "crop-thumbnails"],
-    ["name" => "Require Featured Image", "slug" => "require-featured-image"],
-    ["name" => "Require Post Category", "slug" => "require-post-category"]
-]); 
-
 // change admin page titles
 function my_admin_title($admin_title, $title) {
     return $title.' - '.get_bloginfo('name');
@@ -14,18 +6,20 @@ function my_admin_title($admin_title, $title) {
 add_filter('admin_title', 'my_admin_title', 10, 2);
 add_filter('login_title', 'my_admin_title', 10, 2);
 
-// change admin pages color scheme to autosave theme
-function autosave_admin_color_scheme_admin_color_scheme() {
-    //Get the theme directory
-    $theme_dir = get_template_directory_uri() . "/assets/css/";
-  
-    //Autosave Color Scheme
+// run on admin init
+function on_admint_init() {
+    // register custom color scheme
     wp_admin_css_color( 'autosave-admin-color-scheme', __( 'Autosave Admin Color Scheme' ),
-      $theme_dir . 'autosave-admin-color-scheme.css',
-      array( '#262626', '#8a73f9', '#86d0e2' , '#e8d892')
+        get_template_directory_uri() . '/assets/css/autosave-admin-color-scheme.css',
+        array( '#262626', '#8a73f9', '#86d0e2' , '#e8d892')
     );
+
+    // remove footer content and add thickbox
+    add_thickbox();
 }
-add_action('admin_init', 'autosave_admin_color_scheme_admin_color_scheme');
+add_action('admin_init', 'on_admint_init');
+
+// enable custom colorscheme and disable option to choose
 function update_user_option_admin_color( $color_scheme ) {
     $color_scheme = 'autosave-admin-color-scheme';
     return $color_scheme;
@@ -44,9 +38,22 @@ function example_admin_bar_remove_logo() {
 }
 add_action( 'wp_before_admin_bar_render', 'example_admin_bar_remove_logo', 0 );
 
-// add autosave logo to admin bar
-add_action('wp_before_admin_bar_render', function(){ ?>
+// add custom styles to all admin pages
+add_action('admin_enqueue_scripts', function(){ ?>
     <style type="text/css">
+        :root {
+            --wp-admin-theme-color: <?php echo constant('primary_color'); ?> !important;
+        }
+        #wpfooter {
+            display: none;
+        }
+        #editor .edit-post-header > div > a{
+            color: transparent ;
+            background-image: <?php echo get_encoded_logo(constant('primary_color'), false); ?> !important;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: 50%;
+        }
         #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
             background-image: <?php echo get_encoded_logo('#FFFFFF', false); ?> !important;
             background-repeat: no-repeat;
@@ -57,24 +64,7 @@ add_action('wp_before_admin_bar_render', function(){ ?>
     </style>
 <?php });
 
-add_action('admin_enqueue_scripts', function(){ ?>
-    <style type="text/css">
-        :root {
-            --wp-admin-theme-color: <?php echo constant('primary_color'); ?> !important;
-        }
-        #editor .edit-post-header > div > a{
-            color: transparent ;
-            background-image: <?php echo get_encoded_logo(constant('primary_color'), false); ?> !important;
-            background-repeat: no-repeat;
-            background-position: 50%;
-            background-size: 50%;
-        }
-    </style>
-<?php });
-
-add_action( 'admin_init', function() {add_thickbox();});
-
-// add styling to login
+// add custom styles to login page
 add_action( 'login_enqueue_scripts', function() { ?>
     <style type="text/css">
         #login {
@@ -84,7 +74,7 @@ add_action( 'login_enqueue_scripts', function() { ?>
             background-repeat: no-repeat;
             background-image: <?php echo get_encoded_logo(constant('primary_color'), false); ?>;
         }
-        #login input:focus, #login .button:focus {
+        #login input:focus, #login .button:focus, #login h1 a:focus {
             border-color: <?php echo constant('primary_color'); ?>;
             box-shadow: 0 0 0 1px <?php echo constant('primary_color'); ?>;
         }
@@ -104,6 +94,7 @@ add_action( 'login_enqueue_scripts', function() { ?>
     </style>
 <?php });
 add_filter( 'login_headerurl', function() {return home_url();} );
+add_filter( 'login_headertitle', function() {return get_option('blogname');} );
 
 // remove comments for non-admin users (can be disbaled if want to enable user comments in the future);
 add_action('admin_menu', function() {
@@ -116,17 +107,6 @@ add_action('wp_before_admin_bar_render', function() {
     global $wp_admin_bar; 
     if (!current_user_can('manage_options')) $wp_admin_bar->remove_menu('comments');
 });
-
-// remove admin footer contents
-function wpse_edit_footer() {
-    add_filter( 'admin_footer_text', 'wpse_edit_text', 11 );
-}
-
-function wpse_edit_text($content) {
-    return "";
-}
-
-add_action( 'admin_init', 'wpse_edit_footer' );
 
 // ensures required plugins are installed and active
 function wpb_admin_notice_warn() {

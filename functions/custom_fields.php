@@ -1,21 +1,5 @@
 <?php
 
-// define categories
-function add_categories() {
-    $categories = [
-        'Anime',
-        'Review',
-        'Technology',
-        'Video Games',
-        'Zine',
-        'Podcast'
-    ];
-    foreach($categories as $category)
-        if(!term_exists( $category, 'category'))
-            wp_insert_term($category, 'category', ['slug' => sanitize_title($category)]);
-}
-add_action( 'after_switch_theme', 'add_categories' );
-
 if( function_exists('acf_add_local_field_group') ):
 
     // define rating field
