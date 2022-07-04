@@ -19,14 +19,11 @@ if (!has_category('zine')): ?>
 
         <?php // adds spotify podcast embed if post type is podcast
         if (has_category('podcast') && get_field('spotify_episode_uri')): ?>
-            <div id="spotify-embed"></div>
-            <script>
-                jQuery('#spotify-embed').replaceWith(`<iframe 
-                    src="https://open.spotify.com/embed/episode/<?php echo get_field('spotify_episode_uri'); ?>?utm_source=generator" 
-                    style="border-radius:12px" width="100%" height="232" frameBorder="0" 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                ></iframe>`)
-            </script>
+            <iframe 
+                src="https://open.spotify.com/embed/episode/<?php echo get_field('spotify_episode_uri'); ?>?utm_source=generator" 
+                style="border-radius:12px" width="100%" height="232" frameBorder="0" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            ></iframe>
         <?php endif; ?>
 
         <?php // displays post content ?>
