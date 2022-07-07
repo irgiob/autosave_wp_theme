@@ -1,17 +1,5 @@
 <?php
-
-$roots_includes = array(
-    'general',
-    'logo',
-    'admin',
-    'custom_fields',
-);
-  
-foreach($roots_includes as $file){
-    if(!$filepath = locate_template("/functions/" . $file . '.php')) {
-      trigger_error("Error locating `$file` for inclusion!", E_USER_ERROR);
-    }
-  
-    require_once $filepath;
-}
-unset($file, $filepath);
+// requires all php files located in the functions folder
+$directory = "/functions/";
+$files = array_filter(scandir(get_template_directory() . $directory), fn($x) => str_ends_with($x, '.php'));
+foreach($files as $file) require_once locate_template($directory . $file);

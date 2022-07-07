@@ -7,6 +7,23 @@
     <?php wp_head(); ?>
 </head>
 
+<?php 
+    $nav_items = [
+        "primary" => [
+            "Anime" => get_category_link(get_cat_ID('anime')),
+            "Tech" => get_category_link(get_cat_ID('technology')),
+            "Games" => get_category_link(get_cat_ID('video games')),
+            "Zine" => ""
+        ],
+        "secondary" => [
+            "Podcast" => "",
+            "Shop" => "",
+            "Instagram" => "https://www.instagram.com/autosavemedia/' target='_blank'",
+            "About Us" => ""
+        ]
+    ]
+?>
+
 <body <?php body_class(); ?>>
     <div id="overlay"onclick="if(overlay.classList.contains('open')) {expandNavbar();}" ></div>
 
@@ -26,7 +43,9 @@
                     <?php get_search_form(); ?>
                 </div>
                 <div class="back">
-                    <a class="hover-logo-animation d-block" href="<?php echo get_home_url(); ?>"><?php echo get_logo("", true); ?></a>
+                    <a class="hover-logo-animation d-block" href="<?php echo get_home_url(); ?>">
+                        <?php echo get_logo("", true); ?>
+                    </a>
                 </div>
             </div>
             <div class="text-end d-inline d-md-none">
@@ -38,34 +57,15 @@
         <div class="collapse w-100 top-100" id="navbar-expanded">
             <div class="p-4">
                 <div class="row">
-                    <div class="col-md-2 col-12 fs-1">
-                        <a href="<?php echo get_category_link(get_cat_ID('anime')); ?>">
-                            <p class="fw-bold hover-underline-animation">Anime</p></br>
-                        </a>
-                        <a href="<?php echo get_category_link(get_cat_ID('technology')); ?>">
-                            <p class="fw-bold hover-underline-animation">Tech</p></br>
-                        </a>
-                        <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>">
-                            <p class="fw-bold hover-underline-animation">Games</p></br>
-                        </a>
-                        <a>
-                            <p class="fw-bold hover-underline-animation">Zine</p></br>
-                        </a>
-                    </div>
-                    <div class="col-md-2 col-12 fs-1 mb-4 mb-md-0">
-                        <a>
-                            <p class="fw-bold hover-underline-animation">Podcast</p></br>
-                        </a>
-                        <a>
-                            <p class="fw-bold hover-underline-animation">Shop</p></br>
-                        </a>
-                        <a href="https://www.instagram.com/autosavemedia/" target="_blank">
-                            <p class="fw-bold hover-underline-animation">Instagram</p></br>
-                        </a>
-                        <a>
-                            <p class="fw-bold hover-underline-animation">About Us</p></br>
-                        </a>
-                    </div>
+                    <?php foreach($nav_items as $col): ?>
+                        <div class="col-md-2 col-12 fs-1">
+                            <?php foreach($col as $title => $link): ?>
+                                <a <?php if ($link) echo "href='$link'"; ?>>
+                                    <p class="fw-bold hover-underline-animation"><?php echo $title; ?></p></br>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    <? endforeach; ?>
                     <div class="col-md-8 col-12 d-flex flex-column text-end justify-content-between fw-bold">
                         <div class="form-check form-switch mb-0">
                             <input 
@@ -87,10 +87,11 @@
     <!-- secondary menu that collapses onto the main header menu-->
     <div class="menu-secondary menu-secondary--default w-50 mx-auto d-none d-md-block">
         <div class="front d-flex justify-content-between fw-bold ">
-            <a href="<?php echo get_category_link(get_cat_ID('anime')); ?>"><p class="hover-underline-animation-sm">Anime</p></a>
-            <a href="<?php echo get_category_link(get_cat_ID('technology')); ?>"><p class="hover-underline-animation-sm">Tech</p></a>
-            <a href="<?php echo get_category_link(get_cat_ID('video games')); ?>"><p class="hover-underline-animation-sm">Games</p></a>
-            <a><p class="hover-underline-animation-sm">Zine</p></a>
+            <?php foreach($nav_items['primary'] as $title => $link): ?>
+                <a <?php if ($link) echo "href='$link'"; ?>>
+                    <p class="hover-underline-animation-sm"><?php echo $title; ?></p>
+                </a>
+            <?php endforeach; ?>
         </div>
         <div class="back mx-auto start-0 end-0">
             <a class="hover-logo-animation" href="<?php echo get_home_url(); ?>">
