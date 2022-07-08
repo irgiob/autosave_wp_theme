@@ -151,10 +151,6 @@ input::-webkit-search-cancel-button {
         transition: transform 0.1s ease-in-out 0s;
     }
 
-    &:hover::after {
-        transform: scaleX(1.5) translateY(0.25em);
-    }
-
     &--header{
         @extend .right-arrow-extension;
 

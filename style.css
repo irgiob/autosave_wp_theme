@@ -268,11 +268,6 @@ input::-webkit-search-cancel-button {
   transition: transform 0.1s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
 }
 
-.right-arrow-extension:hover::after, .right-arrow-extension--header:hover::after {
-  -webkit-transform: scaleX(1.5) translateY(0.25em);
-          transform: scaleX(1.5) translateY(0.25em);
-}
-
 .right-arrow-extension--header::after {
   height: 1.8rem;
   width: 5rem;
