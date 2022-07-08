@@ -8,20 +8,19 @@
 </head>
 
 <?php 
-    $nav_items = [
-        "primary" => [
-            "Anime" => get_category_link(get_cat_ID('anime')),
-            "Tech" => get_category_link(get_cat_ID('technology')),
-            "Games" => get_category_link(get_cat_ID('video games')),
-            "Zine" => ""
-        ],
-        "secondary" => [
-            "Podcast" => "",
-            "Shop" => "",
-            "Instagram" => "https://www.instagram.com/autosavemedia/' target='_blank'",
-            "About Us" => ""
-        ]
-    ]
+    $nav_items_all = [
+        "Anime" => get_category_link(get_cat_ID('anime')),
+        "Tech" => get_category_link(get_cat_ID('technology')),
+        "Games" => get_category_link(get_cat_ID('video games')),
+        "Zine" => "",
+        "Podcast" => "",
+    ];
+    $nav_items_extra = [
+        "Shop" => "",
+        "Instagram" => "https://www.instagram.com/autosavemedia/' target='_blank'",
+        "About Us" => ""
+    ];
+    $menu_col_len = 4;
 ?>
 
 <body <?php body_class(); ?>>
@@ -57,14 +56,14 @@
         <div class="collapse w-100 top-100" id="navbar-expanded">
             <div class="p-4">
                 <div class="row">
-                    <?php foreach($nav_items as $col): ?>
-                        <div class="col-md-2 col-12 fs-1">
-                            <?php foreach($col as $title => $link): ?>
-                                <a <?php if ($link) echo "href='$link'"; ?>>
-                                    <p class="fw-bold hover-underline-animation"><?php echo $title; ?></p></br>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
+                    <?php $index = 0;
+                    foreach(array_merge($nav_items_all, $nav_items_extra) as $title => $link): ?>
+                        <?php if ($index % $menu_col_len == 0): ?><div class="col-md-2 col-12 fs-1"><? endif; ?>
+                            <a <?php if ($link) echo "href='$link'"; ?>>
+                                <p class="fw-bold hover-underline-animation"><?php echo $title; ?></p></br>
+                            </a>
+                        <?php if ($index % $menu_col_len == $menu_col_len - 1): ?></div><? endif; 
+                        $index++; ?>
                     <? endforeach; ?>
                     <div class="col-md-8 col-12 d-flex flex-column text-end justify-content-between fw-bold">
                         <div class="form-check form-switch mb-0">
@@ -87,7 +86,7 @@
     <!-- secondary menu that collapses onto the main header menu-->
     <div class="menu-secondary menu-secondary--default w-50 mx-auto d-none d-md-block">
         <div class="front d-flex justify-content-between fw-bold ">
-            <?php foreach($nav_items['primary'] as $title => $link): ?>
+            <?php foreach($nav_items_all as $title => $link): ?>
                 <a <?php if ($link) echo "href='$link'"; ?>>
                     <p class="hover-underline-animation-sm"><?php echo $title; ?></p>
                 </a>
