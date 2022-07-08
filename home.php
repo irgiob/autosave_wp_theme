@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="main-banner" class="mb-3 mb-md-0">
+<div id="main-banner" class="mb-3 my-0 my-md-4">
     <?php
     $first_post = true;
     while (have_posts()):

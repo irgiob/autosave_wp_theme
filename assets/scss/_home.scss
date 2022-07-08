@@ -2,27 +2,20 @@ $banner_gap: 10px;
 
 #main-banner {
     @media (min-width: #{$sm-breakpoint + 1}) {
-        margin-bottom: -1em;
-
         .slick-list {
             margin-left: -$banner_gap;
-            padding: 2% 0;
     
             .slick-slide {
                 margin-left: $banner_gap;
-                position: relative;
-                z-index: 1;
                 overflow: hidden;
-                transition: transform 0.1s ease-in-out 0s, border-radius 0.2s ease-in-out 0s;
+                transition: border-radius 0.2s ease-in-out 0s;
                 
                 &:not(.slick-active) + .slick-active {
                     border-radius: 5em 0 0 0;
-                    transform-origin: left;
                 }
         
                 & + .slick-active + * + * + .slick-active {
                     border-radius: 0 5em 0 0;
-                    transform-origin: right;
                 }
             }
         }

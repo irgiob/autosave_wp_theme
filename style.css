@@ -694,32 +694,20 @@ a.footerlogo > svg:hover path {
 }
 
 @media (min-width: 768px) {
-  #main-banner {
-    margin-bottom: -1em;
-  }
   #main-banner .slick-list {
     margin-left: -10px;
-    padding: 2% 0;
   }
   #main-banner .slick-list .slick-slide {
     margin-left: 10px;
-    position: relative;
-    z-index: 1;
     overflow: hidden;
-    -webkit-transition: border-radius 0.2s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
-    transition: border-radius 0.2s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
-    transition: transform 0.1s ease-in-out 0s, border-radius 0.2s ease-in-out 0s;
-    transition: transform 0.1s ease-in-out 0s, border-radius 0.2s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
+    -webkit-transition: border-radius 0.2s ease-in-out 0s;
+    transition: border-radius 0.2s ease-in-out 0s;
   }
   #main-banner .slick-list .slick-slide:not(.slick-active) + .slick-active {
     border-radius: 5em 0 0 0;
-    -webkit-transform-origin: left;
-            transform-origin: left;
   }
   #main-banner .slick-list .slick-slide + .slick-active + * + * + .slick-active {
     border-radius: 0 5em 0 0;
-    -webkit-transform-origin: right;
-            transform-origin: right;
   }
 }
 
