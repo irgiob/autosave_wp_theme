@@ -11,7 +11,7 @@
                     <img src="<?php the_post_thumbnail_url('thumbnail-portrait'); ?>">
                 </div>
                 <div class="card-img-overlay">
-                    <p class="mx-2"><?php the_title(); ?></p>
+                    <p class="mx-3 fs-4"><?php the_title(); ?></p>
                 </div>
             </div>
         </a>

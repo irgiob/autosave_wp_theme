@@ -721,12 +721,6 @@ a.footerlogo > svg:hover path {
     -webkit-transform-origin: right;
             transform-origin: right;
   }
-  #main-banner .slick-list .slick-slide:hover {
-    z-index: 2;
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-    border-radius: 0 !important;
-  }
 }
 
 #main-banner i[class^=bi-chevron-] {
@@ -754,6 +748,11 @@ a.footerlogo > svg:hover path {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+#main-banner .card .card-img-overlay:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .content-list .card {

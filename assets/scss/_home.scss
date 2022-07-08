@@ -24,12 +24,6 @@ $banner_gap: 10px;
                     border-radius: 0 5em 0 0;
                     transform-origin: right;
                 }
-    
-                &:hover {
-                    z-index: 2;
-                    transform: scale(1.1);
-                    border-radius: 0 !important;
-                }
             }
         }
     }
@@ -51,6 +45,10 @@ $banner_gap: 10px;
             &-overlay {
                 @include card-overlay-gradient(180deg, 0%, 50%, black);
                 p { @include truncate-n-lines(10); }
+
+                &:hover {
+                    @include card-overlay-gradient(180deg, 0%, 100%, black);
+                }
             }
         }
     }
