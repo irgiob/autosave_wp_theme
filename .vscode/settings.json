@@ -12,7 +12,7 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/"
+            "savePath": "/../autosave_wp_theme"
         }
     ],
 
@@ -22,6 +22,6 @@
     "intelephense.environment.includePaths": [".vscode/acf-pro-stubs"],
 
     "liveSassCompile.settings.includeItems": [
-        "assets/scss/style.scss",
+        "/assets/scss/style.scss",
     ]
 }
