@@ -20,10 +20,10 @@
 
 <?php 
 // for each category get latest posts and display them using the content list template
-$categories = get_categories(['orderby' => 'name', 'order' => 'ASC', 'parent' => 0]);
-$categories = array_filter($categories, fn($i) => !in_array($i->slug, ["uncategorized", "review", "zine", "podcast"]));
 $n_posts = 5;
-foreach($categories as $category) {
+$categories = [/*'zine',*/ 'anime', 'technology', 'video games'];
+foreach($categories as $cat_slug) {
+    $category = get_category_by_slug($cat_slug);
     $query = new WP_Query(array('cat' => $category->cat_ID, 'posts_per_page' => $n_posts));
     get_template_part('template-parts/content','list',[
         'list-title' => $category->name,
