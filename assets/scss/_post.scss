@@ -1,19 +1,16 @@
+/**
+ * _post.scss
+ *
+ * define styles used on post pages
+ */
+
 .single .post.container{
-    a > p, a > span{
+    a {
         color: var(--text-color-header);
-        font-weight: bold;
 
         &::after {
             background-color: var(--text-color-header);
         }
-    }
-
-    * {
-        color: var(--text-color-main);
-    }
-
-    h1 {
-        font-weight: bold;
     }
 
     img {

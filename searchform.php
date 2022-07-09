@@ -1,3 +1,10 @@
+<?php
+/**
+ * searchform.php
+ * 
+ * template for the search form
+ */
+?>
 <div class="search-container">
     <form role="search" method="get" class="search-form" action="<?php echo get_home_url(); ?>">
         <i class="bi-search mx-1 position-absolute"></i>

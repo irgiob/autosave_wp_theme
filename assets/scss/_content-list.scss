@@ -1,10 +1,18 @@
+/**
+ * _content_list.scss
+ *
+ * defines styles used for the content list template block
+ */
+
 .content-list {
     .card {
         aspect-ratio: 4/3;
 
         @media (max-width: $sm-breakpoint) {
-            &, &-img, &-img-overlay {
-                border-radius: 10px !important;
+            &, 
+            &-img, 
+            &-img-overlay {
+                border-radius: 10px;
             }
         }
 
@@ -20,7 +28,6 @@
         }
 
         .card-img {
-
             &-overlay {
                 @include card-overlay-gradient(0deg, 0%, 50%, black);
 
@@ -34,48 +41,33 @@
         }
 
         & + p {
-            margin: 0.3em 0.5em 0;
             color: var(--text-color-main);
+            margin: 0.3em 0.5em 0;
             font-size: 0.8rem;
             font-weight: 500;
             @include truncate-n-lines(2);
         }
     }
 
-    & > div:first-child {
-        h1 {
-            font-weight: bold;
-            color: var(--text-color-main);
-            margin-left: 0.25em;
-            margin-right: 0.25em;
-        }
-    }
-
-    & &--articles {
-        &.row, .row {
-            --bs-gutter-x: 0.5em;
-            --bs-gutter-y: 0.5em;
-        }
-
-        & + p {
-            margin: 0.75em 1.5em -0.25em;
-            color: var(--text-color-main);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
+    .row {
+        --bs-gutter-x: 0.5em;
+        --bs-gutter-y: 0.5em;
 
         @media (max-width: $sm-breakpoint) {
-            &.row {
+            & {
                 --bs-gutter-x: 1em;
             }
         }
     }
 
+    & &--articles + p {
+        margin: 0.75em 1.5em -0.25em;
+        font-size: 1.2rem;
+    }
+
     & &--spotlight {
-        color: var(--text-color-main);
 
         h1 {
-            font-weight: bold;
             @include truncate-n-lines(2);
         }
 
@@ -84,8 +76,6 @@
         }
 
         .read-more-button {
-            font-weight: bold;
-            text-align: right;
             color: var(--text-color-header);
 
             & > p {
@@ -103,15 +93,49 @@
 
         .card {
             &-img {
-                &, img {
-                    border-radius: 0 !important;
-                }
+                border-radius: 0 !important;
 
                 &-overlay {
                     border-radius: 0 !important;
                     @include card-overlay-gradient(0deg, 0%, 50%, black)
                 }
             }
+        }
+    }
+
+    // adds an arrow to the right of an element
+    .right-arrow-extension {
+        &::after {
+            display: inline-block;
+            content: '';
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 86.68 33.59'%3E%3Cdefs%3E%3Cstyle%3E*%7Bfill:none;stroke:%23000000;stroke-width:3.3px;%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Cline stroke-miterlimit='10' y1='17.08' x2='83' y2='17.08'/%3E%3Cpolyline stroke-linejoin='bevel' points='64.74 32.32 85.75 16.79 64.74 1.26'/%3E%3C/g%3E%3C/svg%3E");
+            mask-size: cover;
+            background-color: var(--text-color-main);
+            height: 1.2rem;
+            width: 3rem;
+            margin-left: 0.5em;
+            transform: scaleX(1.2) translateY(0.25em);
+            transform-origin: left;
+            transition: transform 0.1s ease-in-out 0s;
+        }
+    
+        // a larger variant of the arrow extension used for headers
+        &--header{
+            @extend .right-arrow-extension;
+    
+            &::after {
+                height: 1.8rem;
+                width: 5rem;
+                margin-left: 1em;
+    
+                @media (max-width: $sm-breakpoint) {
+                    & {
+                        height: 1.5rem;
+                        width: 4rem;
+                        margin-left: 0.5em;
+                    }
+                }
+            }   
         }
     }
 }

@@ -1,3 +1,11 @@
+<?php 
+/**
+ * header.php
+ * 
+ * contains header elements that are place at the top of every page
+ */
+?>
+
 <!doctype html>
 <html lang="en">
 

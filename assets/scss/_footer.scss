@@ -1,3 +1,9 @@
+/**
+ * _footer.scss
+ *
+ * defines styles used in the footer
+ */
+
 footer {
     background: var(--background-color-footer);
     align-items: center;
@@ -7,16 +13,14 @@ footer {
         font-weight: 500;
         white-space: nowrap;
         margin-bottom: 0;
-        font-size: 1rem;
-    }
 
-    & div > p:first-child {
-        margin-bottom: 1em;
+        &:first-child {
+            margin-bottom: 1em;
+        }
     }
 
     a {
         color: var(--text-color-footer);
-        text-decoration: none;
         
         &:hover {
             color: var(--text-highlight-footer);
@@ -31,38 +35,41 @@ footer {
         }
     }
 
-    // fancy login button animation
-    & > a:after {
-        content: "Login";
-        display: inline-block;
-        font-size: 1.5rem;
-        width: 0;
-        transform: rotate(71deg) translate(-30px,3px);
-        visibility: hidden;
-        opacity:0;
-        transition: visibility 0s linear 0.3s, opacity 0.3s linear, font 0.05s linear;
-    }
-    & > a:hover:after {
-        visibility: visible;
-        opacity:1;
-        transition-delay: 0s;
-    }
-}
-
-a.footerlogo > svg {
-    width: 100px;
-
-    @media (max-width: $sm-breakpoint) {
-        & {
-            width: 70px;
+    .footerlogo {
+        & > svg {
+            width: 100px;
+        
+            @media (max-width: $sm-breakpoint) {
+                & {
+                    width: 70px;
+                }
+            }
+        
+            path {
+                fill: var(--text-color-footer);
+            }
+        
+            &:hover path {
+                fill: var(--text-highlight-footer);
+            }
         }
-    }
 
-    path {
-        fill: var(--text-color-footer);
-    }
+        // fancy login button animation
+        &:after {
+            content: "Login";
+            display: inline-block;
+            font-size: 1.5rem;
+            width: 0;
+            transform: rotate(71deg) translate(-30px,3px);
+            visibility: hidden;
+            opacity:0;
+            transition: visibility 0s linear 0.3s, opacity 0.3s linear, font 0.05s linear;
+        }
 
-    &:hover path {
-        fill: var(--text-highlight-footer);
+        &:hover:after {
+            visibility: visible;
+            opacity:1;
+            transition-delay: 0s;
+        }
     }
 }

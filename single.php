@@ -1,6 +1,11 @@
 <?php get_header();
-while ( have_posts() ): 
+/**
+ * single.php
+ * 
+ * the page displayed when users access individual post pages
+ */
 
+while ( have_posts() ): 
 the_post();
 
 if (!has_category('zine')): ?>
@@ -8,13 +13,11 @@ if (!has_category('zine')): ?>
 
         <?php // for all posts other than zine, print post title, author, and category
         foreach($cats = get_the_category() as $cat): ?>
-            <a href="<?php echo get_category_link($cat->cat_ID) ?>">
-                <span class="hover-underline-animation-sm">
-                    <?php echo $cat->name . ($cat !== $cats[array_key_last($cats)] ? ", " : "")?>
-                </span>
+            <a class="hover-underline-animation-sm fw-bold" href="<?php echo get_category_link($cat->cat_ID) ?>">
+                <?php echo $cat->name . ($cat !== $cats[array_key_last($cats)] ? ", " : "")?>
             </a>
         <?php endforeach; ?>
-        <h1><?php the_title(); ?></h1>
+        <h1 class="fw-bold"><?php the_title(); ?></h1>
         <p>By <?php the_author(); ?></p>
 
         <?php // adds spotify podcast embed if post type is podcast

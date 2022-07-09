@@ -1,5 +1,11 @@
 <?php
+/**
+ * general.php
+ * runs general function that add functionality across entire site
+ */
+
 // define constants for primary color and required plugins
+
 define("primary_color", "#8A73F9");
 define("required_plugins", [
     ["name" => "Advanced Custom Fields", "slug" => "advanced-custom-fields", "file" => "acf"],
@@ -9,15 +15,18 @@ define("required_plugins", [
 ]);
 
 // general actions
+
 add_theme_support( 'title-tag' );
 add_theme_support('post-thumbnails');
 remove_action( 'wp_head', 'wp_generator' );
 
 // add custom thumbnail sizes
+
 add_image_size('thumbnail-portrait', 720, 1080, true);
 add_image_size('thumbnail-landscape', 600, 400, true);
 
 // add stylesheets and javascript files
+
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . "/assets/css/bootstrap.min.css" );
     wp_enqueue_style( 'bootstrap-icons', get_template_directory_uri() . "/assets/css/bootstrap-icons/bootstrap-icons.css" );
@@ -31,12 +40,14 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 // add theme as body class
+
 add_filter('body_class', function($classes) {
     $classes[] = (isset($_COOKIE['site-theme'])) ? $_COOKIE['site-theme'] : 'light';
     return $classes;
 });
 
 // add mandatory categories if not already added
+
 function add_categories() {
     $categories = [
         'Anime',

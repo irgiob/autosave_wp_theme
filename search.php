@@ -1,4 +1,11 @@
-<?php get_header(); 
+<?php 
+/**
+ * search.php
+ * 
+ * the page showing results of a search the user made
+ */
+
+get_header(); 
 get_search_form();
 
 if ($wp_query->have_posts()):
@@ -8,8 +15,10 @@ if ($wp_query->have_posts()):
         'hide-spotlight-desktop' => true,
     ]);
 else: ?>
-    <h1>Nothing Found</h2>
-    <p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>
+    <h1 class="text-center">Nothing Found</h2>
+    <p class="text-center">
+        Sorry, but nothing matched your search criteria. Please try again with some different keywords.
+    </p>
 <?php endif;
 get_template_part('template-parts/pagination');
 ?>

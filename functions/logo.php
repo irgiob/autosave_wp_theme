@@ -1,4 +1,10 @@
 <?php
+/**
+ * logo.php
+ * saves the AutoSave logo in the form of functions for use in both html and css
+ */
+
+// returns the AutoSave logo (either full or square version) with custom fill color as SVG code for html files
 function get_logo($fill_color, $full_logo) {
     $fill = "fill='" . $fill_color . "'"; 
     $viewbox = ($full_logo) ? "0 0 430 90" : "0 0 70 70";
@@ -38,6 +44,7 @@ function get_logo($fill_color, $full_logo) {
     HTML;
 }
 
+// returns an URL-encoded version of the logo svg code to use for CSS styling
 function get_encoded_logo($fill_color, $full_logo) {
     return 'url("data:image/svg+xml,' . rawurlencode(get_logo($fill_color, $full_logo)) . '")';
 }

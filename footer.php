@@ -1,3 +1,10 @@
+<?php 
+/**
+ * footer.php
+ * 
+ * contains footer element that is displayed at the bottom of every page
+ */
+?>
         <footer class="d-flex px-md-5 px-3 py-md-4 py-3 w-100 position-absolute bottom-0">
             <a class="footerlogo" href="<?php echo get_home_url() . '/login' ?>">
                 <?php echo get_logo("",false)?>

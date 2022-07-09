@@ -1,3 +1,10 @@
+/**
+ * _header.scss
+ * 
+ * define styles used in the header
+ */
+
+// defines styles to create a flipbox (one element on each side that rotates 180 degrees)
 @mixin flipbox($rotateY) {
     transition: 0.6s;
     transform-style: preserve-3d;
@@ -23,106 +30,117 @@
 }
 
 nav {
-    &.navbar {
-        background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
-        background-size: 100% 200%;
-        background-position: bottom;
-        transition: .1s linear;
+    background: linear-gradient(to bottom, var(--background-color-header) 50%, var(--background-color-main) 50%);
+    background-size: 100% 200%;
+    background-position: bottom;
+    transition: .1s linear;
+    transition-delay: 0.2s;
+
+    * {
+        color: var(--text-color-header);
+        fill: var(--text-color-header);
         transition-delay: 0.2s;
+        transition: 0.2s;
+    }
+
+    #logo {
+        width: 20%;
+        min-width: 120px;
+        max-width: 240px;
+        transition: opacity 0s linear 0s;
+
+        @media (max-width: $sm-breakpoint) {
+            & {
+                opacity: 1 !important;
+            }
+        }
+    }
+
+    p[role="button"]:hover {
+        transform: scale(1.1);
+    }
+
+    p > i {
+        display: inline-block;
+        transition: transform 0.2s;
+    }
+
+    & + div.menu-secondary--default {
+        transition: z-index 0.3s ease-in-out 0s;
+    }
+
+    .form-switch {
+        font-size: 1.2rem;
+    
+        .form-check-input {
+            background-color: var(--text-color-header);
+            border-color: var(--text-color-header);
+            transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+    
+            &, &:checked, &:focus {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{'%23' + str_slice(inspect($primary),2)}'/%3e%3c/svg%3e");
+            }
+        }
+    }
+
+    &[aria-expanded="true"] {
+        background-position: top;
+        transition-delay: 0s;
 
         * {
-            color: var(--text-color-header);
-            fill: var(--text-color-header);
-            transition-delay: 0.2s;
-            transition: 0.2s;
+            color: var(--text-color-header-expanded);
+            fill: var(--text-color-header-expanded);
+            transition-delay: 0.1s;
+            transition: 0.1s;   
         }
 
-        p[role=button]:hover {
-            transform: scale(1.1);
-        }
+        & + div.menu-secondary--default {
+            z-index: 10;
+            transition: z-index 0s ease-in-out 0s;
+        }*
 
         p > i {
+            transform: rotate(90deg);
             display: inline-block;
             transition: transform 0.2s;
         }
 
-        & + div.menu-secondary--default {
-            transition: z-index 0.3s ease-in-out 0s;
+        p:after {
+            background-color: var(--text-color-header-expanded);
         }
 
-        .form-switch {
-            font-size: 1.2rem;
-        
-            .form-check-input {
-                background-color: var(--text-color-header);
-                border-color: var(--text-color-header);
-                transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
-        
-                &, &:checked, &:focus {
-                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{'%23' + str_slice(inspect($primary),2)}'/%3e%3c/svg%3e");
-                }
-            }
-        }
+        .search-flipbox {
+            transition: 0.6s;
 
-        &[aria-expanded="true"] {
-            background-position: top;
-            transition-delay: 0s;
+            .search-container {
+                input#search {
+                    caret-color: var(--text-color-header-expanded);
+                    color: var(--text-color-header-expanded);
 
-            * {
-                color: var(--text-color-header-expanded);
-                fill: var(--text-color-header-expanded);
-                transition-delay: 0.1s;
-                transition: 0.1s;   
-            }
-
-            & + div.menu-secondary--default {
-                z-index: 10;
-                transition: z-index 0s ease-in-out 0s;
-            }*
-
-            p > i {
-                transform: rotate(90deg);
-                display: inline-block;
-                transition: transform 0.2s;
-            }
-
-            p:after {
-                background-color: var(--text-color-header-expanded);
-            }
-
-            .search-flipbox {
-                transition: 0.6s;
-
-                .search-container {
-                    input#search {
-                        caret-color: var(--text-color-header-expanded);
+                    &::placeholder {
                         color: var(--text-color-header-expanded);
-
-                        &::placeholder {
-                            color: var(--text-color-header-expanded);
-                        }
                     }
-
-                    &:hover input#search, input#search:focus, input#search:hover {
-                        border-bottom: 2px var(--text-color-header-expanded) solid;
-                    }        
                 }
-            }
-            
-            .form-switch .form-check-input {
-                background-color: var(--background-color-main);
-                border-color: var(--background-color-main);
+
+                &:hover input#search, input#search:focus, input#search:hover {
+                    border-bottom: 2px var(--text-color-header-expanded) solid;
+                }        
             }
         }
+        
+        .form-switch .form-check-input {
+            background-color: var(--background-color-main);
+            border-color: var(--background-color-main);
+        }
+    }
 
+    div.container-fluid > div {
+        min-width: 120px;
+    }
+
+    @media (max-width: $sm-breakpoint) {
         div.container-fluid > div {
-            min-width: 120px;
-        }
-
-        @media (max-width: $sm-breakpoint) {
-            div.container-fluid > div {
-              min-width: 0;
-            }
+            min-width: 0;
         }
     }
     
@@ -137,25 +155,12 @@ nav {
             transition-delay: 0s;
         }
     }
-    
-    #logo {
-        width: 20%;
-        min-width: 120px;
-        max-width: 240px;
-        transition: opacity 0s linear 0s;
-
-        @media (max-width: $sm-breakpoint) {
-            & {
-                opacity: 1 !important;
-            }
-        }
-    }
 
     .search-container {
         width: 0;
         overflow: visible;
 
-        form[role=search] {
+        form[role="search"] {
             float: right;
         }
 
@@ -241,6 +246,15 @@ nav {
         
         path {
             fill: var(--text-color-header-expanded);
+        }
+    }
+}
+
+.hover-logo-animation {
+    svg {
+        &:hover{
+            transform: scale(1.15);
+            transition: transform 0.1s linear;
         }
     }
 }

@@ -1,3 +1,10 @@
+/**
+ * _misc.scss
+ *
+ * styles that are only used once and are too short to have their own file
+ */
+
+// styling for the 404 page
 .error404 .not-found-info {
     text-align: center;
     margin: 3em;
@@ -13,26 +20,22 @@
     }
 }
 
+// styling for the search page
 body.search {
     h1 {
         margin-top: 10vh;
         font-size: 5vw;
         color: var(--text-color-header);
-        text-align: center;
     }
 
-    h1 + p {
-        text-align: center;
-    }
-
-    form[role=search] {
+    form[role="search"] {
         margin-top: 0.5em;
         margin-bottom: 0.5em;
         font-size: 2rem;
         color: var(--text-color-header);
         text-align: center;
 
-        input[type=search] {
+        input[type="search"] {
             -webkit-appearance: none;
             border: none;
             border-bottom: 2px var(--text-color-header) solid;
@@ -54,6 +57,31 @@ body.search {
                     display: none;
                 }
             }
+        }
+    }
+}
+
+// styling for pagination template
+.pagination {
+    .page-item {
+        .page-link {
+            color: var(--text-color-header);
+            border-color: var(--text-color-header);
+            background-color: var(--background-color-main);
+            &:focus {
+                box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+            }
+        }
+
+        &.active .page-link {
+            background-color: var(--background-color-header);
+            border-color: var(--background-color-header);
+            color: var(--background-color-main);
+        }
+
+        &.disabled .page-link {
+            color: $grey;
+            border-color: $grey;
         }
     }
 }

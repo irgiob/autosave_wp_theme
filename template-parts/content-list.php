@@ -1,18 +1,19 @@
 <?php
-/*
-Content List Template
-This template is used to display a list of article cards across various pages
-
-Arguments:
-    • query: Wordpress Query object of the posts to display
-    • list-title: title of the list (optional if hide title is true)
-    • list-link: a link the title leads to (optional)
-    • hide-title (optional): boolean value that if true hides the list title
-    • hide-spotlight-dekstop (optional): hides desktop spotlight section
-    • hide-spotlight-mobile (optional): hides mobile spotlight section
-    • hide-last-post (optional): hides last post on desktop for certain situations
-    • hide-sub-title (optional): hides "Lastest Post" title on mobile
-*/
+/**
+ * content-list.php
+ * 
+ * template used to display a list of article cards across various pages
+ *
+ * Arguments:
+ *    • query: Wordpress Query object of the posts to display
+ *    • list-title: title of the list (optional if hide title is true)
+ *    • list-link: a link the title leads to (optional)
+ *    • hide-title (optional): boolean value that if true hides the list title
+ *    • hide-spotlight-dekstop (optional): hides desktop spotlight section
+ *    • hide-spotlight-mobile (optional): hides mobile spotlight section
+ *    • hide-last-post (optional): hides last post on desktop for certain situations
+ *    • hide-sub-title (optional): hides "Lastest Post" title on mobile
+ */
 
 // this variable with create a long post if there are more than 8 posts on the page
 $show_long_post = $args['query']->post_count > 8; ?>
@@ -21,7 +22,7 @@ $show_long_post = $args['query']->post_count > 8; ?>
     <!-- Title Section -->
     <?php if (!$args['hide-title']): ?>
         <a href="<?php echo $args['list-link']; ?>">
-        <div class="right-arrow-extension--header d-inline-block ms-3">
+        <div class="right-arrow-extension--header d-inline-block ms-2">
                 <h1 class="hover-underline-animation fw-bold">
                     <?php echo $args['list-title']; ?>
                 </h1>
@@ -106,20 +107,20 @@ $show_long_post = $args['query']->post_count > 8; ?>
             <?php if ($show_long_post): ?></div><? endif; ?>
         </div>
         <?php if (!$args['hide-sub-title'] && $count > 2): ?>
-            <p class="d-block d-md-none">Latest Posts</p>
+            <p class="d-block d-md-none fw-bold">Latest Posts</p>
         <?php endif; ?>
 
         <!-- Spotlight Article Section DESKTOP (shows spotlight post with excerpt on desktop only) -->
         <?php if (!$args['hide-spotlight-desktop']): ?>
-            <div class="content-list--spotlight my-0 mx-0 row d-none d-md-flex">
+            <div class="content-list--spotlight my-0 ms-1 row d-none d-md-flex">
                 <div class="col-12 col-md-5">
-                    <h1><?php echo $first_post['title']; ?></h1>
+                    <h1 class="fw-bold"><?php echo $first_post['title']; ?></h1>
                     <p>By <?php echo $first_post['author']; ?></p>
                 </div>
                 <div class="col-12 col-md-5">
                     <p><?php echo $first_post['excerpt']; ?></p>
                     <a class="read-more-button right-arrow-extension float-end" href="<?php echo $first_post['permalink']; ?>">
-                        <p class="hover-underline-animation-sm">Read More</p>
+                        <p class="hover-underline-animation-sm fw-bold">Read More</p>
                     </a>
                 </div> 
             </div>

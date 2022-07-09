@@ -1,3 +1,10 @@
+/**
+ * _home.scss
+ *
+ * define styles that are used on the home page
+ */
+
+// spacing between banner items
 $banner_gap: 10px;
 
 #main-banner {
@@ -21,7 +28,7 @@ $banner_gap: 10px;
         }
     }
 
-    i[class^=bi-chevron-] {
+    i[class^="bi-chevron-"] {
         opacity: 0.5;
         z-index: 1;
 

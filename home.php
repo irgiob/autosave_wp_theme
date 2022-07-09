@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php 
+/**
+ * home.php
+ * 
+ * page that is displayed when users go to the root url of the site
+ */
+
+get_header(); 
+?>
 
 <div id="main-banner" class="mb-3 my-0 my-md-4">
     <?php

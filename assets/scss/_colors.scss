@@ -1,3 +1,11 @@
+/** 
+ * _colors.scss
+ *
+ * defines all colors and css color variables used across all scss files
+ * includes definition of colors used for each website theme
+ */
+
+// hex codes of all colors used across theme
 $primary: #8A73F9;
 $secondary: #86D0E2;
 $tertiary: #E8D892;
@@ -5,6 +13,7 @@ $black: #262626;
 $white: #FFFFFF;
 $grey: grey;
 
+// definition of colors used for each type of element for each theme
 $themes: (
     "light": (
         "text-color-header": $primary,
@@ -32,6 +41,7 @@ $themes: (
     )
 );
 
+// generates css variables using theme array
 @each $theme-name, $properties in $themes {
     body.#{$theme-name} {
         // define a css variable for each property
