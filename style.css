@@ -854,12 +854,6 @@ footer .footerlogo:hover:after {
   margin-left: 0.5em;
   -webkit-transform: scaleX(1.2) translateY(0.25em);
           transform: scaleX(1.2) translateY(0.25em);
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  -webkit-transition: -webkit-transform 0.1s ease-in-out 0s;
-  transition: -webkit-transform 0.1s ease-in-out 0s;
-  transition: transform 0.1s ease-in-out 0s;
-  transition: transform 0.1s ease-in-out 0s, -webkit-transform 0.1s ease-in-out 0s;
 }
 
 .content-list .right-arrow-extension--header::after {
