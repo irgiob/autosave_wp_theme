@@ -25,20 +25,9 @@ WEBSITE LINK COMING SOON!
 \*Purpose of each file is written at the top comment of the file
 
 ## Features of Note
-<div style="float: left; width: 48%; margin-right: 2%;">
-    <p>Responsive mobile compatibility</p>
-    <img class="center-block" src="readme_files/mobile_view.gif">
-</div>
-<div style="float: left; width: 50%;">
-    <p>Smooth expanding header navbar</p>
-    <img class="center-block" src="readme_files/expanding_header.gif">
-    <p>two-layer collapsing hedaer</p>
-    <img class="center-block" src="readme_files/collapsing_header.gif">
-    <p>Support light and dark themes</p>
-    <img class="center-block" src="readme_files/dark_mode.gif">
-    <p>Advanced auto-tiling of post cards</p>
-    <img class="center-block" src="readme_files/card_tiling.gif">
-</div>
+|  |  |
+| ------------- | ------------- |
+| Responsive mobile compatibility ![](readme_files/mobile_view.gif) Advanced auto-tiling of post cards ![](readme_files/card_tiling.gif) | Smooth expanding header navbar ![](readme_files/expanding_header.gif) two-layer collapsing header ![](readme_files/collapsing_header.gif) Support light and dark themes ![](readme_files/dark_mode.gif) |
 
 
 ## Dependencies
