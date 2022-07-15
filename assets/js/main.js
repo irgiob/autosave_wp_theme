@@ -5,17 +5,20 @@ var expanded = false;
 
 // initialize home page carousel banner (that pauses on mobile)
 
-const sharedClasses = 'position-absolute top-50 translate-middle text-white display-6 d-none d-md-block';
+const sharedClasses = 'position-absolute top-50 translate-middle text-white display-6';
 jQuery( '#main-banner' ).slick({
     slidesToShow: 4,
     autoplay: true,
     autoplaySpeed: 3000,
+    draggable: false,
     prevArrow: '<i class=\'bi-chevron-left ' + sharedClasses + '\' style=\'left: 0.75em;\'></i>',
     nextArrow: '<i class=\'bi-chevron-right end-0 ' + sharedClasses + '\'></i>',
     responsive: [{
         breakpoint: 768,
         settings: {
             slidesToShow: 1,
+            arrows: false,
+            draggable: true,
         }    
     }]
 });

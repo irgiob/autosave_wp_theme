@@ -17,11 +17,15 @@ $banner_gap: 10px;
                 overflow: hidden;
                 transition: border-radius 0.2s ease-in-out 0s;
                 
-                &:not(.slick-active) + .slick-active {
+                &:not(.slick-active) + .slick-active,
+                &:not(.slick-cloned) + .slick-cloned:not(.slick-active),
+                &.slick-cloned[data-slick-index="-1"] {
                     border-radius: 5em 0 0 0;
                 }
         
-                & + .slick-active + * + * + .slick-active {
+                & + .slick-active + * + * + .slick-active,
+                &:not(.slick-cloned) + .slick-cloned + * + * + .slick-cloned:not(.slick-active),
+                &:not(.slick-active)[data-slick-index="2"] {
                     border-radius: 0 5em 0 0;
                 }
             }

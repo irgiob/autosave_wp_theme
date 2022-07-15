@@ -540,10 +540,10 @@ footer .footerlogo:hover:after {
     overflow: hidden;
     transition: border-radius 0.2s ease-in-out 0s;
   }
-  #main-banner .slick-list .slick-slide:not(.slick-active) + .slick-active {
+  #main-banner .slick-list .slick-slide:not(.slick-active) + .slick-active, #main-banner .slick-list .slick-slide:not(.slick-cloned) + .slick-cloned:not(.slick-active), #main-banner .slick-list .slick-slide.slick-cloned[data-slick-index="-1"] {
     border-radius: 5em 0 0 0;
   }
-  #main-banner .slick-list .slick-slide + .slick-active + * + * + .slick-active {
+  #main-banner .slick-list .slick-slide + .slick-active + * + * + .slick-active, #main-banner .slick-list .slick-slide:not(.slick-cloned) + .slick-cloned + * + * + .slick-cloned:not(.slick-active), #main-banner .slick-list .slick-slide:not(.slick-active)[data-slick-index="2"] {
     border-radius: 0 5em 0 0;
   }
 }
