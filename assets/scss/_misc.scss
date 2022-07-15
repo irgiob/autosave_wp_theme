@@ -30,7 +30,7 @@ body.search .search-page-content {
 
     form[role="search"] {
         margin-top: 0.5em;
-        margin-bottom: 0.5em;
+        margin-bottom: -1em;
         font-size: 2rem;
         color: var(--text-color-header);
         text-align: center;
@@ -51,11 +51,15 @@ body.search .search-page-content {
 
         i {
             position: relative !important;
+        }
 
-            @media (max-width: $sm-breakpoint) {
-                & {
-                    display: none;
-                }
+        @media (max-width: $sm-breakpoint) {
+            & {
+                margin-bottom: 0.5em;
+            }
+
+            i {
+                display: none;
             }
         }
     }

@@ -6,7 +6,7 @@
  */
 
 get_header();
-get_template_part('template-parts/content','list',[
+get_template_part('template-parts/postlist', get_queried_object()->slug, [
     'list-title' => single_cat_title('',false),
     'query' => $wp_query,
 ]);

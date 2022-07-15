@@ -12,7 +12,7 @@ get_header();
     get_search_form();
 
     if ($wp_query->have_posts()):
-        get_template_part('template-parts/content','list',[
+        get_template_part('template-parts/postlist', null, [
             'hide-title' => true,
             'query' => $wp_query,
             'hide-spotlight-desktop' => true,

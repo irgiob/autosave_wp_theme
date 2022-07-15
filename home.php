@@ -33,7 +33,7 @@ $categories = [/*'zine',*/ 'anime', 'technology', 'video games'];
 foreach($categories as $cat_slug) {
     $category = get_category_by_slug($cat_slug);
     $query = new WP_Query(array('cat' => $category->cat_ID, 'posts_per_page' => $n_posts));
-    get_template_part('template-parts/content','list',[
+    get_template_part('template-parts/postlist', $cat_slug, [
         'list-title' => $category->name,
         'list-link' => get_category_link($category->cat_ID),
         'query' => $query,
