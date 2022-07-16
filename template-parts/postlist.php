@@ -39,9 +39,8 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         <?php get_template_part('template-parts/listitem', get_the_category()[0]->slug, [
                             'card-classes' => 'card--long mt-2 mb-3',
                             'title' => get_the_title(),
-                            'thumbnail' => get_the_post_thumbnail_url('','thumbnail-landscape'),
-                            'rating' => get_field('rating'),
-                            'spotify-uri' => get_field('spotify_episode_uri'),
+                            'thumbnail' => get_the_post_thumbnail_url('','thumbnail-portrait'),
+                            'custom-fields' => get_fields(),
                         ]) ?>
                     </a>
                 </div>
@@ -55,12 +54,11 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         if ($count == 1) $first_post = [
                             'title' => get_the_title(),
                             'author' => get_the_author(),
-                            'thumbnail-portrait' => get_the_post_thumbnail_url('','thumbnail-portrait'),
-                            'thumbnail-landscape' => get_the_post_thumbnail_url('','thumbnail-landscape'),
+                            'category' => get_the_category()[0]->slug,
+                            'thumbnail' => get_the_post_thumbnail_url('','thumbnail-landscape'),
                             'excerpt' => get_the_excerpt(),
                             'permalink' => get_the_permalink(),
-                            'rating' => get_field('rating'),
-                            'category' => get_the_category()[0]->slug,
+                            'custom-fields' => get_fields(),
                         ];
 
                         // calculate extra classes for next list of cards
@@ -82,9 +80,8 @@ $show_long_post = $args['query']->post_count > 8; ?>
                         <?php get_template_part('template-parts/listitem', get_the_category()[0]->slug, [
                             'title' => get_the_title(),
                             'thumbnail' => get_the_post_thumbnail_url('','thumbnail-landscape') ,
-                            'rating' => get_field('rating'),
                             'hide-overlay-on-mobile' => true,
-                            'spotify-uri' => get_field('spotify_episode_uri'),
+                            'custom-fields' => get_fields(),
                         ]) ?>
                         <p class="d-md-none"><?php the_title(); ?></p>
                     </a>
@@ -117,9 +114,8 @@ $show_long_post = $args['query']->post_count > 8; ?>
                 <?php get_template_part('template-parts/listitem', $first_post['category'], [
                     'card-classes' => 'postlist--spotlight d-block d-md-none',
                     'title' => $first_post['title'],
-                    'thumbnail' => $first_post['thumbnail-landscape'],
-                    'rating' => $first_post['rating'],
-                    'spotify-uri' => get_field('spotify_episode_uri'),
+                    'thumbnail' => $first_post['thumbnail'],
+                    'custom-fields' => $first_post['custom-fields'],
                 ]) ?>
             </a>
         <?php endif; ?>
