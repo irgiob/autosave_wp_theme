@@ -27,7 +27,7 @@
     <div class="card-img-overlay <?php if ($args['hide-overlay-on-mobile']) echo "d-none d-md-block" ?>">
         <p class="text-start"><?php echo $args['title']; ?></p>
     </div>
-    <?php if ($args['rating']): ?>
-        <div class="card-score-badge"><p><?php echo $args['rating']; ?></p></div>
+    <?php if ($args['custom-fields']['rating']): ?>
+        <div class="card-score-badge"><p><?php echo $args['custom-fields']['rating']; ?></p></div>
     <?php endif; ?>
 </div>
